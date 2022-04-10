@@ -1,6 +1,6 @@
 <template>
   <div class="deck-listing">
-      <h2>{{deck.title}}</h2>
+      <h2>{{deck.deckTitle}}</h2>
   </div>
 </template>
 

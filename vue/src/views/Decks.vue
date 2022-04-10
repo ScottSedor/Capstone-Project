@@ -1,16 +1,17 @@
 <template>
   <div class="decks">
-
+      <deck-list />
   </div>
 </template>
 
 <script>
-import deckService from '@/services/DeckService';
+import deckService from '@/services/DeckService'
+import DeckList from '@/components/DeckList'
 
 export default {
     name: "Decks",
     components: {
-
+        DeckList
     },
     created() {
         deckService.getAllDecks().then( response => {
