@@ -59,6 +59,17 @@ INSERT INTO decks (deck_title) VALUES ('Deck One');
 INSERT INTO decks (deck_title) VALUES ('Deck Two');
 INSERT INTO decks (deck_title) VALUES ('Deck Three');
 
+INSERT INTO cards (user_id, card_front, card_back, keywords) 
+VALUES (1, 'Front Card One', 'Back Card One', 'Test'),
+	   (1, 'Front Card Two', 'Back Card Two', 'Test'),
+	   (1, 'Front Card Three', 'Back Card Three', 'Test'),
+	   (1, 'Front Card Four', 'Back Card Four', 'Test'),
+	   (1, 'Front Card Five', 'Back Card Five', 'Test'),
+	   (1, 'Front Card Six', 'Back Card Six', 'Test');
+	   
+INSERT INTO decks_cards (deck_id, card_id) 
+VALUES (1, 1), (1, 2), (2, 3), (2, 4), (3, 5), (3, 6);  
+
 INSERT INTO users_decks (deck_id, user_id) VALUES (1,1), (2,1), (3,1);
 
 COMMIT TRANSACTION;
