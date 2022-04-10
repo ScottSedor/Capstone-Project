@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users_decks, users, decks;
+DROP TABLE IF EXISTS users_decks, decks_cards, cards, users, decks;
 DROP SEQUENCE IF EXISTS seq_user_id;
 
 CREATE SEQUENCE seq_user_id
@@ -25,6 +25,26 @@ CREATE TABLE decks(
 deck_id serial NOT NULL,
 deck_title varchar(50) NOT NULL,
 CONSTRAINT PK_decks PRIMARY KEY (deck_id)	
+);
+
+CREATE TABLE cards(
+	card_id serial PRIMARY KEY,
+	user_id bigint NOT NULL,
+	card_front varchar(256) NOT NULL,
+	card_back varchar(2000) NOT NULL,
+	keywords varchar(256) NOT NULL,
+
+	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE decks_cards(
+
+    deck_id bigint NOT NULL,
+	card_id bigint NOT NULL,
+
+	CONSTRAINT FK_deck_id FOREIGN KEY (deck_id) REFERENCES decks(deck_id),
+	CONSTRAINT FK_card_id FOREIGN KEY (card_id) REFERENCES cards(card_id),
+	CONSTRAINT PK_decks_cards PRIMARY KEY (deck_id, card_id)
 );
 
 CREATE TABLE users_decks(
