@@ -1,11 +1,10 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.CardDao;
 import com.techelevator.dao.DeckDao;
+import com.techelevator.model.Card;
 import com.techelevator.model.Deck;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,15 +14,21 @@ import java.util.List;
 public class DeckController {
 
     private DeckDao deckDao;
+    private CardDao cardDao;
 
-    public DeckController(DeckDao deckDao) {
+    public DeckController(DeckDao deckDao, CardDao cardDao) {
+
         this.deckDao = deckDao;
+        this.cardDao = cardDao;
     }
 
     @RequestMapping (path="/decks", method= RequestMethod.GET)
     public List<Deck> getAllDecks() {
         return deckDao.viewAllDecks();
     }
+
+    @RequestMapping (path="/decks/{id}", method= RequestMethod.GET)
+    public List<Card> getCardsInDeck(@PathVariable("id") int deckID) { return cardDao.viewCardsInDeck(deckID); }
 
 
 }
