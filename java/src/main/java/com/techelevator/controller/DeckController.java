@@ -28,7 +28,9 @@ public class DeckController {
     }
 
     @RequestMapping (path="/decks/{id}", method= RequestMethod.GET)
-    public List<Card> getCardsInDeck(@PathVariable("id") int deckID) { return cardDao.viewCardsInDeck(deckID); }
+    public List<Card> getCardsInDeck(@PathVariable("id") int deckId) { return cardDao.viewCardsInDeck(deckId); }
+
+
 
 
 }

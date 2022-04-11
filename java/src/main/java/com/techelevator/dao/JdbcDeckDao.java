@@ -28,7 +28,7 @@ public class JdbcDeckDao implements DeckDao {
 
         while(rows.next()) {
             Deck deck = new Deck();
-            deck.setDeckID(rows.getInt("deck_id"));
+            deck.setDeckId(rows.getInt("deck_id"));
             deck.setDeckTitle(rows.getString("deck_title"));
             decks.add(deck);
         }

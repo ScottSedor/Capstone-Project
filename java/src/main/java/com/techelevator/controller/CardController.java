@@ -2,11 +2,11 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.CardDao;
 import com.techelevator.model.Card;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.techelevator.model.CardRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin
@@ -17,5 +17,11 @@ public class CardController {
     private CardDao cardDao;
 
     public CardController(CardDao cardDao) { this.cardDao = cardDao; }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path= "/cards/create", method= RequestMethod.POST)
+    public void createCard(Principal principal, @RequestBody CardRequest cardRequest) {
+        cardDao.addCard(cardRequest, principal.getName());
+    }
 
 }

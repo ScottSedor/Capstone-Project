@@ -2,15 +2,15 @@ package com.techelevator.model;
 
 public class Deck {
 
-    private int deckID;
+    private int deckId;
     private String deckTitle;
 
-    public int getDeckID() {
-        return deckID;
+    public int getDeckId() {
+        return deckId;
     }
 
-    public void setDeckID(int deckID) {
-        this.deckID = deckID;
+    public void setDeckId(int deckId) {
+        this.deckId = deckId;
     }
 
     public String getDeckTitle() {
