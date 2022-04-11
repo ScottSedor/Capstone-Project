@@ -24,5 +24,12 @@ export default {
 </script>
 
 <style>
-
+    div.decks {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    div.decks p {
+        font-size: 1.5rem;
+    }
 </style>
