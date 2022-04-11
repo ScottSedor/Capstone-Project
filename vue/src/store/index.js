@@ -45,6 +45,9 @@ export default new Vuex.Store({
     },
     SET_CARDS(state, cardsInDeck) {
       state.cardsInDeck = cardsInDeck;
+    },
+    ADD_TO_DECKS(state, deck) {
+      state.decks.push(deck);
     }
   }
 })

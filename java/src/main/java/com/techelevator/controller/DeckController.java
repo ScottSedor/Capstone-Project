@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.CardDao;
 import com.techelevator.dao.DeckDao;
 import com.techelevator.model.Card;
+import com.techelevator.model.CardRequest;
 import com.techelevator.model.Deck;
 import com.techelevator.model.DeckRequest;
 import org.springframework.http.HttpStatus;
@@ -35,8 +36,14 @@ public class DeckController {
 
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path= "/decks/create", method= RequestMethod.POST)
-    public void createDeck(Principal principal, @RequestBody DeckRequest deckRequest) {
-        deckDao.createDeck(principal.getName(), deckRequest.getDeckTitle());
+    @RequestMapping(path= "/decks", method= RequestMethod.POST)
+    public Deck createDeck(Principal principal, @RequestBody DeckRequest deckRequest) {
+        return deckDao.createDeck(principal.getName(), deckRequest.getDeckTitle());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path= "/decks/{id}", method= RequestMethod.POST)
+    public void createCard(Principal principal, @RequestBody CardRequest cardRequest) {
+        cardDao.addCard(cardRequest, principal.getName());
     }
 }

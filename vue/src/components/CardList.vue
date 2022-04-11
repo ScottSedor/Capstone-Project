@@ -25,5 +25,10 @@ export default {
 </script>
 
 <style>
-
+    div.card-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+    }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="decks">
+      <create-deck-form />
       <deck-list />
   </div>
 </template>
@@ -7,11 +8,13 @@
 <script>
 import deckService from '@/services/DeckService'
 import DeckList from '@/components/DeckList'
+import CreateDeckForm from '@/components/CreateDeckForm'
 
 export default {
     name: "Decks",
     components: {
-        DeckList
+        DeckList,
+        CreateDeckForm
     },
     created() {
         deckService.getAllDecks().then( response => {

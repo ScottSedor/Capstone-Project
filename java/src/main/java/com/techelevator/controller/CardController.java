@@ -18,10 +18,6 @@ public class CardController {
 
     public CardController(CardDao cardDao) { this.cardDao = cardDao; }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path= "/cards/create", method= RequestMethod.POST)
-    public void createCard(Principal principal, @RequestBody CardRequest cardRequest) {
-        cardDao.addCard(cardRequest, principal.getName());
-    }
+
 
 }

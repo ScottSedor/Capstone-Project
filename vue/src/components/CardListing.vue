@@ -1,6 +1,6 @@
 <template>
   <div class="card-listing">
-
+    <h2>{{card.cardFront}}</h2>
   </div>
 </template>
 
