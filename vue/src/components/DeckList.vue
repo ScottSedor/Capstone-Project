@@ -25,5 +25,12 @@ export default {
 </script>
 
 <style>
-
+    div.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+div.products p {
+    font-size: 1.5rem;
+}
 </style>
