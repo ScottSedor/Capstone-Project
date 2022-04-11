@@ -41,8 +41,11 @@ public class JdbcDeckDao implements DeckDao {
         String sql = "INSERT INTO  decks(deck_title) VALUES (?) RETURNING deck_id;";
         Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deckTitle);
         String sqlTwo = "INSERT INTO users_decks(user_id, deck_id) VALUES (?, ?);";
-
-        return jdbcTemplate.queryForObject(sqlTwo, Deck.class, userId, deckId);
+        jdbcTemplate.update(sqlTwo, userId, deckId);
+        Deck deck = new Deck();
+        deck.setDeckTitle(deckTitle);
+        deck.setDeckId(deckId);
+        return deck;
     }
 
     private int getIdFromUsername(String username) throws NullPointerException {
