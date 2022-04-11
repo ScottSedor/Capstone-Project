@@ -7,5 +7,5 @@ import java.util.List;
 public interface DeckDao {
 
     List<Deck> viewAllDecks();
-
+    void createDeck(String username, String deckTitle);
 }
