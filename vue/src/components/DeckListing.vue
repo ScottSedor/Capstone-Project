@@ -23,6 +23,7 @@ export default {
    flex-direction: column;
    text-align: center;
    justify-content: space-between;
+   
 }
 
 div.deck-listing:hover {

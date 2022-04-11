@@ -28,6 +28,7 @@ export default {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        flex-direction: column;
     }
     div.decks p {
         font-size: 1.5rem;
