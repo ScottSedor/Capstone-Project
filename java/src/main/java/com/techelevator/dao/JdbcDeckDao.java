@@ -38,8 +38,8 @@ public class JdbcDeckDao implements DeckDao {
     @Override
     public void createDeck(String username, String deckTitle) {
         int userId = getIdFromUsername(username);
-        String sql = "INSERT INTO  decks(deck_title) VALUES (?);";
-        int deckId = jdbcTemplate.update(sql, deckTitle);
+        String sql = "INSERT INTO  decks(deck_title) VALUES (?) RETURNING deck_id;";
+        Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deckTitle);
         String sqlTwo = "INSERT INTO users_decks(user_id, deck_id) VALUES (?, ?);";
         jdbcTemplate.update(sqlTwo, userId, deckId);
     }
