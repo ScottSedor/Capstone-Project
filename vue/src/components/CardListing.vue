@@ -1,19 +1,18 @@
 <template>
-  <div class="deck-listing">
-      <h2>{{deck.deckTitle}}</h2>
+  <div class="card-listing">
+
   </div>
 </template>
 
 <script>
 export default {
-    name: 'deck-listing',
-    props: ['deck']
-
+    name: "card-listing",
+    props: ['card']
 }
 </script>
 
 <style>
-  div.deck-listing {
+  div.card-listing {
    border: 1px black solid;
    width: 15rem;
    height: 10rem;
@@ -26,8 +25,7 @@ export default {
    
 }
 
-div.deck-listing:hover {
+div.card-listing:hover {
   background: whitesmoke;
 }
- 
 </style>
