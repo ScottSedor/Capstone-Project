@@ -40,10 +40,21 @@ public class JdbcCardDao implements CardDao {
 
     // Possibly add return card object...
     @Override
-    public void addCard(CardRequest cardRequest, String username) {
+    public Card addCard(CardRequest cardRequest, String username, int deckId) {
         int userId = getIdFromUsername(username);
-        String sql = "INSERT INTO cards (user_id, card_front, card_back, keywords) VALUES (?, ?, ?, ?);";
-        jdbcTemplate.update(sql, userId, cardRequest.getCardFront(), cardRequest.getCardBack(), cardRequest.getKeywords());
+        String sql = "INSERT INTO cards (user_id, card_front, card_back, keywords) VALUES (?, ?, ?, ?) " +
+                "RETURNING card_id;";
+        Integer cardId = jdbcTemplate.queryForObject(sql, Integer.class, userId, cardRequest.getCardFront(),
+                cardRequest.getCardBack(), cardRequest.getKeywords());
+        String sql2 = "INSERT INTO decks_cards (deck_id, card_id) VALUES (?, ?);";
+        jdbcTemplate.update(sql2, deckId, cardId);
+        Card card = new Card();
+        card.setCardId(cardId);
+        card.setUserId(userId);
+        card.setCardFront(cardRequest.getCardFront());
+        card.setCardBack(cardRequest.getCardBack());
+        card.setKeywords(cardRequest.getKeywords());
+        return card;
     }
 
     private int getIdFromUsername(String username) throws NullPointerException {

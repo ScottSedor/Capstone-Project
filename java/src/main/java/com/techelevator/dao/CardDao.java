@@ -8,5 +8,5 @@ import java.util.List;
 public interface CardDao {
 
     List<Card> viewCardsInDeck(int deckID);
-    void addCard(CardRequest cardRequest, String username);
+    Card addCard(CardRequest cardRequest, String username, int deckId);
 }

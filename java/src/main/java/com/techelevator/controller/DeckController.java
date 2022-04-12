@@ -43,7 +43,7 @@ public class DeckController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path= "/decks/{id}", method= RequestMethod.POST)
-    public void createCard(Principal principal, @RequestBody CardRequest cardRequest) {
-        cardDao.addCard(cardRequest, principal.getName());
+    public Card createCard(Principal principal, @RequestBody CardRequest cardRequest, @PathVariable("id")int deckId) {
+        return cardDao.addCard(cardRequest, principal.getName(), deckId);
     }
 }
