@@ -11,7 +11,6 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-
 public class CardController {
 
     private CardDao cardDao;
