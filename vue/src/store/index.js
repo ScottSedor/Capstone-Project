@@ -48,6 +48,9 @@ export default new Vuex.Store({
     },
     ADD_TO_DECKS(state, deck) {
       state.decks.push(deck);
-    }
+    },
+    ADD_TO_CARDS(state, card) {
+      state.cardsInDeck.push(card);
+    } 
   }
 })

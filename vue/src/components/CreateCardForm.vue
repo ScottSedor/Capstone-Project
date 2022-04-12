@@ -1,10 +1,56 @@
 <template>
-  <create-card-form />
+  <div class='create-card-form' >
+    <form v-on:submit.prevent="createCard" v-bind:disabled="isValid">
+      <h1>New Card:</h1>
+      <div class="form=field">
+          <label for="card-front"></label>
+          <textarea id="card-front" rows="5" cols="30" placeholder="Card front:" v-model="cardRequest.cardFront" ></textarea>
+      </div>
+      <div class="form=field">
+          <label for="card-back"></label>
+          <textarea id="card-back" rows="5" cols="30" placeholder="Card back:" v-model="cardRequest.cardBack"></textarea>
+      </div>
+      <div class="form-field">
+        <label for="keywords"></label>
+          <textarea id="card-back" rows="5" cols="30" placeholder="Key words:" v-model="cardRequest.keywords"></textarea>
+      </div>
+      <input type="submit" value="Save New Card" >
+    </form>
+  </div>
 </template>
 
 <script>
-export default {
+import deckService from '@/services/DeckService'
 
+export default {
+  props: ['card'],
+  data() {
+    return {
+      cardRequest: {}
+    }
+  },
+  computed: {
+    isValid() {
+      return this.cardRequest.cardFront && this.cardRequest.cardBack && this.cardRequest.keywords;
+    }
+  },
+  methods: {
+        createCard() {
+            deckService.createCard(this.cardRequest).then(response => {
+                if (response.status >= 200) {
+                    this.$store.commit(('ADD_TO_CARDS'), response.data);
+                }
+            }).catch(error => {
+                if(error.response) {
+                    console.error(error.status + " " + error.statusText);
+                } else if (error.request) {
+                    console.error("Could not connect to server");
+                } else {
+                    console.error(error);
+                }
+            })
+        }
+    }
 }
 </script>
 
