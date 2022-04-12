@@ -9,4 +9,5 @@ public interface CardDao {
 
     List<Card> viewCardsInDeck(int deckID);
     Card addCard(CardRequest cardRequest, String username, int deckId);
+    void modifyCard(int cardId, Card card);
 }
