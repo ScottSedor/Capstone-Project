@@ -1,20 +1,20 @@
 <template>
   <div class='create-card-form' >
-    <form v-on:submit.prevent="createCard" v-bind:disabled="isValid">
+    <form v-on:submit.prevent="createCard">
       <h1>New Card:</h1>
       <div class="form=field">
-          <label for="card-front"></label>
+          <!-- <label for="card-front"></label> -->
           <textarea id="card-front" rows="5" cols="30" placeholder="Card front:" v-model="cardRequest.cardFront" ></textarea>
       </div>
       <div class="form=field">
-          <label for="card-back"></label>
+          <!-- <label for="card-back"></label> -->
           <textarea id="card-back" rows="5" cols="30" placeholder="Card back:" v-model="cardRequest.cardBack"></textarea>
       </div>
       <div class="form-field">
-        <label for="keywords"></label>
+          <!-- <label for="keywords"></label> -->
           <textarea id="card-back" rows="5" cols="30" placeholder="Key words:" v-model="cardRequest.keywords"></textarea>
       </div>
-      <input type="submit" value="Save New Card" >
+      <input type="submit" value="Save New Card" v-bind:disabled="!isValid" >
     </form>
   </div>
 </template>
@@ -23,7 +23,7 @@
 import deckService from '@/services/DeckService'
 
 export default {
-  props: ['card'],
+  // props: ['card'],
   data() {
     return {
       cardRequest: {}
@@ -36,7 +36,8 @@ export default {
   },
   methods: {
         createCard() {
-            deckService.createCard(this.cardRequest).then(response => {
+            const deckId = this.$route.params.deckId;
+            deckService.createCard(deckId, this.cardRequest).then(response => {
                 if (response.status >= 200) {
                     this.$store.commit(('ADD_TO_CARDS'), response.data);
                 }

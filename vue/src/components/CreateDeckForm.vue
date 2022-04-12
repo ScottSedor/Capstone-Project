@@ -16,7 +16,7 @@
 import deckService from '@/services/DeckService'
 
 export default {
-    props: ['deck'],
+    // props: ['deck'],
     data() {
         return {
             deckRequest: {}
