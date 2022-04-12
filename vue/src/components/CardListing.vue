@@ -1,7 +1,9 @@
 <template>
+<router-link v-bind:to="{name: 'card-info', params: {cardId: card.cardId}}">
   <div class="card-listing">
     <h2>{{card.cardFront}}</h2>
   </div>
+</router-link>
 </template>
 
 <script>

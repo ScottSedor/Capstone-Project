@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Decks from '../views/Decks'
 import CardsInDeck from '../views/CardsInDeck'
+import CardInfo from '../views/CardInfo'
 
 Vue.use(Router)
 
@@ -67,6 +68,14 @@ const router = new Router({
       path: "/decks/:deckId",
       name: "cards-in-deck",
       component: CardsInDeck,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "decks/:deckId/card/:cardId",
+      name: "card-info",
+      component: CardInfo,
       meta: {
         requiresAuth: false
       }
