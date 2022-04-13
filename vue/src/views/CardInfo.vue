@@ -10,8 +10,8 @@ export default {
         CardInfo 
   },
 created() {
-    const activeCardId = this.$route.params.cardId;
-    this.$store.commit('SET_ACTIVE_CARD', activeCardId);
+    const cardId = this.$route.params.cardId;
+    this.$store.commit('SET_ACTIVE_CARD', cardId);
 }
 
 }
