@@ -14,7 +14,7 @@
           <!-- <label for="keywords"></label> -->
           <textarea id="card-back" rows="5" cols="30" placeholder="Key words:" v-model="cardRequest.keywords"></textarea>
       </div>
-      <input type="submit" value="Save New Card" v-bind:disabled="!isValid" >
+      <input type="submit" value="Save Card" v-bind:disabled="!isValid" >
     </form>
   </div>
 </template>

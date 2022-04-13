@@ -1,6 +1,11 @@
 <template>
   <div class="cards-in-deck">
-    <card-form />
+    <div class="addButton">
+      <button v-on:click="isAdding = !isAdding">Add Card to Deck</button>
+    </div>
+    <div class="add-card-form" v-show="isAdding == true">
+      <card-form />
+    </div>
     <card-list />
   </div>
 </template>
@@ -15,6 +20,11 @@ export default {
     components: {
       CardList,
       CardForm
+    },
+    data() {
+      return {
+        isAdding: false
+      }
     },
     created() {
       const deckId = this.$route.params.deckId;

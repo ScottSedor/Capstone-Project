@@ -2,11 +2,11 @@
   <div class="create-deck-form">
       <form v-on:submit.prevent="createDeck">
           <div class="form-field">
-              <label for="title">Name of New Deck: </label>
-              <input type="text" id="title" v-model.trim="deckRequest.deckTitle">
+              <label for="title">Add New Deck: </label>
+              <input type="text" id="title" placeholder="Deck Title" v-model.trim="deckRequest.deckTitle">
           </div>
           <div class="form-field">
-              <input type="submit" value="Save">
+              <input type="submit" value="Save Deck">
           </div>
       </form>
   </div>
