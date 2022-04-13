@@ -2,7 +2,8 @@
   <div>
     <card-info />
     <div class="editButton">
-      <button v-on:click="isEditing = !isEditing">Edit Card</button>
+      <button v-on:click="isEditing = !isEditing" v-show="!isEditing">Edit Card</button>
+      <button v-on:click="isEditing = !isEditing"  v-show="isEditing">Cancel</button>
     </div>
     <div class="card-edit-form" v-show="isEditing == true">
       <card-form />
