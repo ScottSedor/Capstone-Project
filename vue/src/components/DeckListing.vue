@@ -1,7 +1,9 @@
 <template>
-  <div class="deck-listing">
-      <h2>{{deck.deckTitle}}</h2>
-  </div>
+  <router-link v-bind:to="{name: 'cards-in-deck', params: {deckId: deck.deckId}}">
+    <div class="deck-listing">
+        <h2>{{deck.deckTitle}}</h2>
+    </div>
+  </router-link>
 </template>
 
 <script>
