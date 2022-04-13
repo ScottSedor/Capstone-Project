@@ -1,7 +1,7 @@
 <template>
-  <div class='create-card-form' >
+  <div class='card-form' >
     <form v-on:submit.prevent="createCard">
-      <h1>New Card:</h1>
+      <!-- <h1>New Card:</h1> -->
       <div class="form=field">
           <!-- <label for="card-front"></label> -->
           <textarea id="card-front" rows="5" cols="30" placeholder="Card front:" v-model="cardRequest.cardFront" ></textarea>

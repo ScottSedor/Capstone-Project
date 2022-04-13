@@ -1,6 +1,6 @@
 <template>
   <div class="cards-in-deck">
-    <create-card-form />
+    <card-form />
     <card-list />
   </div>
 </template>
@@ -8,13 +8,13 @@
 <script>
 import deckService from '@/services/DeckService'
 import CardList from '@/components/CardList'
-import CreateCardForm from '@/components/CreateCardForm'
+import CardForm from '@/components/CardForm'
 
 export default {
     name: "CardsInDeck",
     components: {
       CardList,
-      CreateCardForm
+      CardForm
     },
     created() {
       const deckId = this.$route.params.deckId;
