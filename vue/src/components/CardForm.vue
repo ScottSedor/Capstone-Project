@@ -16,7 +16,9 @@
             <textarea id="card-back" rows="5" cols="30" placeholder="Key words:" v-model="cardRequest.keywords"></textarea>
         </div>
       </div>
-      <input type="submit" value="Save Card" v-bind:disabled="!isValid" >
+      <div class="save-button">
+        <input type="submit" value="Save Card" v-bind:disabled="!isValid" >
+      </div>
     </form>
   </div>
 </template>
@@ -82,8 +84,16 @@ export default {
 </script>
 
 <style>
-div.form-field {
+div.boxes {
   display: flex;
-
+  justify-content: center;
+}
+div.form-field {
+  margin: 1px;
+}
+div.save-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 </style>

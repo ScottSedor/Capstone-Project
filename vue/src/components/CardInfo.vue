@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card-detail" v-bind:card="activeCard">
+    <div class="single-card" v-bind:card="activeCard">
       <div class="card-front">
         <h2>{{ card.cardFront }}</h2>
       </div>
@@ -28,5 +28,15 @@ export default {
 </script>
 
 <style>
+div.single-card {
+ border: 2px black solid;
+   width: 16rem;
+   height: 10rem;
+   margin: 20px;
+   border-radius: 5px;
+   display: flex;
+   text-align: center;
+   justify-content: center;
+}
 
 </style>
