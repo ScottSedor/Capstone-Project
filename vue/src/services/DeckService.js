@@ -14,8 +14,8 @@ export default {
     createCard(deckId, cardRequest) {
         return axios.post('/decks/' + deckId, cardRequest)
     },
-    modifyCard(deckId, cardId, card) {
-        return axios.put('/decks/' + deckId + '/card/' + cardId, card)
+    modifyCard(deckId, cardId, cardRequest) {
+        return axios.put('/decks/' + deckId + '/card/' + cardId, cardRequest)
     }
 
 }
