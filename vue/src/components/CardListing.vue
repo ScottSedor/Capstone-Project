@@ -1,5 +1,5 @@
 <template>
-  <router-link v-bind:to="{name: 'card-info', params: {deckId: currentDeckId, cardId: card.cardId}}">
+  <router-link v-bind:to="{name: 'card-info', params: {deckId: currentDeckId, cardId: card.cardId}}" style="text-decoration: none">
     <div class="card-listing">
       <h2>{{card.cardFront}}</h2>
     </div>
@@ -21,16 +21,20 @@ export default {
 
 <style>
   div.card-listing {
-   border: 1px black solid;
-   width: 15rem;
+   border: 2px black solid;
+   width: 16rem;
    height: 10rem;
    margin: 20px;
    border-radius: 5px;
    display: flex;
    flex-direction: column;
    text-align: center;
-   justify-content: space-between;
+   justify-content: center;
    
+}
+
+div.card-listing > h2 {
+  color: black;
 }
 
 div.card-listing:hover {

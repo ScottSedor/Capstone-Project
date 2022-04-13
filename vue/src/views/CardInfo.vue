@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-detail">
     <card-info />
     <div class="editButton">
       <button v-on:click="isEditing = !isEditing" v-show="!isEditing">Edit Card</button>
@@ -34,5 +34,8 @@ export default {
 </script>
 
 <style>
-
+div.card-detail {
+  font-family: Arial, Helvetica, sans-serif;
+    }
+    
 </style>

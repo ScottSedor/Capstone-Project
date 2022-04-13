@@ -2,17 +2,19 @@
   <div class='card-form' >
     <form v-on:submit.prevent="saveCard">
       <!-- <h1>New Card:</h1> -->
-      <div class="form=field">
-          <!-- <label for="card-front"></label> -->
-          <textarea id="card-front" rows="5" cols="30" placeholder="Card front:" v-model="cardRequest.cardFront" ></textarea>
-      </div>
-      <div class="form=field">
-          <!-- <label for="card-back"></label> -->
-          <textarea id="card-back" rows="5" cols="30" placeholder="Card back:" v-model="cardRequest.cardBack"></textarea>
-      </div>
-      <div class="form-field">
-          <!-- <label for="keywords"></label> -->
-          <textarea id="card-back" rows="5" cols="30" placeholder="Key words:" v-model="cardRequest.keywords"></textarea>
+      <div class='boxes'>
+        <div class="form-field">
+            <!-- <label for="card-front"></label> -->
+            <textarea id="card-front" rows="5" cols="30" placeholder="Card front:" v-model="cardRequest.cardFront" ></textarea>
+        </div>
+        <div class="form-field">
+            <!-- <label for="card-back"></label> -->
+            <textarea id="card-back" rows="5" cols="30" placeholder="Card back:" v-model="cardRequest.cardBack"></textarea>
+        </div>
+        <div class="form-field">
+            <!-- <label for="keywords"></label> -->
+            <textarea id="card-back" rows="5" cols="30" placeholder="Key words:" v-model="cardRequest.keywords"></textarea>
+        </div>
       </div>
       <input type="submit" value="Save Card" v-bind:disabled="!isValid" >
     </form>
@@ -80,5 +82,8 @@ export default {
 </script>
 
 <style>
+div.form-field {
+  display: flex;
 
+}
 </style>
