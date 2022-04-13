@@ -58,9 +58,9 @@ public class JdbcCardDao implements CardDao {
     }
 
     @Override
-    public void modifyCard(int cardId, Card card) {
+    public void modifyCard(int cardId, CardRequest cardRequest) {
         String sql = "UPDATE cards SET card_front=?, card_back=?, keywords=? WHERE card_id=?;";
-        jdbcTemplate.update(sql, card.getCardFront(), card.getCardBack(), card.getKeywords(), cardId);
+        jdbcTemplate.update(sql, cardRequest.getCardFront(), cardRequest.getCardBack(), cardRequest.getKeywords(), cardId);
     }
 
     private int getIdFromUsername(String username) throws NullPointerException {

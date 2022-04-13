@@ -48,7 +48,7 @@ public class DeckController {
     }
 
     @RequestMapping(path="/decks/{id}/card/{cardId}", method= RequestMethod.PUT)
-    public void update(@PathVariable("id")int deckId, @PathVariable("cardId")int cardId, @RequestBody Card card) {
-        cardDao.modifyCard(cardId, card);
+    public void update(@PathVariable("id")int deckId, @PathVariable("cardId")int cardId, @RequestBody CardRequest cardRequest) {
+        cardDao.modifyCard(cardId, cardRequest);
     }
 }

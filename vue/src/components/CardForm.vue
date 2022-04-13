@@ -1,6 +1,6 @@
 <template>
   <div class='card-form' >
-    <form v-on:submit.prevent="createCard">
+    <form v-on:submit.prevent="saveCard">
       <!-- <h1>New Card:</h1> -->
       <div class="form=field">
           <!-- <label for="card-front"></label> -->
@@ -35,23 +35,47 @@ export default {
     }
   },
   methods: {
-        createCard() {
-            const deckId = this.$route.params.deckId;
-            deckService.createCard(deckId, this.cardRequest).then(response => {
-                if (response.status >= 200) {
-                    this.$store.commit(('ADD_TO_CARDS'), response.data);
-                }
-            }).catch(error => {
-                if(error.response) {
-                    console.error(error.status + " " + error.statusText);
-                } else if (error.request) {
-                    console.error("Could not connect to server");
-                } else {
-                    console.error(error);
-                }
-            })
+      saveCard() {
+        if (!this.$route.params.cardId) {
+          this.createCard();
+        } else {
+          this.modifyCard();
         }
-    }
+      },
+      createCard() {
+          const deckId = this.$route.params.deckId;
+          deckService.createCard(deckId, this.cardRequest).then(response => {
+              if (response.status >= 200) {
+                  this.$store.commit(('ADD_TO_CARDS'), response.data);
+              }
+          }).catch(error => {
+              if(error.response) {
+                  console.error(error.status + " " + error.statusText);
+              } else if (error.request) {
+                  console.error("Could not connect to server");
+              } else {
+                  console.error(error);
+              }
+          })
+      },
+      modifyCard() {
+          const deckId = this.$route.params.deckId;
+          const cardId = this.$route.params.cardId;
+          deckService.modifyCard(deckId, cardId, this.cardRequest).then(response => {
+              if (response.status >= 200) {
+                  this.$router.push({name: 'cards-in-deck'});
+              }
+          }).catch(error => {
+              if(error.response) {
+                  console.error(error.status + " " + error.statusText);
+              } else if (error.request) {
+                  console.error("Could not connect to server");
+              } else {
+                  console.error(error);
+              }
+          })
+      }
+  }
 }
 </script>
 
