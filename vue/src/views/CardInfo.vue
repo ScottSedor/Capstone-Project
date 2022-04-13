@@ -1,7 +1,7 @@
 <template>
   <div class="card-detail">
     <card-info />
-    <div class="editButton">
+    <div class="edit-button">
       <button v-on:click="isEditing = !isEditing" v-show="!isEditing">Edit Card</button>
       <button v-on:click="isEditing = !isEditing"  v-show="isEditing">Cancel</button>
     </div>
@@ -36,6 +36,13 @@ export default {
 <style>
 div.card-detail {
   font-family: Arial, Helvetica, sans-serif;
+  margin-top: 60px;
     }
+
+div.edit-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
     
 </style>
