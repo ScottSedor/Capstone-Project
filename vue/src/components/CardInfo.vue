@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div class="card-detail">
+    <div class="card-detail" v-bind:card="activeCard">
       <div class="card-front">
+        <h2>Front</h2>
         <h2>{{ card.cardFront }}</h2>
       </div>
       <div class="card-back">
