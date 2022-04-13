@@ -1,6 +1,6 @@
 <template>
   <div class="cards-in-deck">
-    <div class="addButton">
+    <div class="add-button">
       <button v-on:click="isAdding = !isAdding">Add Card to Deck</button>
     </div>
     <div class="add-card-form" v-show="isAdding == true">
@@ -39,12 +39,20 @@ export default {
 
 <style>
   div.cards-in-deck {
+      margin-top: 60px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       flex-direction: column;
+      font-family: Arial, Helvetica, sans-serif;
+  
   }
   div.cards-in-deck p {
       font-size: 1.5rem;
+  }
+  div.add-button {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
   }
 </style>
