@@ -1,5 +1,8 @@
 <template>
   <div class="cards-in-deck">
+    <div class="deck-info">
+      <deck-info />
+    </div>
     <div class="add-button">
       <button v-on:click="isAdding = !isAdding">Add Card to Deck</button>
     </div>
@@ -18,13 +21,15 @@ import deckService from '@/services/DeckService'
 import CardList from '@/components/CardList'
 import CardForm from '@/components/CardForm'
 import SearchCard from '@/components/SearchCard'
+import DeckInfo from '@/components/DeckInfo'
 
 export default {
     name: "CardsInDeck",
     components: {
       CardList,
       CardForm,
-      SearchCard
+      SearchCard,
+      DeckInfo
     },
     data() {
       return {
@@ -33,6 +38,7 @@ export default {
     },
     created() {
       const deckId = this.$route.params.deckId;
+      this.$store.commit('SET_ACTIVE_DECK', deckId);
       deckService.getCardsInDeck(deckId).then( response => {
           if (response.status == 200) {
             this.$store.commit('SET_CARDS', response.data);
