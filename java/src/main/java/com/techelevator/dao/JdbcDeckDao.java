@@ -68,7 +68,11 @@ public class JdbcDeckDao implements DeckDao {
         while(rows.next()) {
             deck.setDeckId(deckId);
             deck.setDeckTitle(rows.getString("deck_title"));
-            deck.setDeckDescription(rows.getString("deck_description"));
+            if(rows.getString("deck_description") != null) {
+                deck.setDeckDescription(rows.getString("deck_description"));
+            } else {
+                deck.setDeckDescription("No Description");
+            }
         }
         return deck;
     }

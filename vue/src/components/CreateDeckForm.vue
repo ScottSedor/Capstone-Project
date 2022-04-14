@@ -7,6 +7,10 @@
               <label for="title">Add New Deck: </label>
               <input type="text" id="title" placeholder="New Deck Title" v-model.trim="deckRequest.deckTitle">
           </div>
+          <div class="form-field">
+              <label for="description">Description: </label>
+              <input type="text" id="title" placeholder="Description of Deck" v-model.trim="deckRequest.deckDescription">
+          </div>
           <div class="button">
               <input type="submit" value="Save Deck">
           </div>
