@@ -34,6 +34,10 @@ public class DeckController {
     @RequestMapping (path="/decks/{id}", method= RequestMethod.GET)
     public List<Card> getCardsInDeck(@PathVariable("id") int deckId) { return cardDao.viewCardsInDeck(deckId); }
 
+    @RequestMapping(path="/decks/{id}/search", method=RequestMethod.GET)
+    public List<Card> searchByKeyword(@RequestParam(required = false, name = "keyword") String keyword) {
+        return deckDao.searchByKeyword(keyword);
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path= "/decks", method= RequestMethod.POST)
@@ -68,6 +72,4 @@ public class DeckController {
     public void deleteCardFromDeck(@PathVariable("id")int deckId, @PathVariable("id")int cardId) {
         deckDao.deleteCardFromDeck(deckId, cardId);
     }
-
-
 }

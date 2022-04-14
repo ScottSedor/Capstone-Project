@@ -79,6 +79,26 @@ public class JdbcDeckDao implements DeckDao {
         jdbcTemplate.update(sql, deckId, cardId);
     }
 
+    @Override
+    public List<Card> searchByKeyword(String keyword) {
+        List<Card> listOfMatches = new ArrayList<Card>();
+        String newKeyword = "%" + keyword + "%";
+        String sql= "SELECT card_id, user_id, card_front, card_back, keywords FROM cards WHERE keywords ILIKE ?;";
+
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, newKeyword);
+
+        while(rows.next()) {
+            Card card = new Card();
+            card.setCardId(rows.getInt("card_id"));
+            card.setUserId(rows.getInt("user_id"));
+            card.setCardFront(rows.getString("card_front"));
+            card.setCardBack(rows.getString("card_back"));
+            card.setKeywords(rows.getString("keywords"));
+            listOfMatches.add(card);
+        }
+        return listOfMatches;
+    }
+
 
     private int getIdFromUsername(String username) throws NullPointerException {
         int id;

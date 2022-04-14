@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Card;
 import com.techelevator.model.Deck;
 import com.techelevator.model.DeckRequest;
 
@@ -12,4 +13,5 @@ public interface DeckDao {
     void modifyDeck(int deckId, DeckRequest deckRequest);
     Deck getDeckInfoById(int deckId, String deckTitle, String deckDescription);
     void deleteCardFromDeck(int deckId, int cardId);
+    List<Card> searchByKeyword(String keyword);
 }

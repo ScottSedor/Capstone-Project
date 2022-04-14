@@ -16,6 +16,9 @@ export default {
     },
     modifyCard(deckId, cardId, cardRequest) {
         return axios.put('/decks/' + deckId + '/card/' + cardId, cardRequest)
+    },
+    search(deckId, keyword) {
+        return axios.put('/decks/' + deckId + '/search?keyword=' + keyword, keyword)
     }
 
 }
