@@ -4,13 +4,16 @@
       <!-- <h1>New Card/Edit Card:</h1> -->
       <div class='boxes'>
         <div class="form-field">
-            <textarea id="card-front" rows="5" cols="30" placeholder="Card front:" v-model="cardRequest.cardFront" >v-model="cardRequest.cardFront"</textarea>
+            <label id="card-front">Front of Card:</label>
+            <textarea id="card-front" rows="5" cols="30" placeholder="Card front:" v-model="cardRequest.cardFront" ></textarea>
         </div>
         <div class="form-field">
+            <label id="card-back">Back of Card:</label>
             <textarea id="card-back" rows="5" cols="30" placeholder="Card back:" v-model="cardRequest.cardBack"></textarea>
         </div>
         <div class="form-field">
-            <textarea id="card-back" rows="5" cols="30" placeholder="Key words:" v-model="cardRequest.keywords"></textarea>
+            <label id="keywords">Keywords:</label>
+            <textarea id="keywords" rows="5" cols="30" placeholder="Key words:" v-model="cardRequest.keywords"></textarea>
         </div>
       </div>
       <div class="save-button">
@@ -33,6 +36,11 @@ export default {
   computed: {
     isValid() {
       return this.cardRequest.cardFront && this.cardRequest.cardBack && this.cardRequest.keywords;
+    },
+    card() {
+      return this.$store.state.cardsInDeck.find((c) => {
+          return c.cardId == this.$store.state.activeCard;
+      });
     }
   },
   methods: {
@@ -80,7 +88,9 @@ export default {
   },
   created() {
     if(this.$route.params.cardId) {
-      this.cardRequest.cardFront = this.$store.activeCard.cardFront;
+      this.cardRequest.cardFront = this.card.cardFront;
+      this.cardRequest.cardBack = this.card.cardBack;
+      this.cardRequest.keywords = this.card.keywords;
     }
   }
 }
@@ -98,5 +108,10 @@ div.save-button {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+}
+div.form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
