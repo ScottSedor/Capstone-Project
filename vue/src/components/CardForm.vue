@@ -1,18 +1,15 @@
 <template>
   <div class='card-form' >
-    <form v-on:submit.prevent="saveCard">
-      <!-- <h1>New Card:</h1> -->
+    <form v-on:submit.prevent="saveCard" ref="cardCreate" >
+      <!-- <h1>New Card/Edit Card:</h1> -->
       <div class='boxes'>
         <div class="form-field">
-            <!-- <label for="card-front"></label> -->
-            <textarea id="card-front" rows="5" cols="30" placeholder="Card front:" v-model="cardRequest.cardFront" ></textarea>
+            <textarea id="card-front" rows="5" cols="30" placeholder="Card front:" v-model="cardRequest.cardFront" >v-model="cardRequest.cardFront"</textarea>
         </div>
         <div class="form-field">
-            <!-- <label for="card-back"></label> -->
             <textarea id="card-back" rows="5" cols="30" placeholder="Card back:" v-model="cardRequest.cardBack"></textarea>
         </div>
         <div class="form-field">
-            <!-- <label for="keywords"></label> -->
             <textarea id="card-back" rows="5" cols="30" placeholder="Key words:" v-model="cardRequest.keywords"></textarea>
         </div>
       </div>
@@ -51,6 +48,7 @@ export default {
           deckService.createCard(deckId, this.cardRequest).then(response => {
               if (response.status >= 200) {
                   this.$store.commit(('ADD_TO_CARDS'), response.data);
+                  this.$refs.cardCreate.reset();
               }
           }).catch(error => {
               if(error.response) {
@@ -79,6 +77,11 @@ export default {
               }
           })
       }
+  },
+  created() {
+    if(this.$route.params.cardId) {
+      this.cardRequest.cardFront = this.$store.activeCard.cardFront;
+    }
   }
 }
 </script>
