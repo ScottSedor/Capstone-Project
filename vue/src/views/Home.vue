@@ -10,3 +10,9 @@ export default {
   name: "home"
 };
 </script>
+
+<style>
+  div > h1 {
+    color: white;
+  }
+</style>

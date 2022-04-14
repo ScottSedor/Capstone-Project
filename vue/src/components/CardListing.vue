@@ -21,6 +21,7 @@ export default {
 
 <style>
   div.card-listing {
+    background-color: rgba(106, 168, 79, 0.596);
    border: 2px black solid;
    width: 16rem;
    height: 10rem;
@@ -34,10 +35,10 @@ export default {
 }
 
 div.card-listing > h2 {
-  color: black;
+  color: white;
 }
 
 div.card-listing:hover {
-  background: whitesmoke;
+  background: #93c47dff;
 }
 </style>

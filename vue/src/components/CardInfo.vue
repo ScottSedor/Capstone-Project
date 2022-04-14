@@ -38,6 +38,9 @@ export default {
 </script>
 
 <style>
+div {
+  color: white;
+}
 
 div.single-card {
   display: flex;
@@ -51,7 +54,8 @@ div.card-front, div.card-back {
 }
 
 div.card-info {
- border: 2px black solid;
+  background-color: rgba(106, 168, 79, 0.596);
+  border: 2px black solid;
    width: 20rem;
    height: 10rem;
    margin: 5px;

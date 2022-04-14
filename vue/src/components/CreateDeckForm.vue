@@ -54,6 +54,9 @@ export default {
 </script>
 
 <style>
+h1 {
+    text-decoration-color: white;
+}
 div.button, div.create-deck-button {
     margin-top: 10px;
     margin-bottom: 40px;

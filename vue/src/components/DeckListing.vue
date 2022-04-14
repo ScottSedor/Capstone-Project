@@ -16,6 +16,7 @@ export default {
 
 <style>
   div.deck-listing {
+   background-color: rgba(106, 168, 79, 0.596); 
    border: 2px black solid;
    width: 16rem;
    height: 10rem;
@@ -30,11 +31,12 @@ export default {
 }
 
 div.deck-listing:hover {
-  background: whitesmoke;
+  
+  background: #93c47dff;
 }
 
 div.deck-listing > h2 {
-  color: black;
+  color: white;
   text-decoration: none !important;
 
 }
