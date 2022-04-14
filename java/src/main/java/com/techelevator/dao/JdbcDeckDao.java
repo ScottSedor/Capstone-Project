@@ -59,7 +59,7 @@ public class JdbcDeckDao implements DeckDao {
     }
 
     @Override
-    public Deck getDeckInfoById(int deckId, String deckTitle, String deckDescription) {
+    public Deck getDeckInfoById(int deckId) {
         Deck deck = new Deck();
         String sql = "SELECT deck_id, deck_title, deck_description FROM decks WHERE deck_id = ?;";
 

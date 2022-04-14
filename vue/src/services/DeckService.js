@@ -19,6 +19,16 @@ export default {
     },
     search(deckId, keyword) {
         return axios.put('/decks/' + deckId + '/search?keyword=' + keyword, keyword)
+    },
+    updateDeck(deckId, deckRequest) {
+        return axios.put('/decks/' + deckId + '/info', deckRequest)
+    },
+    getDeckInfoById(deckId) {
+        return axios.get('/decks/' + deckId + '/info')
+    },
+    deleteCardFromDeck(deckId, cardId) {
+        return axios.delete('/decks/' + deckId + '/card/' + cardId)
     }
+
 
 }

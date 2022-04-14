@@ -62,9 +62,8 @@ public class DeckController {
     }
 
     @RequestMapping(path="/decks/{id}/info", method = RequestMethod.GET)
-    public Deck getDeckInfoById(@PathVariable("id")int deckId, Deck deck) {
-        return deckDao.getDeckInfoById(deckId, deck.getDeckTitle(), deck.getDeckDescription());
-
+    public Deck getDeckInfoById(@PathVariable("id")int deckId) {
+        return deckDao.getDeckInfoById(deckId);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
