@@ -1,9 +1,12 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Card;
 import com.techelevator.model.Deck;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.techelevator.model.DeckRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -36,17 +39,46 @@ public class JdbcDeckDao implements DeckDao {
     }
 
     @Override
-    public Deck createDeck(String username, String deckTitle) {
+    public Deck createDeck(String username, String deckTitle, String deckDescription) {
         int userId = getIdFromUsername(username);
-        String sql = "INSERT INTO  decks(deck_title) VALUES (?) RETURNING deck_id;";
-        Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deckTitle);
+        String sql = "INSERT INTO  decks(deck_title, deck_description) VALUES (?, ?) RETURNING deck_id;";
+        Integer deckId = jdbcTemplate.queryForObject(sql, Integer.class, deckTitle, deckDescription);
         String sqlTwo = "INSERT INTO users_decks(user_id, deck_id) VALUES (?, ?);";
         jdbcTemplate.update(sqlTwo, userId, deckId);
         Deck deck = new Deck();
+        deck.setDeckDescription(deckDescription);
         deck.setDeckTitle(deckTitle);
         deck.setDeckId(deckId);
         return deck;
     }
+
+    @Override
+    public void modifyDeck(int deckId, DeckRequest deckRequest) {
+        String sql = "UPDATE decks SET deck_title=?, deck_description=? WHERE deck_id=?;";
+        jdbcTemplate.update(sql, deckRequest.getDeckTitle(), deckRequest.getDeckDescription(), deckId);
+    }
+
+    @Override
+    public Deck getDeckInfoById(int deckId, String deckTitle, String deckDescription) {
+        Deck deck = new Deck();
+        String sql = "SELECT deck_id, deck_title, deck_description FROM decks WHERE deck_id = ?;";
+
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, deckId);
+
+        while(rows.next()) {
+            deck.setDeckId(deckId);
+            deck.setDeckTitle(rows.getString("deck_title"));
+            deck.setDeckDescription(rows.getString("deck_description"));
+        }
+        return deck;
+    }
+
+    @Override
+    public void deleteCardFromDeck(int deckId, int cardId) {
+        String sql = "DELETE FROM decks_cards WHERE decks_cards.deck_id = ? AND decks_cards.card_id = ?;";
+        jdbcTemplate.update(sql, deckId, cardId);
+    }
+
 
     private int getIdFromUsername(String username) throws NullPointerException {
         int id;

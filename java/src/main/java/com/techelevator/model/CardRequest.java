@@ -6,6 +6,7 @@ public class CardRequest {
     private String cardBack;
     private String keywords;
 
+
     public String getCardFront() {
         return cardFront;
     }

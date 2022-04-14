@@ -4,6 +4,7 @@ public class Deck {
 
     private int deckId;
     private String deckTitle;
+    private String deckDescription;
 
     public int getDeckId() {
         return deckId;
@@ -21,4 +22,11 @@ public class Deck {
         this.deckTitle = deckTitle;
     }
 
+    public String getDeckDescription() {
+        return deckDescription;
+    }
+
+    public void setDeckDescription(String deckDescription) {
+        this.deckDescription = deckDescription;
+    }
 }

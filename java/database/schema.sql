@@ -24,6 +24,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 CREATE TABLE decks(
 deck_id serial NOT NULL,
 deck_title varchar(50) NOT NULL,
+deck_description varchar(1000),
 CONSTRAINT PK_decks PRIMARY KEY (deck_id)	
 );
 
