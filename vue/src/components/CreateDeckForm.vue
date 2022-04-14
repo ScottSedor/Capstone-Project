@@ -1,8 +1,11 @@
 <template>
   <div class="create-deck-form">
-      <h1>MY DECKS</h1>
-      
-      <form v-on:submit.prevent="createDeck" ref="deckCreate" >
+      <h1>Deck Library</h1>
+      <div class="create-deck-button">
+        <button v-on:click="isCreatingDeck = !isCreatingDeck" v-show="!isCreatingDeck">Create New Deck</button>
+        <button v-on:click="isCreatingDeck = !isCreatingDeck"  v-show="isCreatingDeck">Cancel</button>
+      </div>
+      <form v-show="isCreatingDeck" v-on:submit.prevent="createDeck" ref="deckCreate" >
           <div class="form-field">
               <label for="title">Add New Deck: </label>
               <input type="text" id="title" placeholder="New Deck Title" v-model.trim="deckRequest.deckTitle">
@@ -25,7 +28,8 @@ export default {
     // props: ['deck'],
     data() {
         return {
-            deckRequest: {}
+            deckRequest: {},
+            isCreatingDeck: false
         }
     },
     methods: {
@@ -50,10 +54,11 @@ export default {
 </script>
 
 <style>
-div.button {
+div.button, div.create-deck-button {
     margin-top: 10px;
     margin-bottom: 40px;
     display: flex;
     justify-content: center;
 }
+
 </style>
