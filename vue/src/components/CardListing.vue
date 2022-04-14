@@ -34,10 +34,10 @@ export default {
 }
 
 div.card-listing > h2 {
-  color: black;
+  color: white;
 }
 
 div.card-listing:hover {
-  background: whitesmoke;
+  background: #93c47dff;
 }
 </style>

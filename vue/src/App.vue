@@ -3,7 +3,7 @@
     <div id="nav">
       <div id="site-title">
         <router-link id="title" v-bind:to="{ name: 'home' }">
-          <h1>Flash Card Study App</h1>
+          <img class="logo" src="..\public\img\studio.jpg" alt="Stud.io Logo" />
         </router-link>
       </div>
       <div id="nav-buttons">
@@ -18,6 +18,17 @@
 <style>
   /* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono'); */
 
+  body {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+
+  img {
+    margin-top: 31px;
+    width: 175px;
+    height: 125px;
+  }
+
   div#app {
     font-family: Arial, Helvetica, sans-serif;
   }
@@ -26,7 +37,8 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid white;
+    background-color: #b6d7a8ff;
   }
 
   div#site-title {
@@ -35,7 +47,7 @@
 
   div#site-title > #title {
     text-decoration: none;
-    color: black;
+    color: white;
   }
 
   div#nav-buttons {
@@ -45,12 +57,12 @@
 
   div#nav-buttons .btn {
     text-decoration: none;
-    color: black;
-    font-size: 1.35rem;
+    color: white;
+    font-size: 1.65rem;
   }
 
   div#nav-buttons .btn:hover {
-    color: gray;
+    color: #93c47dff;;
   }
 
   h1 {

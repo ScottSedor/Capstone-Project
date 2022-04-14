@@ -38,6 +38,9 @@ export default {
 </script>
 
 <style>
+div {
+  color: white;
+}
 
 div.single-card {
   display: flex;

@@ -97,6 +97,12 @@ export default {
 </script>
 
 <style>
+input, select, textarea {
+  background-color: #d9ead3ff;
+}
+div {
+  background-color: #b6d7a8ff;
+}
 div.boxes {
   display: flex;
   justify-content: center;
@@ -114,4 +120,5 @@ div.form-field {
   flex-direction: column;
   align-items: center;
 }
+
 </style>

@@ -30,11 +30,12 @@ export default {
 }
 
 div.deck-listing:hover {
-  background: whitesmoke;
+  
+  background: #93c47dff;
 }
 
 div.deck-listing > h2 {
-  color: black;
+  color: white;
   text-decoration: none !important;
 
 }
