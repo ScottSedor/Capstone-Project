@@ -2,11 +2,21 @@
   <div>
     <div class="single-card" v-bind:card="activeCard">
       <div class="card-front">
-        <h2>{{ card.cardFront }}</h2>
-        <p>Keywords: {{ card.keywords }}</p>
+        <div id="card-title">
+          <h2>Card Front</h2>
+        </div>
+        <div class="card-info">
+          <h2>{{ card.cardFront }}</h2>
+          <p>Keywords: {{ card.keywords }}</p>
+        </div>
       </div>
       <div class="card-back">
-        <h2>{{ card.cardBack }}</h2>
+        <div id="card-title">
+          <h2>Card Back</h2>
+        </div>
+        <div class="card-info">
+          <h2>{{ card.cardBack }}</h2>
+        </div>
       </div>
   </div>
   </div>
@@ -35,10 +45,17 @@ div.single-card {
 }
 
 div.card-front, div.card-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.card-info {
  border: 2px black solid;
    width: 20rem;
    height: 10rem;
-   margin: 20px;
+   margin: 5px;
+   margin-bottom: 20px;
    border-radius: 5px;
    display: flex;
    flex-direction: column;

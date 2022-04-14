@@ -6,6 +6,9 @@
     <div class="add-card-form" v-show="isAdding == true">
       <card-form />
     </div>
+    <div class="search-card">
+      <search-card />
+    </div>
     <card-list />
   </div>
 </template>
@@ -14,12 +17,14 @@
 import deckService from '@/services/DeckService'
 import CardList from '@/components/CardList'
 import CardForm from '@/components/CardForm'
+import SearchCard from '@/components/SearchCard'
 
 export default {
     name: "CardsInDeck",
     components: {
       CardList,
-      CardForm
+      CardForm,
+      SearchCard
     },
     data() {
       return {
