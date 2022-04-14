@@ -21,6 +21,7 @@ export default {
 
 <style>
   div.card-listing {
+    background-color: rgba(106, 168, 79, 0.596);
    border: 2px black solid;
    width: 16rem;
    height: 10rem;
