@@ -22,7 +22,9 @@ export default new Vuex.Store({
     user: currentUser || {},
     decks: [],
     cardsInDeck: [],
-    activeCard: 0
+    activeCard: 0,
+    activeDeckId: 0,
+    activeDeck: {}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -55,6 +57,12 @@ export default new Vuex.Store({
     },
     SET_ACTIVE_CARD(state, cardId) {
       state.activeCard = cardId;
+    },
+    SET_ACTIVE_DECK_ID(state, deckId) {
+      state.activeDeckId = deckId;
+    },
+    SET_ACTIVE_DECK(state, deck) {
+      state.activeDeck = deck;
     }
   }
 })
