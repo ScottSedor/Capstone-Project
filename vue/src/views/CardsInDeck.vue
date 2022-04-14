@@ -12,7 +12,9 @@
     <div class="search-card">
       <search-card />
     </div>
-    <card-list />
+    <div class="card-list">
+      <card-list />
+    </div>
   </div>
 </template>
 
@@ -43,7 +45,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit('SET_CARDS', response.data);
           }
-      })
+      });
     }
 }
 </script>

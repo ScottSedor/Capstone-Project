@@ -1,14 +1,15 @@
 <template>
-  <div class="deck-info" v-bind:deck="activeDeckId">
-      <h2> {{ deck.deckTitle }}</h2>
-      <p>{{ deck.deckDescription }}</p>
+  <div class="deck-info-card" >
+      <h1> {{ $store.state.activeDeck.deckTitle }}</h1>
+      <p>{{ $store.state.activeDeck.deckDescription }}</p>
   </div>
 </template>
 
 <script>
 import deckService from '@/services/DeckService'
+
 export default {
-    name: "deck-info",
+    name: "deck-info-card",
     computed: {
         deck() {
             return this.$store.state.decks.find((d) => {
@@ -29,5 +30,12 @@ export default {
 </script>
 
 <style>
+
+div.deck-info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 </style>
