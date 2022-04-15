@@ -1,7 +1,8 @@
 <template>
   <div class="modify-deck-form">
-      <button v-on:click="isCreatingDeck = !isCreatingDeck">Modify Deck</button>
-      <form v-show="isCreatingDeck" v-on:submit.prevent="modifyDeck" ref="deckCreate" >
+      <button v-if="!isChangingDeck" v-on:click="isChangingDeck = !isChangingDeck">Modify Deck</button>
+        <button v-else v-on:click="isChangingDeck = !isChangingDeck">Cancel</button>
+      <form v-show="isChangingDeck" v-on:submit.prevent="modifyDeck" ref="deckModify" >
           <div class="form-field">
               <label for="title">Modify Deck: </label>
               <input type="text" id="title" placeholder="New Deck Title" v-model.trim="deckRequest.deckTitle">
@@ -26,16 +27,18 @@ export default {
     data() {
         return {
             deckRequest: {},
-            isCreatingDeck: false 
+            isChangingDeck: false 
         }
     },
     methods: {
         modifyDeck() {
-            this.isCreatingDeck = true;
+            this.isChangingDeck = true;
             const deckId = this.$route.params.deckId;
             deckService.updateDeck(deckId, this.deckRequest).then(response => {
               if (response.status >= 200) {
-                  this.$router.push({name: 'cards-in-deck'});
+                  this.refreshDeck();
+                  this.$refs.deckModify.reset();
+                  this.isChangingDeck = false;
               }
               }).catch(error => {
               if(error.response) {
@@ -47,6 +50,14 @@ export default {
               }
           })
 
+            },
+            refreshDeck() {
+                  const deckId = this.$route.params.deckId;
+        deckService.getDeckInfoById(deckId).then(response => {
+            if(response.status == 200) {
+                this.$store.commit('SET_ACTIVE_DECK', response.data);
+            }
+        })
             }
         },
         created() {
