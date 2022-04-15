@@ -1,8 +1,8 @@
 <template>
   <div class="search-card">
-      <div class="cancel-button">
+      <!-- <div class="cancel-button">
         <button v-on:click="clearForm">Cancel Search</button>
-      </div>
+      </div> -->
       <div class="search-form">
         <form v-on:submit.prevent="search" ref="searchForm">
             <label for="search-field" >Search Keyword: </label>
@@ -23,20 +23,25 @@ import CardListing from '@/components/CardListing'
 
 export default {
     name: 'search-card',
+    props: ['searchCancelled'],
     components: {
         CardListing
     },
     data() {
         return {
             keyword: '',
-            hasSearched: false,
-            searchCancelled: false
+            hasSearched: false
         }
     },
     computed: {
         results() {
             const searchResults = this.$store.state.searchResults;
             return searchResults;
+        },
+        cancelSearch() {
+            if(this.searchCancelled == true) {
+                return this.clearForm();
+            } else {return false;}
         }
     },
     methods: {
@@ -50,10 +55,12 @@ export default {
             })
         },
         clearForm() {
-            this.keyword = '';
-            this.$store.commit('CLEAR_SEARCH_RESULTS');
-            this.searchCancelled = true;
-            this.$refs.searchForm.reset();
+            if(this.searchCancelled == true) {
+                this.keyword = '';
+                this.hasSearched = false;
+                this.$store.commit('CLEAR_SEARCH_RESULTS');
+                this.$refs.searchForm.reset();
+            }
         }
     }
 }

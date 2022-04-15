@@ -10,14 +10,14 @@
       </div>
       <div class="search-button" v-show="isAdding == false">
         <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">Search for New Cards</button>
-        <!-- <button v-on:click="isSearching = !isSearching" v-show="isSearching == true">Cancel Search</button> -->
+        <button v-on:click="cancelSearch" v-show="isSearching == true">Cancel Search</button>
       </div>
     </div>
     <div class="add-card-form" v-show="isAdding == true">
       <card-form />
     </div>
     <div class="search-card" v-show="isSearching == true">
-      <search-card />
+      <search-card v-bind:searchCancelled="searchCancelled"/>
     </div>
     <div class="card-list">
       <card-list />
@@ -34,7 +34,6 @@ import DeckInfo from '@/components/DeckInfo'
 
 export default {
     name: "CardsInDeck",
-    props: ['searchCancelled'],
     components: {
       CardList,
       CardForm,
@@ -44,12 +43,8 @@ export default {
     data() {
       return {
         isAdding: false,
-        isSearching: false
-      }
-    },
-    computed: {
-      cancelSearch() {
-        return this.checkSearchCancelled();
+        isSearching: false,
+        searchCancelled: false
       }
     },
     created() {
@@ -62,10 +57,9 @@ export default {
       });
     },
     methods: {
-      checkSearchCancelled() {
-        if (this.searchCancelled == true) {
-          this.isSearching = false;
-        }
+      cancelSearch() {
+        this.isSearching = false;
+        this.searchCancelled = true;
       }
     }
 }
