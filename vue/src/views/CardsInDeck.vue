@@ -17,8 +17,24 @@
       <card-form />
     </div>
     <div class="search-card" v-show="isSearching == true">
-      <search-card v-bind:searchCancelled="searchCancelled"/>
+      <div class="search-form">
+        <form v-on:submit.prevent="search" ref="searchForm">
+            <label for="search-field" >Search Keyword: </label>
+            <input id="search-field" type="text" placeholder="Keyword" v-model.trim="keyword">
+            <input type="submit" value="Search" >
+        </form>
+      </div>
+      <div class="search-results-title" v-show="hasSearched">
+        <h3>Search Results:</h3>
+      </div>
+      <div class="search-results">
+          <p v-if="results.length === 0 && hasSearched">No Results Found</p>
+          <card-listing id="card-listing" v-else v-for="result in results" v-bind:key="result.cardId" v-bind:card="result"/>
+      </div>
     </div>
+    <div class="card-list-title" v-show="hasSearched">
+        <h3>Cards In Deck:</h3>
+      </div>
     <div class="card-list">
       <card-list />
     </div>
@@ -29,22 +45,26 @@
 import deckService from '@/services/DeckService'
 import CardList from '@/components/CardList'
 import CardForm from '@/components/CardForm'
-import SearchCard from '@/components/SearchCard'
+// import SearchCard from '@/components/SearchCard'
 import DeckInfo from '@/components/DeckInfo'
+import CardListing from '@/components/CardListing'
 
 export default {
     name: "CardsInDeck",
     components: {
       CardList,
       CardForm,
-      SearchCard,
-      DeckInfo
+      // SearchCard,
+      DeckInfo,
+      CardListing
     },
     data() {
       return {
         isAdding: false,
         isSearching: false,
-        searchCancelled: false
+        searchCancelled: false,
+        keyword: '',
+        hasSearched: false
       }
     },
     created() {
@@ -56,10 +76,31 @@ export default {
           }
       });
     },
+    computed: {
+        results() {
+            const searchResults = this.$store.state.searchResults;
+            return searchResults;
+        }
+    },
     methods: {
       cancelSearch() {
         this.isSearching = false;
-        this.searchCancelled = true;
+        this.clearForm();
+      },
+      search() {
+        const deckId = this.$route.params.deckId;
+        deckService.search(deckId, this.keyword).then(response => {
+            this.hasSearched = true;
+            if (response.status == 200) {
+                this.$store.commit('SET_SEARCH_RESULTS', response.data);
+            }
+        })
+      },
+      clearForm() {
+        this.keyword = '';
+        this.hasSearched = false;
+        this.$store.commit('CLEAR_SEARCH_RESULTS');
+        // this.$refs.searchForm.reset();
       }
     }
 }
@@ -90,6 +131,24 @@ export default {
     margin-left: 3vw;
   }
   div.search-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  div.search-results {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        border-bottom: 3px solid white;
+    }
+  div.search-results-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 2vh;
+  }
+  div.card-list-title {
     display: flex;
     justify-content: center;
   }

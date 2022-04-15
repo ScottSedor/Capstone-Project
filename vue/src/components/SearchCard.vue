@@ -1,8 +1,5 @@
 <template>
   <div class="search-card">
-      <!-- <div class="cancel-button">
-        <button v-on:click="clearForm">Cancel Search</button>
-      </div> -->
       <div class="search-form">
         <form v-on:submit.prevent="search" ref="searchForm">
             <label for="search-field" >Search Keyword: </label>
@@ -55,7 +52,7 @@ export default {
             })
         },
         clearForm() {
-            if(this.searchCancelled == true) {
+            // if(this.searchCancelled == true) {
                 this.keyword = '';
                 this.hasSearched = false;
                 this.$store.commit('CLEAR_SEARCH_RESULTS');
@@ -63,7 +60,6 @@ export default {
             }
         }
     }
-}
 </script>
 
 <style>
