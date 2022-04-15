@@ -3,13 +3,20 @@
     <div class="deck-info">
       <deck-info />
     </div>
-    <div class="add-button">
-      <button v-on:click="isAdding = !isAdding">Add Card to Deck</button>
+    <div class="buttons">
+      <div class="add-button" v-show="isSearching == false">
+        <button v-on:click="isAdding = !isAdding" v-show="isAdding == false">Create Card</button>
+        <button v-on:click="isAdding = !isAdding" v-show="isAdding == true">Cancel</button>
+      </div>
+      <div class="search-button" v-show="isAdding == false">
+        <button v-on:click="isSearching = !isSearching" v-show="isSearching == false">Search for New Cards</button>
+        <button v-on:click="isSearching = !isSearching" v-show="isSearching == true">Cancel Search</button>
+      </div>
     </div>
     <div class="add-card-form" v-show="isAdding == true">
       <card-form />
     </div>
-    <div class="search-card">
+    <div class="search-card" v-show="isSearching == true">
       <search-card />
     </div>
     <div class="card-list">
@@ -35,7 +42,8 @@ export default {
     },
     data() {
       return {
-        isAdding: false
+        isAdding: false,
+        isSearching: false
       }
     },
     created() {
@@ -63,9 +71,19 @@ export default {
   div.cards-in-deck p {
       font-size: 1.5rem;
   }
-  div.add-button {
+  div.buttons {
     display: flex;
     margin-bottom: 20px;
+    justify-content: center;
+  }
+  div.add-button {
+    margin-right: 3vw;
+  }
+  div.search-button {
+    margin-left: 3vw;
+  }
+  div.search-card {
+    display: flex;
     justify-content: center;
   }
 </style>

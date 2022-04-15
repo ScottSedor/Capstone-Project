@@ -18,7 +18,7 @@ export default {
         return axios.put('/decks/' + deckId + '/card/' + cardId, cardRequest)
     },
     search(deckId, keyword) {
-        return axios.put('/decks/' + deckId + '/search?keyword=' + keyword, keyword)
+        return axios.get('/decks/' + deckId + '/search?keyword=' + keyword)
     },
     updateDeck(deckId, deckRequest) {
         return axios.put('/decks/' + deckId + '/info', deckRequest)

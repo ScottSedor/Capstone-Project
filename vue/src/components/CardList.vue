@@ -2,7 +2,7 @@
   <div class="card-list">
       <p v-if="cards.length === 0">No Cards Found in Deck</p>
       <card-listing v-else v-for="card in cards"
-            v-bind:key="card.id"
+            v-bind:key="card.cardId"
             v-bind:card="card" />
   </div>
 </template>

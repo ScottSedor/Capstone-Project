@@ -19,8 +19,9 @@
   /* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono'); */
 
   body {
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    background-color: #b6d7a8ff;
   }
 
   img {

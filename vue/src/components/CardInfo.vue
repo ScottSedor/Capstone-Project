@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="single-card" v-bind:card="activeCard">
+    <div class="single-card">
       <div class="card-front">
         <div id="card-title">
           <h2>Card Front</h2>

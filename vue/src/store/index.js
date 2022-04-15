@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     decks: [],
     cardsInDeck: [],
+    searchResults: [],
     activeCard: 0,
     activeDeckId: 0,
     activeDeck: {}
@@ -63,6 +64,9 @@ export default new Vuex.Store({
     },
     SET_ACTIVE_DECK(state, deck) {
       state.activeDeck = deck;
+    },
+    SET_SEARCH_RESULTS(state, cards) {
+      state.searchResults = cards;
     }
   }
 })
