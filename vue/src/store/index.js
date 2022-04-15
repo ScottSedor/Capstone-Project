@@ -67,6 +67,9 @@ export default new Vuex.Store({
     },
     SET_SEARCH_RESULTS(state, cards) {
       state.searchResults = cards;
+    },
+    CLEAR_SEARCH_RESULTS(state) {
+      state.searchResults = [];
     }
   }
 })

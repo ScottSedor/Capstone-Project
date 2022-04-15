@@ -35,8 +35,9 @@ public class DeckController {
     public List<Card> getCardsInDeck(@PathVariable("id") int deckId) { return cardDao.viewCardsInDeck(deckId); }
 
     @RequestMapping(path="/decks/{id}/search", method=RequestMethod.GET)
-    public List<Card> searchByKeyword(@RequestParam(required = false, name = "keyword") String keyword) {
-        return deckDao.searchByKeyword(keyword);
+    public List<Card> searchByKeyword(@RequestParam(required = false, name = "keyword") String keyword,
+                                      @PathVariable("id") int deckId) {
+        return deckDao.searchByKeyword(keyword, deckId);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

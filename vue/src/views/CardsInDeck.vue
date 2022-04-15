@@ -5,12 +5,12 @@
     </div>
     <div class="buttons">
       <div class="add-button" v-show="isSearching == false">
-        <button v-on:click="isAdding = !isAdding" v-show="isAdding == false">Create Card</button>
+        <button id="add-button" v-on:click="isAdding = !isAdding" v-show="isAdding == false">Create Card</button>
         <button v-on:click="isAdding = !isAdding" v-show="isAdding == true">Cancel</button>
       </div>
       <div class="search-button" v-show="isAdding == false">
-        <button v-on:click="isSearching = !isSearching" v-show="isSearching == false">Search for New Cards</button>
-        <button v-on:click="isSearching = !isSearching" v-show="isSearching == true">Cancel Search</button>
+        <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">Search for New Cards</button>
+        <!-- <button v-on:click="isSearching = !isSearching" v-show="isSearching == true">Cancel Search</button> -->
       </div>
     </div>
     <div class="add-card-form" v-show="isAdding == true">
@@ -34,6 +34,7 @@ import DeckInfo from '@/components/DeckInfo'
 
 export default {
     name: "CardsInDeck",
+    props: ['searchCancelled'],
     components: {
       CardList,
       CardForm,
@@ -46,6 +47,11 @@ export default {
         isSearching: false
       }
     },
+    computed: {
+      cancelSearch() {
+        return this.checkSearchCancelled();
+      }
+    },
     created() {
       const deckId = this.$route.params.deckId;
       this.$store.commit('SET_ACTIVE_DECK', deckId);
@@ -54,6 +60,13 @@ export default {
             this.$store.commit('SET_CARDS', response.data);
           }
       });
+    },
+    methods: {
+      checkSearchCancelled() {
+        if (this.searchCancelled == true) {
+          this.isSearching = false;
+        }
+      }
     }
 }
 </script>
@@ -76,10 +89,10 @@ export default {
     margin-bottom: 20px;
     justify-content: center;
   }
-  div.add-button {
+  button#add-button {
     margin-right: 3vw;
   }
-  div.search-button {
+  button#search-button {
     margin-left: 3vw;
   }
   div.search-card {
