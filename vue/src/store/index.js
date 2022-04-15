@@ -25,8 +25,7 @@ export default new Vuex.Store({
     searchResults: [],
     activeCard: 0,
     activeDeckId: 0,
-    activeDeck: {},
-    draggedCard: 0
+    activeDeck: {}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -72,12 +71,12 @@ export default new Vuex.Store({
     CLEAR_SEARCH_RESULTS(state) {
       state.searchResults = [];
     },
-    ADD_SEARCH_RESULT_TO_DECK(state) {
-      state.cardsInDeck.push(state.draggedCard);
-      state.searchResults.pop(state.draggedCard);
-    },
-    SET_DRAGGED_CARD(state, cardId) {
-      state.draggedCard = cardId;
+    ADD_SEARCH_RESULT_TO_DECK(state, cardId) {
+      let currentCard = state.searchResults.find((result = cardId) => {
+        return result == cardId;
+      })
+      state.cardsInDeck.push(currentCard);
+      state.searchResults.pop(currentCard);
     }
   }
 })

@@ -110,17 +110,20 @@ export default {
       },
       drop(ev) {
         ev.preventDefault();
-        // let data = ev.dataTransfer.getData("text");
+        console.log(ev)
+        let data = ev.dataTransfer.getData('itemId');
+        console.log(data)
+        this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', data);
         // ev.target.appendChild(document.getElementById(data));
-        this.$store.commit('ADD_SEARCH_CARD_TO_DECK');
+        // this.$store.commit('ADD_SEARCH_CARD_TO_DECK');
       },
-      drag(ev) {
-        ev.dataTransfer.setData(ev.target.id);
-        this.$store.commit('SET_DRAGGED_CARD', ev.data)
-      },
-      onDragging(ev){
-        ev.dataTransfer.setData("text", ev.target.id);
-    },
+      // drag(ev) {
+      //   ev.dataTransfer.setData(ev.target.id);
+      //   this.$store.commit('SET_DRAGGED_CARD', ev.data)
+      // },
+    //   onDragging(ev){
+    //     ev.dataTransfer.setData("text", ev.target.id);
+    // },
     }
 }
 </script>

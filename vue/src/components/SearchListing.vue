@@ -1,7 +1,6 @@
 <template>
-  <router-link v-bind:to="{name: 'card-info', params: {deckId: currentDeckId, cardId: card.cardId}}" style="text-decoration: none"
-                 draggable="true" @dragstart="drag">
-    <div class="card-listing">
+  <router-link v-bind:to="{name: 'card-info', params: {deckId: currentDeckId, cardId: card.cardId}}" style="text-decoration: none">
+    <div class="card-listing" @dragstart="drag($event)" draggable="true">
       <h2>{{card.cardFront}}</h2>
     </div>
   </router-link>
@@ -19,9 +18,10 @@ export default {
     },
     methods: {
         drag(ev) {
-            ev.dataTransfer.setData(ev.target);
-            console.log(ev.target.data);
-            this.$store.commit('SET_DRAGGED_CARD', ev.data)
+            console.log(ev);
+            ev.dataTransfer.setData('itemId', this.card.cardId);
+            console.log(ev);
+            // this.$store.commit('SET_DRAGGED_CARD', ev.data)
         },
     }
 }
