@@ -39,7 +39,15 @@ export default {
         if(response.status >= 200) {
           this.$router.push({name: 'cards-in-deck'});
         }
-      })
+      }).catch(error => {
+              if(error.response) {
+                  console.error(error.status + " " + error.statusText);
+              } else if (error.request) {
+                  console.error("Could not connect to server");
+              } else {
+                  console.error(error);
+              }
+          })
     }
   }
 

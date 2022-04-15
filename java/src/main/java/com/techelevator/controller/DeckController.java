@@ -68,8 +68,8 @@ public class DeckController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path="/decks/{id}/card/{id}", method=RequestMethod.DELETE)
-    public void deleteCardFromDeck(@PathVariable("id")int deckId, @PathVariable("id")int cardId) {
+    @RequestMapping(path="/decks/{id}/card/{cardId}", method=RequestMethod.DELETE)
+    public void deleteCardFromDeck(@PathVariable("id")int deckId, @PathVariable("cardId")int cardId) {
         deckDao.deleteCardFromDeck(deckId, cardId);
     }
 }
