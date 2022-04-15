@@ -29,14 +29,16 @@
       </div>
       <div class="search-results">
           <p v-if="results.length === 0 && hasSearched">No Results Found</p>
-          <card-listing id="card-listing" v-else v-for="result in results" v-bind:key="result.cardId" v-bind:card="result"/>
+          <search-listing id="search-listing" v-else v-for="result in results" v-bind:key="result.cardId" v-bind:card="result"/>
       </div>
     </div>
-    <div class="card-list-title" v-show="hasSearched">
-        <h3>Cards In Deck:</h3>
-      </div>
-    <div class="card-list">
-      <card-list />
+    <div class="current-cards" @drop="drop" @dragover="allowDrop">
+      <div class="card-list-title" v-show="hasSearched">
+          <h3>Cards In Deck:</h3>
+        </div>
+      <div class="card-list">
+        <card-list />
+    </div>
     </div>
   </div>
 </template>
@@ -47,7 +49,7 @@ import CardList from '@/components/CardList'
 import CardForm from '@/components/CardForm'
 // import SearchCard from '@/components/SearchCard'
 import DeckInfo from '@/components/DeckInfo'
-import CardListing from '@/components/CardListing'
+import SearchListing from '@/components/SearchListing'
 
 export default {
     name: "CardsInDeck",
@@ -56,7 +58,7 @@ export default {
       CardForm,
       // SearchCard,
       DeckInfo,
-      CardListing
+      SearchListing
     },
     data() {
       return {
@@ -101,7 +103,24 @@ export default {
         this.hasSearched = false;
         this.$store.commit('CLEAR_SEARCH_RESULTS');
         // this.$refs.searchForm.reset();
-      }
+      },
+      // Below this is all drag and drop methods
+      allowDrop(ev) {
+        ev.preventDefault();
+      },
+      drop(ev) {
+        ev.preventDefault();
+        // let data = ev.dataTransfer.getData("text");
+        // ev.target.appendChild(document.getElementById(data));
+        this.$store.commit('ADD_SEARCH_CARD_TO_DECK');
+      },
+      drag(ev) {
+        ev.dataTransfer.setData(ev.target.id);
+        this.$store.commit('SET_DRAGGED_CARD', ev.data)
+      },
+      onDragging(ev){
+        ev.dataTransfer.setData("text", ev.target.id);
+    },
     }
 }
 </script>
