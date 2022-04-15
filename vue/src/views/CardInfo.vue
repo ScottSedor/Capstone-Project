@@ -35,6 +35,7 @@ export default {
     removeCard() {
       const deckId = this.$route.params.deckId;
       const cardId = this.$route.params.cardId;
+      if (confirm('Delete this flash card?')) {
       deckService.deleteCardFromDeck(deckId, cardId).then(response => {
         if(response.status >= 200) {
           this.$router.push({name: 'cards-in-deck'});
@@ -48,6 +49,7 @@ export default {
                   console.error(error);
               }
           })
+      }
     }
   }
 
