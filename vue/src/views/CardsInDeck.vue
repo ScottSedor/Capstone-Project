@@ -12,6 +12,7 @@
         <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">Search for New Cards</button>
         <button v-on:click="cancelSearch" v-show="isSearching == true">Cancel Search</button>
       </div>
+      <deck-modify-form/>
     </div>
     <div class="add-card-form" v-show="isAdding == true">
       <card-form />
@@ -50,18 +51,21 @@ import CardForm from '@/components/CardForm'
 // import SearchCard from '@/components/SearchCard'
 import DeckInfo from '@/components/DeckInfo'
 import SearchListing from '@/components/SearchListing'
+// import CardListing from '@/components/CardListing'
+import DeckModifyForm from '../components/DeckModifyForm.vue'
 
 export default {
     name: "CardsInDeck",
     components: {
       CardList,
       CardForm,
-      // SearchCard,
+      DeckModifyForm,
       DeckInfo,
       SearchListing
     },
     data() {
-      return {
+   
+        return {
         isAdding: false,
         isSearching: false,
         searchCancelled: false,
@@ -144,14 +148,14 @@ export default {
   div.buttons {
     display: flex;
     margin-bottom: 20px;
-    justify-content: center;
+    justify-content: space-evenly;
   }
-  button#add-button {
+  /* button#add-button {
     margin-right: 3vw;
   }
   button#search-button {
     margin-left: 3vw;
-  }
+  } */
   div.search-card {
     display: flex;
     flex-direction: column;
