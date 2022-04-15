@@ -110,18 +110,24 @@ export default {
         this.$store.commit('CLEAR_SEARCH_RESULTS');
         // this.$refs.searchForm.reset();
       },
+      addCard(cardId) {
+        const deckId = this.$route.params.deckId;
+        deckService.addCardToDeck(deckId, cardId).then(response => {
+          if (response.status == 200) {
+            this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', cardId);
+          }
+        })
+      },
       // Below this is all drag and drop methods
       allowDrop(ev) {
         ev.preventDefault();
       },
       drop(ev) {
         ev.preventDefault();
-        console.log(ev)
-        let data = ev.dataTransfer.getData('itemId');
-        console.log(data)
-        this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', data);
-        // ev.target.appendChild(document.getElementById(data));
-        // this.$store.commit('ADD_SEARCH_CARD_TO_DECK');
+           let data = ev.dataTransfer.getData('itemId');
+        this.addCard(data);
+        // this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', data);
+
       },
       // drag(ev) {
       //   ev.dataTransfer.setData(ev.target.id);

@@ -105,6 +105,12 @@ public class JdbcDeckDao implements DeckDao {
         return listOfMatches;
     }
 
+    public void addSearchResultToDeck(int deckId, int cardId) {
+
+        String sql = "INSERT INTO decks_cards (deck_id, card_id) VALUES (?, ?);";
+        
+    }
+
 
     private int getIdFromUsername(String username) throws NullPointerException {
         int id;
@@ -117,5 +123,7 @@ public class JdbcDeckDao implements DeckDao {
         }
         throw new NullPointerException("Id Not Found");
     }
+
+
 
 }
