@@ -52,10 +52,8 @@
 import deckService from '@/services/DeckService'
 import CardList from '@/components/CardList'
 import CardForm from '@/components/CardForm'
-// import SearchCard from '@/components/SearchCard'
 import DeckInfo from '@/components/DeckInfo'
 import SearchListing from '@/components/SearchListing'
-// import CardListing from '@/components/CardListing'
 import DeckModifyForm from '../components/DeckModifyForm.vue'
 
 export default {
@@ -110,7 +108,6 @@ export default {
         this.keyword = '';
         this.hasSearched = false;
         this.$store.commit('CLEAR_SEARCH_RESULTS');
-        // this.$refs.searchForm.reset();
       },
       addCard(cardId) {
         const deckId = this.$route.params.deckId;
@@ -125,7 +122,7 @@ export default {
           }
         })
       },
-      // Below this is all drag and drop methods
+      // Below this is drag and drop methods
       allowDrop(ev) {
         ev.preventDefault();
       },
@@ -133,16 +130,7 @@ export default {
         ev.preventDefault();
         let data = ev.dataTransfer.getData('cardId');
         this.addCard(data);
-        // this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', data);
-
-      },
-      // drag(ev) {
-      //   ev.dataTransfer.setData(ev.target.id);
-      //   this.$store.commit('SET_DRAGGED_CARD', ev.data)
-      // },
-    //   onDragging(ev){
-    //     ev.dataTransfer.setData("text", ev.target.id);
-    // },
+      }
     }
 }
 </script>

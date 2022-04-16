@@ -70,16 +70,6 @@ export default new Vuex.Store({
     },
     CLEAR_SEARCH_RESULTS(state) {
       state.searchResults = [];
-    },
-    // ADD_SEARCH_RESULT_TO_DECK(state, cardId) {
-    //   let currentCard = state.searchResults.find((result) => {
-    //     return result == cardId;
-    //   })
-    //   state.cardsInDeck.push(currentCard);
-    //   state.searchResults.pop(currentCard);
-    // },
-    // REMOVE_SEARCH_RESULT(state, cardId) {
-    //   state.searchResults.pop(cardId);
-    // }
+    }
   }
 })
