@@ -14,4 +14,5 @@ public interface DeckDao {
     Deck getDeckInfoById(int deckId);
     void deleteCardFromDeck(int deckId, int cardId);
     List<Card> searchByKeyword(String keyword, int deckId);
+    void addSearchResultToDeck(int deckId, int cardId);
 }

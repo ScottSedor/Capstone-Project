@@ -1,6 +1,9 @@
 <template>
   <div class="cards-in-deck">
     <div class="deck-info">
+      <div class="deck-modify-form">
+        <deck-modify-form/>
+      </div>
       <deck-info />
     </div>
     <div class="buttons">
@@ -12,7 +15,6 @@
         <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">Search for New Cards</button>
         <button v-on:click="cancelSearch" v-show="isSearching == true">Cancel Search</button>
       </div>
-      <deck-modify-form/>
     </div>
     <div class="add-card-form" v-show="isAdding == true">
       <card-form />
@@ -108,18 +110,24 @@ export default {
         this.$store.commit('CLEAR_SEARCH_RESULTS');
         // this.$refs.searchForm.reset();
       },
+      addCard(cardId) {
+        const deckId = this.$route.params.deckId;
+        deckService.addCardToDeck(deckId, cardId).then(response => {
+          if (response.status == 200) {
+            this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', cardId);
+          }
+        })
+      },
       // Below this is all drag and drop methods
       allowDrop(ev) {
         ev.preventDefault();
       },
       drop(ev) {
         ev.preventDefault();
-        console.log(ev)
-        let data = ev.dataTransfer.getData('itemId');
-        console.log(data)
-        this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', data);
-        // ev.target.appendChild(document.getElementById(data));
-        // this.$store.commit('ADD_SEARCH_CARD_TO_DECK');
+           let data = ev.dataTransfer.getData('itemId');
+        this.addCard(data);
+        // this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', data);
+
       },
       // drag(ev) {
       //   ev.dataTransfer.setData(ev.target.id);
@@ -178,4 +186,9 @@ export default {
     display: flex;
     justify-content: center;
   }
+  div.deck-modify-form {
+    display: flex;
+    align-content: flex-start;
+  }
+
 </style>
