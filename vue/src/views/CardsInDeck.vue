@@ -113,12 +113,15 @@ export default {
         // this.$refs.searchForm.reset();
       },
       addCard(cardId) {
-        console.log('addCard reached')
         const deckId = this.$route.params.deckId;
         deckService.addCardToDeck(deckId, cardId).then(response => {
           if (response.status >= 200) {
-            console.log('successful add')
-            this.$store.commit('REMOVE_SEARCH_RESULT', cardId);
+            this.search();
+            deckService.getCardsInDeck(deckId).then( response => {
+                if (response.status == 200) {
+                  this.$store.commit('SET_CARDS', response.data);
+                }
+            });
           }
         })
       },
@@ -127,10 +130,8 @@ export default {
         ev.preventDefault();
       },
       drop(ev) {
-        console.log('made it to drop')
         ev.preventDefault();
         let data = ev.dataTransfer.getData('cardId');
-        console.log('variable successfully set')
         this.addCard(data);
         // this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', data);
 

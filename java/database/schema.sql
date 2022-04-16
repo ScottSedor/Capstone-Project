@@ -87,7 +87,7 @@ VALUES (1, 'authorization', 'The process of giving a user permission to access a
 		(1, 'serialization', 'The conversion of the state of an object into a byte stream.', 'serialization');
 
 INSERT INTO decks_cards (deck_id, card_id)
-VALUES (1, 14), (1, 15), (1, 16), (1, 17), (1, 18), (1, 19), (1, 20), (1, 21), (1, 22), (1, 23), (1, 24);
+VALUES (1, 7), (1, 8), (1, 9), (1, 10), (1, 11), (1, 12), (1, 13), (1, 14), (1, 15), (1, 16), (1, 17);
 
 COMMIT TRANSACTION;
 

@@ -87,9 +87,9 @@ public class JdbcDeckDao implements DeckDao {
     public List<Card> searchByKeyword(String keyword, int deckId) {
         List<Card> listOfMatches = new ArrayList<Card>();
         String newKeyword = "%" + keyword + "%";
-        String sql= "SELECT cards.card_id, user_id, card_front, card_back, keywords " +
+        String sql= "SELECT DISTINCT cards.card_id, user_id, card_front, card_back, keywords " +
                 "FROM cards JOIN decks_cards ON cards.card_id = decks_cards.card_id " +
-                "WHERE keywords ILIKE ? AND decks_cards.deck_id != ?;";
+                "WHERE keywords ILIKE ? AND cards.card_id NOT IN (SELECT card_id FROM decks_cards WHERE deck_id = ?);";
 
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, newKeyword, deckId);
 

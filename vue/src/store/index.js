@@ -78,8 +78,8 @@ export default new Vuex.Store({
     //   state.cardsInDeck.push(currentCard);
     //   state.searchResults.pop(currentCard);
     // },
-    REMOVE_SEARCH_RESULT(state, cardId) {
-      state.searchResults.pop(cardId);
-    }
+    // REMOVE_SEARCH_RESULT(state, cardId) {
+    //   state.searchResults.pop(cardId);
+    // }
   }
 })
