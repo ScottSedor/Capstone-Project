@@ -1,6 +1,7 @@
 <template>
   <div class="card-detail">
     <card-info />
+      <img src="vue\src\assets\Capture.JPG" alt="Edit Icon">
     <div class="edit-button">
       <button v-on:click="isEditing = !isEditing" v-show="!isEditing">Edit Card</button>
       <button v-on:click="isEditing = !isEditing"  v-show="isEditing">Cancel</button>
@@ -57,6 +58,10 @@ export default {
 </script>
 
 <style>
+img {
+  width: 100px;
+  height: 100px;
+}
 div.card-detail {
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 60px;
