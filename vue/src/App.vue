@@ -3,7 +3,7 @@
     <div id="nav">
       <div id="site-title">
         <router-link id="title" v-bind:to="{ name: 'home' }">
-          <img class="logo" src="vue/src/assets/Capture.JPG" alt="Stud.io Logo" />
+          <img class="logo" src="..\src\assets\capture.jpg" alt="Stud.io Logo" />
         </router-link>
       </div>
       <div id="nav-buttons">
@@ -24,11 +24,11 @@
     background-color: #b6d7a8ff;
   }
 
-  /* img {
+  img {
     margin-top: 31px;
     width: 175px;
     height: 125px;
-  } */
+  }
 
   div#app {
     font-family: Arial, Helvetica, sans-serif;
