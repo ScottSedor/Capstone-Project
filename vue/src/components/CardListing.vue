@@ -26,7 +26,7 @@ export default {
    width: 16rem;
    height: 10rem;
    margin: 20px;
-   border-radius: 5px;
+   border-radius: 4px;
    display: flex;
    flex-direction: column;
    text-align: center;

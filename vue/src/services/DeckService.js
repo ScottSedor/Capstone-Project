@@ -30,7 +30,7 @@ export default {
         return axios.delete('/decks/' + deckId + '/card/' + cardId)
     },
     addCardToDeck(deckId, cardId) {
-        return axios.post('/decks/' + deckId + '/card/' + cardId)
+        return axios.post('/decks/' + deckId + '/search/' + cardId)
     }
 
 

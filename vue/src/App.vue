@@ -3,7 +3,7 @@
     <div id="nav">
       <div id="site-title">
         <router-link id="title" v-bind:to="{ name: 'home' }">
-          <img class="logo" src="..\public\img\studio.jpg" alt="Stud.io Logo" />
+          <img class="logo" src="..\src\assets\capture.jpg" alt="Stud.io Logo" />
         </router-link>
       </div>
       <div id="nav-buttons">

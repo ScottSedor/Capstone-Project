@@ -72,4 +72,10 @@ public class DeckController {
     public void deleteCardFromDeck(@PathVariable("id")int deckId, @PathVariable("cardId")int cardId) {
         deckDao.deleteCardFromDeck(deckId, cardId);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path="/decks/{id}/search/{cardId}", method=RequestMethod.POST)
+    public void addSearchedCardToDeck(@PathVariable("id") int deckId, @PathVariable("cardId") int cardId) {
+        deckDao.addSearchResultToDeck(deckId, cardId);
+    }
 }

@@ -1,10 +1,12 @@
 <template>
   <div class="cards-in-deck">
     <div class="deck-info">
+      <div class="deck-info-detail">
+        <deck-info />
+      </div>
       <div class="deck-modify-form">
         <deck-modify-form/>
       </div>
-      <deck-info />
     </div>
     <div class="buttons">
       <div class="add-button" v-show="isSearching == false">
@@ -111,10 +113,12 @@ export default {
         // this.$refs.searchForm.reset();
       },
       addCard(cardId) {
+        console.log('addCard reached')
         const deckId = this.$route.params.deckId;
         deckService.addCardToDeck(deckId, cardId).then(response => {
-          if (response.status == 200) {
-            this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', cardId);
+          if (response.status >= 200) {
+            console.log('successful add')
+            this.$store.commit('REMOVE_SEARCH_RESULT', cardId);
           }
         })
       },
@@ -123,8 +127,10 @@ export default {
         ev.preventDefault();
       },
       drop(ev) {
+        console.log('made it to drop')
         ev.preventDefault();
-           let data = ev.dataTransfer.getData('itemId');
+        let data = ev.dataTransfer.getData('cardId');
+        console.log('variable successfully set')
         this.addCard(data);
         // this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', data);
 
@@ -142,7 +148,7 @@ export default {
 
 <style>
   div.cards-in-deck {
-      margin-top: 60px;
+      margin-top: 40px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -156,14 +162,14 @@ export default {
   div.buttons {
     display: flex;
     margin-bottom: 20px;
-    justify-content: space-evenly;
+    justify-content: center;
   }
-  /* button#add-button {
+  button#add-button {
     margin-right: 3vw;
   }
   button#search-button {
     margin-left: 3vw;
-  } */
+  }
   div.search-card {
     display: flex;
     flex-direction: column;
@@ -186,9 +192,23 @@ export default {
     display: flex;
     justify-content: center;
   }
-  div.deck-modify-form {
+  div.deck-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: ". info form";
+    height: 225px;
+  }
+  div.deck-info-detail {
+    grid-area: info;
     display: flex;
-    align-content: flex-start;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  div.deck-modify-form {
+    grid-area: form;
+    display: flex;
+    align-content: flex-end;
+    justify-content: center;
   }
 
 </style>

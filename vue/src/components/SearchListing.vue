@@ -1,9 +1,7 @@
 <template>
-  <router-link v-bind:to="{name: 'card-info', params: {deckId: currentDeckId, cardId: card.cardId}}" style="text-decoration: none">
-    <div class="card-listing" @dragstart="drag($event)" draggable="true">
-      <h2>{{card.cardFront}}</h2>
-    </div>
-  </router-link>
+  <div class="card-listing" @dragstart="drag($event)" draggable="true">
+    <h2>{{card.cardFront}}</h2>
+  </div>
 </template>
 
 <script>
@@ -17,10 +15,8 @@ export default {
       } 
     },
     methods: {
-        drag(ev) {
-            console.log(ev);
-            ev.dataTransfer.setData('itemId', this.card.cardId);
-            console.log(ev);
+        drag(event) {
+            event.dataTransfer.setData('cardId', this.card.cardId);
             // this.$store.commit('SET_DRAGGED_CARD', ev.data)
         },
     }
@@ -34,7 +30,7 @@ export default {
    width: 16rem;
    height: 10rem;
    margin: 20px;
-   border-radius: 5px;
+   border-radius: 4px;
    display: flex;
    flex-direction: column;
    text-align: center;
