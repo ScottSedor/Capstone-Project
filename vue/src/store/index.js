@@ -72,7 +72,7 @@ export default new Vuex.Store({
       state.searchResults = [];
     },
     ADD_SEARCH_RESULT_TO_DECK(state, cardId) {
-      let currentCard = state.searchResults.find((result = cardId) => {
+      let currentCard = state.searchResults.find((result) => {
         return result == cardId;
       })
       state.cardsInDeck.push(currentCard);
