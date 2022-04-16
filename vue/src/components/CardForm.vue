@@ -102,7 +102,7 @@ input, select, textarea {
   background-color: #d9ead3ff;
 }
 div {
-  background-color: #b6d7a8ff;
+  /* background-color: #b6d7a8ff; */
 }
 div.boxes {
   display: flex;

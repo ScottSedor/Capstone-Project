@@ -29,7 +29,7 @@ export default {
         text-decoration-color: white;
     }
     div {
-        background-color: #93c47dff;
+        /* background-color: #93c47dff; */
     }
     div.deck-list {
         display: flex;

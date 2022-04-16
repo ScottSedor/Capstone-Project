@@ -11,17 +11,21 @@
         <router-link class="btn" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </div>
     </div>
-    <router-view />
+    <div class="router-view">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <style>
   /* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono'); */
 
-  body {
-    margin-left: 10vw;
-    margin-right: 10vw;
-    background-color: #b6d7a8ff;
+  div#app {
+    display: grid;
+    grid-template-areas: 
+      "nav nav nav nav"
+      ". main main .";
+    background-color: #d9ead3ff;
   }
 
   img {
@@ -35,11 +39,19 @@
   }
 
   div#nav {
+    grid-area: nav;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     border-bottom: 3px solid white;
     background-color: #b6d7a8ff;
+  }
+
+  div.router-view{
+    grid-area: main;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    background-color: #d9ead3ff;
   }
 
   div#site-title {

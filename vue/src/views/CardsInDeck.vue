@@ -55,10 +55,8 @@
 import deckService from '@/services/DeckService'
 import CardList from '@/components/CardList'
 import CardForm from '@/components/CardForm'
-// import SearchCard from '@/components/SearchCard'
 import DeckInfo from '@/components/DeckInfo'
 import SearchListing from '@/components/SearchListing'
-// import CardListing from '@/components/CardListing'
 import DeckModifyForm from '../components/DeckModifyForm.vue'
 
 export default {
@@ -113,38 +111,29 @@ export default {
         this.keyword = '';
         this.hasSearched = false;
         this.$store.commit('CLEAR_SEARCH_RESULTS');
-        // this.$refs.searchForm.reset();
       },
       addCard(cardId) {
-        console.log('addCard reached')
         const deckId = this.$route.params.deckId;
         deckService.addCardToDeck(deckId, cardId).then(response => {
           if (response.status >= 200) {
-            console.log('successful add')
-            this.$store.commit('REMOVE_SEARCH_RESULT', cardId);
+            this.search();
+            deckService.getCardsInDeck(deckId).then( response => {
+                if (response.status == 200) {
+                  this.$store.commit('SET_CARDS', response.data);
+                }
+            });
           }
         })
       },
-      // Below this is all drag and drop methods
+      // Below this is drag and drop methods
       allowDrop(ev) {
         ev.preventDefault();
       },
       drop(ev) {
-        console.log('made it to drop')
         ev.preventDefault();
         let data = ev.dataTransfer.getData('cardId');
-        console.log('variable successfully set')
         this.addCard(data);
-        // this.$store.commit('ADD_SEARCH_RESULT_TO_DECK', data);
-
-      },
-      // drag(ev) {
-      //   ev.dataTransfer.setData(ev.target.id);
-      //   this.$store.commit('SET_DRAGGED_CARD', ev.data)
-      // },
-    //   onDragging(ev){
-    //     ev.dataTransfer.setData("text", ev.target.id);
-    // },
+      }
     }
 }
 </script>
