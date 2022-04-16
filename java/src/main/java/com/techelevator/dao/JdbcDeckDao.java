@@ -108,7 +108,7 @@ public class JdbcDeckDao implements DeckDao {
     public void addSearchResultToDeck(int deckId, int cardId) {
 
         String sql = "INSERT INTO decks_cards (deck_id, card_id) VALUES (?, ?);";
-        
+
     }
 
 

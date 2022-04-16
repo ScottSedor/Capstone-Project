@@ -73,5 +73,21 @@ VALUES (1, 1), (1, 2), (2, 3), (2, 4), (3, 5), (3, 6);
 
 INSERT INTO users_decks (deck_id, user_id) VALUES (1,1), (2,1), (3,1);
 
+INSERT INTO cards (user_id, card_front, card_back, keywords)
+VALUES (1, 'authorization', 'The process of giving a user permission to access a specific resource or function.', 'authorization'),
+		(1, 'authentication', 'The process or action of verifying the identity of a user or process.', 'authentication'),
+		(1, 'Boolean expression', 'Code which when evaluated provides a Boolean value (true or false).', 'Boolean'),
+		(1, 'concatenation', 'The operation of joining two strings together.', 'concatenation'),
+		(1, 'deserialization', 'The process of reconstructing the object from the serialized state.', 'deserialization'),
+		(1, 'encapsulation', 'The idea of bundling data and methods that work on data within one unit.', 'encapsulation'),
+		(1, 'heap', 'The area of memory used to store objects instatiated by applications running on the JVM.', 'heap'),
+		(1, 'inheritance', 'A mechanism in which one object aquires all of the properties of a parent object.', 'inheritance'),
+		(1, 'parse', 'Converting a value of one data type to an unlike data type', 'parse'),
+		(1, 'reference data type', 'A data type that holds a reference to the location of a value rather than the value itself.', 'reference data type'),
+		(1, 'serialization', 'The conversion of the state of an object into a byte stream.', 'serialization');
+
+INSERT INTO decks_cards (deck_id, card_id)
+VALUES (1, 14), (1, 15), (1, 16), (1, 17), (1, 18), (1, 19), (1, 20), (1, 21), (1, 22), (1, 23), (1, 24);
+
 COMMIT TRANSACTION;
 
