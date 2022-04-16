@@ -1,10 +1,12 @@
 <template>
   <div class="cards-in-deck">
     <div class="deck-info">
+      <div class="deck-info-detail">
+        <deck-info />
+      </div>
       <div class="deck-modify-form">
         <deck-modify-form/>
       </div>
-      <deck-info />
     </div>
     <div class="buttons">
       <div class="add-button" v-show="isSearching == false">
@@ -186,9 +188,17 @@ export default {
     display: flex;
     justify-content: center;
   }
+  div.deck-info {
+    display: grid;
+  }
   div.deck-modify-form {
     display: flex;
-    align-content: flex-start;
+    align-content: flex-end;
+  }
+  div.deck-info-detail {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
   }
 
 </style>
