@@ -57,6 +57,7 @@ export default {
               if (response.status >= 200) {
                   this.$store.commit(('ADD_TO_CARDS'), response.data);
                   this.$refs.cardCreate.reset();
+                  this.cardRequest = {};
               }
           }).catch(error => {
               if(error.response) {

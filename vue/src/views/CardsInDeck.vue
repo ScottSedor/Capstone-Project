@@ -190,15 +190,20 @@ export default {
   }
   div.deck-info {
     display: grid;
-  }
-  div.deck-modify-form {
-    display: flex;
-    align-content: flex-end;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: ". info form";
   }
   div.deck-info-detail {
+    grid-area: info;
     display: flex;
     justify-content: center;
     flex-grow: 1;
+  }
+  div.deck-modify-form {
+    grid-area: form;
+    display: flex;
+    align-content: flex-end;
+    justify-content: center;
   }
 
 </style>

@@ -29,7 +29,7 @@ export default {
     computed: {
       card() {
         return this.$store.state.cardsInDeck.find((c) => {
-            return c.cardId == this.$store.state.activeCard;
+            return c.cardId == this.$route.params.cardId;
         });
       }
     }
@@ -60,7 +60,7 @@ div.card-info {
    height: 10rem;
    margin: 5px;
    margin-bottom: 20px;
-   border-radius: 5px;
+   border-radius: 4px;
    display: flex;
    flex-direction: column;
    text-align: center;
