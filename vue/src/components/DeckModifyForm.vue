@@ -1,7 +1,9 @@
 <template>
   <div class="modify-deck-form">
-      <button v-if="!isChangingDeck" v-on:click="isChangingDeck = !isChangingDeck">Modify Deck</button>
-        <button v-else v-on:click="isChangingDeck = !isChangingDeck">Cancel</button>
+      <div class="btn">
+        <button v-if="!isChangingDeck" v-on:click="isChangingDeck = !isChangingDeck">Modify Deck</button>
+        <button id="cancel-btn" v-else v-on:click="isChangingDeck = !isChangingDeck">Cancel</button>
+      </div>
       <form v-show="isChangingDeck" v-on:submit.prevent="modifyDeck" ref="deckModify" >
           <div class="form-field">
               <label for="title">Modify Deck: </label>
@@ -74,5 +76,10 @@ export default {
 </script>
 
 <style>
-
+    div.btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+    }
 </style>

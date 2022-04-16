@@ -87,9 +87,9 @@ public class JdbcDeckDao implements DeckDao {
     public List<Card> searchByKeyword(String keyword, int deckId) {
         List<Card> listOfMatches = new ArrayList<Card>();
         String newKeyword = "%" + keyword + "%";
-        String sql= "SELECT cards.card_id, user_id, card_front, card_back, keywords \n" +
-                "FROM cards JOIN decks_cards ON cards.card_id = decks_cards.card_id\n" +
-                "WHERE keywords ILIKE ? AND deck_id != ?;";
+        String sql= "SELECT cards.card_id, user_id, card_front, card_back, keywords " +
+                "FROM cards JOIN decks_cards ON cards.card_id = decks_cards.card_id " +
+                "WHERE keywords ILIKE ? AND decks_cards.deck_id != ?;";
 
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, newKeyword, deckId);
 
@@ -105,10 +105,10 @@ public class JdbcDeckDao implements DeckDao {
         return listOfMatches;
     }
 
+    @Override
     public void addSearchResultToDeck(int deckId, int cardId) {
-
         String sql = "INSERT INTO decks_cards (deck_id, card_id) VALUES (?, ?);";
-        
+        jdbcTemplate.update(sql, deckId, cardId);
     }
 
 
