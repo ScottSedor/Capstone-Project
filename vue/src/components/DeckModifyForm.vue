@@ -13,6 +13,10 @@
               <label for="description">Description: </label>
               <input type="text" id="title" placeholder="Description of Deck" v-model.trim="deckRequest.deckDescription">
           </div>
+          <div class="form-field">
+              <label for="deck-color">Deck Color: </label>
+              <input type="text" id="title" placeholder="Color of Deck">
+          </div>
           <div class="button">
               <input type="submit" value="Save Changes">
           </div>
