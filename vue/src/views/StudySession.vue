@@ -1,12 +1,18 @@
 <template>
   <div class="study-session">
-          <p v-if="cards.length === 0">No Cards Found in Deck. Please Select Another Deck to Study.</p>
-      <div v-else class="current-card" v-on:click="toggleFlip()">
+      <div class="prev-button">
+        <button id="previous" v-on:click="previousCard" v-show="currentIndex != 0 && cards.length > 0">Previous Card</button>
+      </div>
+      <div class="current-card" v-on:click="toggleFlip()">
         <transition name="flip" >
-            <h2 class="card">
+            <p v-if="cards.length === 0">No Cards Found in Deck. Please Select Another Deck to Study.</p>
+            <h2 v-else class="card">
               {{ isFlipped ? currentCard.cardBack : currentCard.cardFront }}
             </h2>
         </transition>
+      </div>
+      <div class="next-button">
+        <button id="next" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">Next Card</button>
       </div>
    </div>
 </template>
@@ -18,7 +24,6 @@ export default {
   data() {
     return {
         currentIndex: 0,
-        currentDeck: 1,
         isFlipped: false
     }
   },
@@ -37,16 +42,18 @@ export default {
     },
     nextCard() {
         this.currentIndex = this.currentIndex + 1;
+        this.isFlipped = false;
       },
     previousCard() {
         this.currentIndex = this.currentIndex -1;
+        this.isFlipped = false;
     }
 
   },
   created() {
-    // const deckId = this.$route.params.deckId;
-    this.$store.commit('SET_ACTIVE_DECK', this.currentDeck);
-    deckService.getCardsInDeck(this.currentDeck).then(response => {
+    const deckId = this.$route.params.deckId;
+    this.$store.commit('SET_ACTIVE_DECK', deckId);
+    deckService.getCardsInDeck(deckId).then(response => {
       if (response.status == 200) {
         this.$store.commit('SET_CARDS', response.data);
       }
@@ -56,6 +63,45 @@ export default {
 </script>
 
 <style>
+div.study-session {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas: 
+    "prev card next";
+  background-size: cover;
+}
+div.prev-button {
+  grid-area: prev;
+}
+div.current-card {
+  grid-area: card;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(106, 168, 79, 0.596);
+  padding: 10px;
+  height: 30vw;
+  width: 48vw;
+  cursor: pointer;
+  will-change: transform;
+}
+div.next-button {
+  grid-area: next;
+}
+.flip-enter-active {
+  transition: all 0.4s ease;
+} 
+.flip-leave-active {
+  display: none;
+}
+.flip-enter, .flip-leave {
+  transform: rotateY(180deg);
+  opacity: 0;
+
+}
+
 /* ul {
     padding-left: 0;
     display: flex;
