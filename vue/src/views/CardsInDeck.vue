@@ -20,6 +20,11 @@
         <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">Search for New Cards</button>
         <button v-on:click="cancelSearch" v-show="isSearching == true">Cancel Search</button>
       </div>
+      <div class="start-study-button" v-show="isAdding == false && isSearching == false">
+        <router-link :to="{name: 'study-session', params: {id: deckId}}">
+          <button id="start-study-button" v-show="isSearching == false">Start Study Session</button>
+        </router-link>
+      </div>
     </div>
     <div class="add-card-form" v-show="isAdding == true">
       <card-form />
@@ -160,6 +165,10 @@ export default {
     margin-right: 3vw;
   }
   button#search-button {
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+  button#start-study-button {
     margin-left: 3vw;
   }
   div.search-card {

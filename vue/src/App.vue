@@ -26,6 +26,7 @@
       "nav"
       "main";
     background-color: #d9ead3ff;
+    background-size: 100vh;
   }
 
   img.logo {
