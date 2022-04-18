@@ -1,7 +1,8 @@
 <template>
     <div class="study-session-home">
         <div class="end-study-session" v-show="currentIndex != 0">
-            <h1>Questions Complete: {{ currentIndex + 1 }}</h1>
+            <h1>Flashcards Completed: {{ currentIndex + 1 }}</h1>
+            <h1>Percent Complete: {{percentComplete}}%</h1>
         </div>
         <div class="decks">
             <div class="deck-list">
@@ -33,8 +34,8 @@ export default {
         },
         percentComplete() {
             let cards = this.$store.state.cardsInDeck;
-            const percentage = this.currentIndex / cards.length;
-            return percentage;    
+            const percentage = (this.currentIndex / (cards.length - 1)) * 100;
+            return percentage.toFixed();    
         }
     },
      created() {

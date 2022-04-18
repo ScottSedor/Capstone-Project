@@ -15,12 +15,13 @@
         <div class="next-button">
           <button id="next" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">Next Card</button>
         </div>
+        <div class="end-button">
+          <button id="end" v-on:click="cancelStudySession" v-show="currentIndex === (cards.length - 1)">End Study Session</button>
+        </div>
     </div>
-      <div class="cancel">
-        <router-link>
-          <button id="cancel">Cancel Study Session</button>
-        </router-link>
-      </div>
+    <div class="cancel">
+          <button id="cancel" v-on:click="cancelStudySession" v-show="currentIndex != (cards.length - 1)">End Study Session</button>
+    </div>
   </div>   
 </template>
 
@@ -55,10 +56,16 @@ export default {
     previousCard() {
         this.currentIndex = this.currentIndex -1;
         this.isFlipped = false;
+    },
+    cancelStudySession() {
+        if (confirm('End this study session?')) {
+          this.$router.push({name: 'study-session-home'});
+        }
     }
-
   },
   created() {
+    this.currentIndex = 0;
+    this.$store.commit('SET_CURRENT_INDEX', this.currentIndex);
     const deckId = this.$route.params.deckId;
     this.$store.commit('SET_ACTIVE_DECK', deckId);
     deckService.getCardsInDeck(deckId).then(response => {
