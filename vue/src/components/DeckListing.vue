@@ -31,7 +31,6 @@ export default {
 }
 
 div.deck-listing:hover {
-  
   background: #93c47dff;
 }
 

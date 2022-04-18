@@ -47,7 +47,7 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    border-bottom: 3px solid #5e2844ff;
+    border-bottom: 3px solid #274e13ff;
     background-color: #b6d7a8ff;
   }
 
@@ -62,10 +62,10 @@
     margin-left: 3vw;
   }
 
-  div#site-title > #title {
+  /* div#site-title > #title {
     text-decoration: none;
-    color: white;
-  }
+    color: black;
+  } */
 
   div#nav-buttons {
     margin: 3vh 3vw 3vh 3vw;

@@ -25,15 +25,13 @@ export default {
 </script>
 
 <style>
-    h1 {
-        text-decoration-color: white;
-    }
+
     div.deck-list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    div.deck-list:hover {
+    div.deck-listing:hover {
         transform: scale(1.02);
     }
 </style>

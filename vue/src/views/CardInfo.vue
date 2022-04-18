@@ -3,6 +3,7 @@
     <card-info />
     <div class="edit-button">
       <button v-on:click="isEditing = !isEditing" v-show="!isEditing">Edit Card</button>
+      <!-- <img src="..\src\assets\edit.png" alt="edit icon"> -->
       <button v-on:click="isEditing = !isEditing"  v-show="isEditing">Cancel</button>
       <button v-on:click="removeCard">Remove Card</button>
     </div>
