@@ -3,8 +3,8 @@
     <card-info />
     <div class="edit-button">
       <button class="edit" data-toggle="popover" title="Edit Card" v-on:click="isEditing = !isEditing" v-show="!isEditing"><img class="edit-img" src="..\assets\edit.png" alt="edit icon"></button>
-      <button class="remove" data-toggle="popover" v-on:click="isEditing = !isEditing"  v-show="isEditing">Cancel</button>
-      <button v-on:click="removeCard">Remove Card</button>
+      <button class="remove" data-toggle="popover" title="Remove Card" v-on:click="isEditing = !isEditing"  v-show="isEditing"></button>
+      <button class="remove" data-toggle="popover" title="Remove Card" v-on:click="removeCard"><img class="remove-img" src="..\assets\remove-icon.png" alt="remove icon"></button>
     </div>
     <div class="card-edit-form" v-show="isEditing == true">
       <card-form />
@@ -66,16 +66,16 @@ div.edit-button {
   justify-content: space-evenly;
   margin-bottom: 10px;
 }
-button.edit {
+button.edit, button.remove {
   background: none;
   border: none;
 }
-img.edit-img {
+img.edit-img, img.remove-img {
   height: 60px;
   width: 60px;
   border-radius: 50px;
 }
-button.edit:hover {
+button.edit:hover, button.remove:hover {
   transform: scale(1.1);
 }
 
