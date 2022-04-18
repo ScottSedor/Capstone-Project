@@ -30,10 +30,7 @@
       "nav"
       "main"; */
     background-color: #d9ead3ff;
-<<<<<<< HEAD
   
-=======
->>>>>>> 9b8b3410a6bf9021fa0b5034b7f442e3b46d7b3b
   }
 
   img.logo {
