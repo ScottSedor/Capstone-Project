@@ -3,8 +3,10 @@
     <card-info />
     <div class="edit-button">
       <button class="edit" data-toggle="popover" title="Edit Card" v-on:click="isEditing = !isEditing" v-show="!isEditing"><img class="edit-img" src="..\assets\edit.png" alt="edit icon"></button>
-      <button class="remove" data-toggle="popover" title="Remove Card" v-on:click="isEditing = !isEditing"  v-show="isEditing"></button>
-      <button class="remove" data-toggle="popover" title="Remove Card" v-on:click="removeCard"><img class="remove-img" src="..\assets\remove-icon.png" alt="remove icon"></button>
+      <button v-on:click="isEditing = !isEditing"  v-show="isEditing">Cancel</button>
+      <button class="remove" data-toggle="popover" title="Remove Card" v-on:click="removeCard">
+        <img class="remove-img" src="..\assets\remove-icon.png" alt="remove icon">
+      </button>
     </div>
     <div class="card-edit-form" v-show="isEditing == true">
       <card-form />

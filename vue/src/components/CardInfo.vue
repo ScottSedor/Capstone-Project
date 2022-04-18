@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="single-card">
-      <a @click="$router.go(-1)">Back</a>
+      <a @click="$router.go(-1)">
+         <img class="back-arrow" src="..\assets\back-arrow.png" alt="back arrow icon"> 
+      </a>
       <div class="card-front">
         <div id="card-title">
           <h2>Card Front</h2>
@@ -76,4 +78,8 @@ div.card-front > p {
   font-size: small;
 }
 
+a > img.back-arrow {
+  width: 45px;
+  height: 45px; 
+}
 </style>

@@ -21,12 +21,12 @@
   /* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono'); */
 
   div#app {
-    display: grid;
+    /* display: grid;
     grid-template-areas: 
       "nav"
-      "main";
+      "main"; */
     background-color: #d9ead3ff;
-    background-size: 100vh;
+  
   }
 
   img.logo {
