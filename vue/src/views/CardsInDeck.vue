@@ -1,6 +1,9 @@
 <template>
   <div class="cards-in-deck">
     <div class="deck-info">
+      <div class="back">
+        <a @click="$router.go(-1)">Back</a>
+      </div>
       <div class="deck-info-detail">
         <deck-info />
       </div>

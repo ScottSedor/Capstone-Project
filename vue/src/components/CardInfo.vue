@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="single-card">
+      <a @click="$router.go(-1)">Back</a>
       <div class="card-front">
         <div id="card-title">
           <h2>Card Front</h2>
