@@ -80,8 +80,8 @@ VALUES (1, 'authorization', 'The process of giving a user permission to access a
 		(1, 'concatenation', 'The operation of joining two strings together.', 'concatenation'),
 		(1, 'deserialization', 'The process of reconstructing the object from the serialized state.', 'deserialization'),
 		(1, 'encapsulation', 'The idea of bundling data and methods that work on data within one unit.', 'encapsulation'),
-		(1, 'heap', 'The area of memory used to store objects instatiated by applications running on the JVM.', 'heap'),
-		(1, 'inheritance', 'A mechanism in which one object aquires all of the properties of a parent object.', 'inheritance'),
+		(1, 'heap', 'The area of memory used to store objects instantiated by applications running on the JVM.', 'heap'),
+		(1, 'inheritance', 'A mechanism in which one object acquires all of the properties of a parent object.', 'inheritance'),
 		(1, 'parse', 'Converting a value of one data type to an unlike data type', 'parse'),
 		(1, 'reference data type', 'A data type that holds a reference to the location of a value rather than the value itself.', 'reference data type'),
 		(1, 'serialization', 'The conversion of the state of an object into a byte stream.', 'serialization');
