@@ -18,7 +18,11 @@
 </template>
 
 <style>
-  /* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono'); */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
+
+  body {
+    background-color: #d9ead3ff;
+  }
 
   div#app {
     /* display: grid;
@@ -26,7 +30,10 @@
       "nav"
       "main"; */
     background-color: #d9ead3ff;
+<<<<<<< HEAD
   
+=======
+>>>>>>> 9b8b3410a6bf9021fa0b5034b7f442e3b46d7b3b
   }
 
   img.logo {
@@ -40,7 +47,7 @@
   }
 
   div#app {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono', monospace;
   }
 
   div#nav {

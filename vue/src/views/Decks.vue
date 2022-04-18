@@ -37,7 +37,7 @@ export default {
         flex-wrap: wrap;
         justify-content: center;
         flex-direction: column;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Roboto Mono', monospace;
     }
     div.deck-form {
         display: flex;
