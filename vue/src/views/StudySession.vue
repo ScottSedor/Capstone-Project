@@ -50,6 +50,7 @@ export default {
     nextCard() {
         this.currentIndex = this.currentIndex + 1;
         this.isFlipped = false;
+        this.$store.commit('SET_CURRENT_INDEX', this.currentIndex);
       },
     previousCard() {
         this.currentIndex = this.currentIndex -1;

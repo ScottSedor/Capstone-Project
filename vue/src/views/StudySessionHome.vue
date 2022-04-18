@@ -1,13 +1,17 @@
 <template>
-  <div class="decks">
-      <div class="deck-list">
-            <p v-if="decks.length === 0">No Decks Found</p>
-            <study-deck-listing v-else v-for="deck in decks"
-                v-bind:key="deck.id"
-                v-bind:deck="deck" />
-      </div>
-
-  </div>
+    <div class="study-session-home">
+        <div class="end-study-session" v-show="currentIndex != 0">
+            <h1>Questions Complete: {{ currentIndex + 1 }}</h1>
+        </div>
+        <div class="decks">
+            <div class="deck-list">
+                    <p v-if="decks.length === 0">No Decks Found</p>
+                    <study-deck-listing v-else v-for="deck in decks"
+                        v-bind:key="deck.id"
+                        v-bind:deck="deck" />
+            </div>
+        </div>  
+    </div>
 </template>
 
 <script>
@@ -22,6 +26,15 @@ export default {
         decks() {
             const decks = this.$store.state.decks;
             return decks;
+        },
+        currentIndex() {
+            const currentIndex = this.$store.state.currentStudyIndex;
+            return currentIndex;
+        },
+        percentComplete() {
+            let cards = this.$store.state.cardsInDeck;
+            const percentage = this.currentIndex / cards.length;
+            return percentage;    
         }
     },
      created() {

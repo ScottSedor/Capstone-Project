@@ -25,7 +25,8 @@ export default new Vuex.Store({
     searchResults: [],
     activeCard: 0,
     activeDeckId: 0,
-    activeDeck: {}
+    activeDeck: {},
+    currentStudyIndex: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -70,6 +71,9 @@ export default new Vuex.Store({
     },
     CLEAR_SEARCH_RESULTS(state) {
       state.searchResults = [];
+    },
+    SET_CURRENT_INDEX(state, index) {
+      state.currentStudyIndex = index;
     }
   }
 })
