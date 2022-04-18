@@ -64,6 +64,7 @@ export default {
 
 <style>
     div.search-card {
+        
         display: flex;
         flex-direction: column;
         justify-content: center;

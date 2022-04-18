@@ -36,4 +36,7 @@ export default {
         flex-wrap: wrap;
         justify-content: center;
     }
+    div.deck-listing:hover {
+        transform: scale(1.02);
+    }
 </style>

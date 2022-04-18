@@ -17,7 +17,7 @@ export default {
 <style>
   div.deck-listing {
    background-color: rgba(106, 168, 79, 0.596); 
-   border: 2px black solid;
+   
    width: 16rem;
    height: 10rem;
    margin: 20px;
@@ -27,7 +27,7 @@ export default {
    text-align: center;
    justify-content: center;
    align-content: center;
-   
+   border: 2px black solid;
 }
 
 div.deck-listing:hover {
