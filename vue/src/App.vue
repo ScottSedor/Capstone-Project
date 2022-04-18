@@ -28,10 +28,10 @@
     background-color: #d9ead3ff;
   }
 
-  img {
-    margin-top: 31px;
-    width: 175px;
-    height: 125px;
+  img.logo {
+    margin-top: 32px;
+    width: 190px;
+    height: 120px;
   }
 
   div#app {

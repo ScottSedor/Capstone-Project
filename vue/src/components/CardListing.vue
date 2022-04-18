@@ -21,8 +21,9 @@ export default {
 
 <style>
   div.card-listing {
-    background-color: rgba(106, 168, 79, 0.596);
-   border: 2px #d9ead3ff solid;
+   /* border: 2px black solid;    */
+   background-color: rgba(106, 168, 79, 0.596);
+   border: 2px black;
    width: 16rem;
    height: 10rem;
    margin: 20px;
@@ -33,6 +34,10 @@ export default {
    justify-content: center;
    
 }
+
+div.card-listing:hover {
+    transform: scale(1.02);
+  }
 
 div.card-listing > h2 {
   color: white;
