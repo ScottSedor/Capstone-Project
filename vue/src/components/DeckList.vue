@@ -28,15 +28,12 @@ export default {
     h1 {
         text-decoration-color: white;
     }
-    div {
-        /* background-color: #93c47dff; */
-    }
     div.deck-list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    div.deck-listing:hover {
+    div.deck-list:hover {
         transform: scale(1.02);
     }
 </style>

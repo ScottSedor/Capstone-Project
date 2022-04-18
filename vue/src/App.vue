@@ -34,6 +34,10 @@
     height: 120px;
   }
 
+  img.logo:hover {
+    transform: scale(1.01);
+  }
+
   div#app {
     font-family: Arial, Helvetica, sans-serif;
   }
@@ -43,7 +47,7 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid #5e2844ff;
     background-color: #b6d7a8ff;
   }
 

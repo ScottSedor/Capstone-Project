@@ -55,8 +55,8 @@ div.card-front, div.card-back {
 }
 
 div.card-info {
-  background-color: rgba(106, 168, 79, 0.596);
-  border: 2px black solid;
+   background-color: rgba(106, 168, 79, 0.596);
+   border: 3px #274e13ff solid;
    width: 20rem;
    height: 10rem;
    margin: 5px;
