@@ -25,12 +25,7 @@ export default {
 </script>
 
 <style>
-    h1 {
-        text-decoration-color: white;
-    }
-    div {
-        /* background-color: #93c47dff; */
-    }
+
     div.deck-list {
         display: flex;
         flex-wrap: wrap;

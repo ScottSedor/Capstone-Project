@@ -25,9 +25,7 @@ export default {
 </script>
 
 <style>
-    div.card-listing {
-        border: 2px black solid;
-    }
+   
     div.card-list {
         
         display: flex;
