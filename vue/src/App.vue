@@ -63,11 +63,6 @@
     margin-left: 3vw;
   }
 
-  /* div#site-title > #title {
-    text-decoration: none;
-    color: black;
-  } */
-
   div#nav-buttons {
     margin: 3vh 3vw 3vh 3vw;
     flex-flow: 1;

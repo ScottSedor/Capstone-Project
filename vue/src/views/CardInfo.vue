@@ -2,9 +2,8 @@
   <div class="card-detail">
     <card-info />
     <div class="edit-button">
-      <button v-on:click="isEditing = !isEditing" v-show="!isEditing">Edit Card</button>
-      <!-- <img src="..\src\assets\edit.png" alt="edit icon"> -->
-      <button v-on:click="isEditing = !isEditing"  v-show="isEditing">Cancel</button>
+      <button class="edit" data-toggle="popover" title="Edit Card" v-on:click="isEditing = !isEditing" v-show="!isEditing"><img class="edit-img" src="..\assets\edit.png" alt="edit icon"></button>
+      <button class="remove" data-toggle="popover" v-on:click="isEditing = !isEditing"  v-show="isEditing">Cancel</button>
       <button v-on:click="removeCard">Remove Card</button>
     </div>
     <div class="card-edit-form" v-show="isEditing == true">
@@ -58,19 +57,26 @@ export default {
 </script>
 
 <style>
-img {
-  width: 100px;
-  height: 100px;
-}
 div.card-detail {
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 60px;
-    }
-
+}
 div.edit-button {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 10px;
 }
-    
+button.edit {
+  background: none;
+  border: none;
+}
+img.edit-img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50px;
+}
+button.edit:hover {
+  transform: scale(1.1);
+}
+
 </style>
