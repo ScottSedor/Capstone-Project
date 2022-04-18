@@ -9,6 +9,7 @@ import Decks from '../views/Decks'
 import CardsInDeck from '../views/CardsInDeck'
 import CardInfo from '../views/CardInfo'
 import StudySession from '../views/StudySession'
+import StudySessionHome from '../views/StudySessionHome'
 
 Vue.use(Router)
 
@@ -82,6 +83,14 @@ const router = new Router({
       }
     },
     {
+      path: "/study",
+      name: "study-session-home",
+      component: StudySessionHome,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
       path: "/study/:deckId",
       name: "study-session",
       component: StudySession,
@@ -89,6 +98,7 @@ const router = new Router({
         requiresAuth: false
       }
     }
+
   ]
 })
 

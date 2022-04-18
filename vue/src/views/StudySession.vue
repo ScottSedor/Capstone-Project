@@ -1,20 +1,27 @@
 <template>
-  <div class="study-session">
-      <div class="prev-button">
-        <button id="previous" v-on:click="previousCard" v-show="currentIndex != 0 && cards.length > 0">Previous Card</button>
+  <div class="container">
+    <div class="study-session">
+        <div class="prev-button">
+          <button id="previous" v-on:click="previousCard" v-show="currentIndex != 0 && cards.length > 0">Previous Card</button>
+        </div>
+        <div class="current-card" v-on:click="toggleFlip()">
+          <transition name="flip" >
+              <p v-if="cards.length === 0">No Cards Found in Deck. Please Select Another Deck to Study.</p>
+              <h2 v-else class="card">
+                {{ isFlipped ? currentCard.cardBack : currentCard.cardFront }}
+              </h2>
+          </transition>
+        </div>
+        <div class="next-button">
+          <button id="next" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">Next Card</button>
+        </div>
+    </div>
+      <div class="cancel">
+        <router-link>
+          <button id="cancel">Cancel Study Session</button>
+        </router-link>
       </div>
-      <div class="current-card" v-on:click="toggleFlip()">
-        <transition name="flip" >
-            <p v-if="cards.length === 0">No Cards Found in Deck. Please Select Another Deck to Study.</p>
-            <h2 v-else class="card">
-              {{ isFlipped ? currentCard.cardBack : currentCard.cardFront }}
-            </h2>
-        </transition>
-      </div>
-      <div class="next-button">
-        <button id="next" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">Next Card</button>
-      </div>
-   </div>
+  </div>   
 </template>
 
 <script>
