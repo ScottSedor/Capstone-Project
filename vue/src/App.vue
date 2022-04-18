@@ -23,8 +23,8 @@
   div#app {
     display: grid;
     grid-template-areas: 
-      "nav nav nav nav"
-      ". main main .";
+      "nav"
+      "main";
     background-color: #d9ead3ff;
   }
 
