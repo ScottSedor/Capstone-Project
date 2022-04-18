@@ -58,7 +58,7 @@ export default {
 
 <style>
 div.card-detail {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto Mono', monospace;
   margin-top: 60px;
 }
 div.edit-button {

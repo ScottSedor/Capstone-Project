@@ -42,7 +42,7 @@ export default {
         flex-wrap: wrap;
         justify-content: center;
     }
-    div.deck-listing:hover {
+    div.study-deck-listing:hover {
         transform: scale(1.02);
     }
     div.decks {
@@ -51,7 +51,7 @@ export default {
         flex-wrap: wrap;
         justify-content: center;
         flex-direction: column;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Roboto Mono', monospace;
     }
 
 </style>

@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style>
-  div.deck-listing {
+  div.study-deck-listing {
    background-color: rgba(106, 168, 79, 0.596); 
    border: 3px #274e13ff solid;
    width: 16rem;
@@ -30,11 +30,11 @@ export default {
    
 }
 
-div.deck-listing:hover {
+div.study-deck-listing:hover {
   background: #93c47dff;
 }
 
-div.deck-listing > h2 {
+div.study-deck-listing > h2 {
   color: white;
   text-decoration: none !important;
 

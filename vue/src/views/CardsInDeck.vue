@@ -150,7 +150,7 @@ export default {
       flex-wrap: wrap;
       justify-content: center;
       flex-direction: column;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Roboto Mono', monospace;
   
   }
   div.cards-in-deck p {
