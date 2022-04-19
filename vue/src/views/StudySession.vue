@@ -1,21 +1,19 @@
 <template>
   <div class="container">
     <div class="study-session">
-
         <div class="prev-button">
           <button id="previous" data-toggle="popover" title="Back to Previous Card" v-on:click="previousCard" v-show="currentIndex != 0 && cards.length > 0">
             <img class="back-img" src="..\assets\back-arrow-icon.png" alt="back arrow icon">
           </button>
         </div>
-
-        <div class="scene scene--card">
-          <div class="card">
-            <!-- <div class="flip-card-container current-card" > -->
-                <!-- <div id="flip-card" class="flip-card" v-on:click="toggleFlip()" v-bind="isFlipped != isFlipped" > -->
-                    <div class="card__face card__face--front">{{currentCard.cardFront}}</div>
-                    <div class="card__face card__face--back">{{currentCard.cardBack}}</div>
-                <!-- </div> -->
-            <!-- </div> -->
+        <div class="body-container">
+          <div class="body">
+            <div class="flip-card-container current-card">
+                <div class="flip-card">
+                    <div class="flip-card-front">{{currentCard.cardFront}}</div>
+                    <div class="flip-card-back">{{currentCard.cardBack}}</div>
+                </div>
+            </div>
           </div>
         </div>
 
@@ -36,17 +34,11 @@
 <script>
 import deckService from '@/services/DeckService'
 
-        var card = document.querySelector('.flip-card');
-        card.addEventListener( 'click', function() {
-        card.classList.toggle('is-flipped');
-        });
-
 export default {
   data() {
     return {
         currentIndex: 0,
-        isFlipped: false,
-        
+        isFlipped: false
     }
   },
   computed: {
@@ -56,30 +48,12 @@ export default {
       },
     currentCard() {
         return this.cards[this.currentIndex];
-    },
-      
+    }
   },
   methods: {
-     
-      
-    
-    // toggleFlip() {
-    //   const element = document.getElementById('flip-card');
-    //   if (element.classList.contains("flip-card")) {
-    //   element.classList.remove('flip-card');
-    //   element.classList.add('flip-card-now');
-    //    element.classList.remove('flip-card-now');
-    //    element.classList.add('flip-card');
-       
-    //   // } else {
-    //   //   this.toggleUnflip();
-    //   }
-    // },
-    // toggleUnflip() {
-    //   const element = document.getElementById('flip-card');
-    //   element.classList.remove('flip-card-now');
-    //   element.classList.add('flip-card');
-    // },
+    toggleFlip() {
+      this.isFlipped = !this.isFlipped;
+    },
     nextCard() {
         this.currentIndex = this.currentIndex + 1;
         this.isFlipped = false;
@@ -123,54 +97,7 @@ div.prev-button {
   display: flex;
   align-items: center;
 }
-/*-----------------*/
-
-body { font-family: sans-serif; }
-
-.scene {
-  width: 200px;
-  height: 260px;
-  border: 1px solid #CCC;
-  margin: 40px 0;
-  perspective: 600px;
-}
-
-.card {
-  width: 100%;
-  height: 100%;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  cursor: pointer;
-  position: relative;
-}
-
-.card.is-flipped {
-  transform: rotateY(180deg);
-}
-
-.card__face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  line-height: 260px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  font-size: 40px;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.card__face--front {
-  background: red;
-}
-
-.card__face--back {
-  background: blue;
-  transform: rotateY(180deg);
-}
-
-/* div.body-container {
+div.body-container {
   grid-area: card;
   display: flex;
     justify-content: center;
@@ -187,7 +114,7 @@ body { font-family: sans-serif; }
     height: 25vw;
     perspective: 1000px;
 }
-.is-flipped {
+.flip-card {
     border: 3px solid black;
     position: relative;
     width: 42vw;
@@ -195,13 +122,13 @@ body { font-family: sans-serif; }
     transition: transform 1s;
     transform-style: preserve-3d;
 }
-.flip-card-container .is-flipped {
+.flip-card-container:hover .flip-card {
     transform: rotateY(180deg);
 }
-/* .flip-card-container .flip-card {
+.flip-card-container:hover .flip-card {
     transform: rotateY(180deg);
-} */
-/* .flip-card-front, .is-flipped {
+}
+.flip-card-front, .flip-card-back {
     text-align: center;
     position: absolute;
     width: 42vw;
@@ -213,7 +140,6 @@ body { font-family: sans-serif; }
     font-size: 2rem;
 }
 .flip-card-front {
-    border: solid 2px black;
     background-color: rgb(94, 148, 71);
     color: #fff;
 }
@@ -221,7 +147,7 @@ body { font-family: sans-serif; }
     background-color: rgb(94, 148, 71);
     color: #fff;
     transform: rotateY(180deg);
-} */ */
+}
 div.next-button {
   grid-area: next;
   display: flex;
