@@ -20,7 +20,7 @@
           </button>
         </div>
         <div class="end-button">
-          <span id="end" v-on:click="cancelStudySession" v-show="currentIndex === (cards.length - 1)">End Study Session</span>
+          <span id="end" v-on:click="cancelStudySession" v-show="currentIndex != (cards.length - 1)">End Study Session</span>
         </div>
     </div>
     <div class="cancel">
@@ -86,7 +86,8 @@ div.study-session {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas: 
-    "prev card next";
+    "prev card next"
+    ". end .";
   background-size: cover;
 }
 div.prev-button {
@@ -112,6 +113,9 @@ div.next-button {
   grid-area: next;
   display: flex;
   align-items: center;
+}
+div.end-button {
+  grid-area: end;
 }
 button#previous, button#next {
   background: none;
