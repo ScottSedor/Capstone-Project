@@ -1,8 +1,11 @@
 <template>
     <div class="study-session-home">
         <div class="end-study-session" v-show="currentIndex != 0">
-            <h1>Flashcards Completed: {{ currentIndex + 1 }}</h1>
-            <h1>Percent Complete: {{percentComplete}}%</h1>
+            <h1 id="flashcards">Flashcards Completed: {{ currentIndex + 1 }}</h1>
+            <h1 id="percentage">Percent Complete: {{percentComplete}}%</h1>
+            <a id="restart" @click="$router.go(-1)">
+                <img class="restart-icon" data-toggle="popover" title="Restart Study Session" src="..\assets\restart-icon.png" alt="restart icon">
+            </a>
         </div>
         <div class="decks">
             <div class="deck-list">
@@ -66,6 +69,28 @@ export default {
         justify-content: center;
         flex-direction: column;
         font-family: 'Roboto Mono', monospace;
+    }
+    div.end-study-session {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas: 
+            "cards restart"
+            "percent restart";
+    }
+    h1#flashcards {
+        grid-area: cards;
+        text-align: center;
+    }
+    h1#percentage {
+        grid-area: percent;
+        text-align: center;
+    }
+    a#restart {
+        grid-area: restart;
+    }
+    img.restart-icon {
+        height: 120px;
+        width: 120px;
     }
 
 </style>

@@ -108,7 +108,9 @@ div.current-card {
   width: 48vw;
   cursor: pointer;
   will-change: transform;
-  
+  margin-top: 10px;
+  border: 3px solid black;
+  user-select: none;
 }
 div.next-button {
   grid-area: next;
