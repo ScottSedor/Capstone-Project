@@ -14,6 +14,7 @@
               </h2>
           </transition>
         </div>
+
         <div class="next-button">
           <button id="next" data-toggle="popover" title="Next Card" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">
             <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
@@ -141,6 +142,8 @@ img.back-img, img.next-img {
   opacity: 0;
 
 }
+
+
 
 /* ul {
     padding-left: 0;
