@@ -8,6 +8,9 @@
             </a>
         </div>
         <div class="decks">
+            <div class="deck-title">
+                <h2>Choose a Deck to Study:</h2>
+            </div>
             <div class="deck-list">
                     <p v-if="decks.length === 0">No Decks Found</p>
                     <study-deck-listing v-else v-for="deck in decks"
@@ -91,6 +94,9 @@ export default {
     img.restart-icon {
         height: 120px;
         width: 120px;
+    }
+    div.deck-title {
+        color: #274e13ff;
     }
 
 </style>

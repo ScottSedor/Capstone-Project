@@ -57,7 +57,7 @@ div {
 }
 
 div#card-title {
-  color: #93c47dff;
+  color: #274e13ff;
 }
 
 div.single-card {

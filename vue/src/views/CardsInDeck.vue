@@ -164,6 +164,10 @@ export default {
   div.cards-in-deck p {
       font-size: 1.5rem;
   }
+  div.back {
+    margin-top: 20px;
+    margin-right: 10px;
+  }
   div.buttons {
     display: flex;
     margin-bottom: 20px;
