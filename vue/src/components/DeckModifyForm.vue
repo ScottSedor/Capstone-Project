@@ -1,7 +1,9 @@
 <template>
   <div class="modify-deck-form">
       <div class="btn">
-        <button v-if="!isChangingDeck" v-on:click="isChangingDeck = !isChangingDeck">Modify Deck</button>
+        <button class="modify" data-toggle="popover" title="Modify Deck" v-if="!isChangingDeck" v-on:click="isChangingDeck = !isChangingDeck">
+            <img class="modify-img" src="..\assets\edit-deck-icon.png" alt="modify deck icon">
+        </button>
         <button id="cancel-btn" v-else v-on:click="isChangingDeck = !isChangingDeck">Cancel</button>
       </div>
       <form v-show="isChangingDeck" v-on:submit.prevent="modifyDeck" ref="deckModify" >
@@ -85,5 +87,17 @@ export default {
         align-items: center;
         justify-content: center;
         margin: 10px;
+    }
+    button.modify {
+        background: none;
+        border: none;
+    }
+    img.modify-img {
+        height: 120px;
+        width: 120px;
+        border-radius: 50px;
+    }
+    button.modify:hover {
+        transform: scale(1.1);
     }
 </style>

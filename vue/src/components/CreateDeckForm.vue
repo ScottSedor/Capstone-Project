@@ -2,7 +2,9 @@
   <div class="create-deck-form">
       <h1>Deck Library</h1>
       <div class="create-deck-button">
-        <button v-on:click="isCreatingDeck = !isCreatingDeck" v-show="!isCreatingDeck">Create New Deck</button>
+        <button class="create" data-toggle="popover" title="Create Deck" v-on:click="isCreatingDeck = !isCreatingDeck" v-show="!isCreatingDeck">
+            <img class="create-img" src="..\assets\create-deck-icon.png" alt="create deck icon">
+        </button>
         <button v-on:click="isCreatingDeck = !isCreatingDeck"  v-show="isCreatingDeck">Cancel</button>
       </div>
       <form v-show="isCreatingDeck" v-on:submit.prevent="createDeck" ref="deckCreate" >
@@ -63,5 +65,13 @@ div.button, div.create-deck-button {
     display: flex;
     justify-content: center;
 }
-
+button.create {
+    background: none;
+    border: none;
+}
+img.create-img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50px;
+}
 </style>
