@@ -6,12 +6,14 @@
             <img class="back-img" src="..\assets\back-arrow-icon.png" alt="back arrow icon">
           </button>
         </div>
-        <div class="body">
-          <div class="flip-card-container current-card">
-              <div class="flip-card">
-                  <div class="flip-card-front">{{currentCard.cardFront}}</div>
-                  <div class="flip-card-back">{{currentCard.cardBack}}</div>
-              </div>
+        <div class="body-container">
+          <div class="body">
+            <div class="flip-card-container current-card">
+                <div class="flip-card">
+                    <div class="flip-card-front">{{currentCard.cardFront}}</div>
+                    <div class="flip-card-back">{{currentCard.cardBack}}</div>
+                </div>
+            </div>
           </div>
         </div>
         <div class="next-button">
@@ -94,15 +96,17 @@ div.prev-button {
   display: flex;
   align-items: center;
 }
+div.body-container {
+  grid-area: card;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .body {
-    grid-area: card;
     margin-top: 10px;
     font-family: Arial, Helvetica, sans-serif;
     width: 42vw;
     height: 25vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .flip-card-container {
     width: 42vw;

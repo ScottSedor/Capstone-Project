@@ -81,10 +81,12 @@ export default {
             "percent restart";
     }
     h1#flashcards {
+        color: #274e13ff;
         grid-area: cards;
         text-align: center;
     }
     h1#percentage {
+        color: #274e13ff;
         grid-area: percent;
         text-align: center;
     }
