@@ -88,4 +88,8 @@
     justify-content: center;
     font-size: 40px;
   }
+
+  div#home {
+    border-bottom: 2px solid #d9ead3ff;
+  }
 </style>
