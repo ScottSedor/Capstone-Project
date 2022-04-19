@@ -21,13 +21,15 @@ public class JdbcDeckDao implements DeckDao {
     }
 
     @Override
-    public List<Deck> viewAllDecks() {
-
+    public List<Deck> viewAllDecks(String username) {
+        int userId = getIdFromUsername(username);
         List<Deck> decks = new ArrayList<Deck>();
-        String sql = "SELECT deck_id, deck_title " +
-                     "FROM decks;";
+        String sql = "SELECT decks.deck_id, deck_title " +
+                "FROM decks JOIN users_decks ON decks.deck_id = users_decks.deck_id " +
+                "WHERE users_decks.user_id = ? " +
+                "ORDER BY decks.deck_id;";
 
-        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, userId);
 
         while(rows.next()) {
             Deck deck = new Deck();

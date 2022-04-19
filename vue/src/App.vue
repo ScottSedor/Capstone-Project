@@ -25,18 +25,12 @@
   @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
 
   body {
-    background-color: #d9ead3ff;
-  }
-
-  div#app {
-    background-color: #d9ead3ff;
-  
+    background-color: white;
   }
 
   img.logo {
-    /* margin-top: 32px; */
-    width: 190px;
-    height: 120px;
+    width: 135px;
+    height: 90px;
   }
 
   img.logo:hover {
@@ -51,18 +45,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #274e13ff;
+    border-bottom: 4px solid #274e13ff;
     background-color: #b6d7a8ff;
+    width: 100vw;
   }
 
   div.router-view{
     padding-left: 10vw;
     padding-right: 10vw;
-    background-color: #d9ead3ff;
   }
 
   div#site-title {
-    margin: 2.5vw;
+    margin: 1.5vw;
   }
 
   div#nav-buttons {
@@ -75,8 +69,8 @@
 
   div#nav-buttons .btn {
     text-decoration: none;
-    color: #d9ead3ff;
-    font-size: 1.65rem;
+    color: white;
+    font-size: 1.75rem;
   }
 
   div#nav-buttons .btn:hover {

@@ -7,14 +7,16 @@ import com.techelevator.model.CardRequest;
 import com.techelevator.model.Deck;
 import com.techelevator.model.DeckRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin
 @RestController
-//pre-auth
+@PreAuthorize("isAuthenticated()")
 public class DeckController {
 
     private DeckDao deckDao;
@@ -27,8 +29,8 @@ public class DeckController {
     }
 
     @RequestMapping (path="/decks", method= RequestMethod.GET)
-    public List<Deck> getAllDecks() {
-        return deckDao.viewAllDecks();
+    public List<Deck> getAllDecks(Principal principal) {
+        return deckDao.viewAllDecks(principal.getName());
     }
 
     @RequestMapping (path="/decks/{id}", method= RequestMethod.GET)
