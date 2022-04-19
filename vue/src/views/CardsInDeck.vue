@@ -171,6 +171,7 @@ export default {
     margin-right: 3vw;
     background: none;
     border: none;
+    cursor: pointer;
   }
   button#add-button:hover {
     transform: scale(1.1);
@@ -185,6 +186,7 @@ export default {
     margin-right: 3vw;
     background: none;
     border: none;
+    cursor: pointer;
   }
   button#search-button:hover {
     transform: scale(1.1);
