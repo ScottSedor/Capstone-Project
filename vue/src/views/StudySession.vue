@@ -179,50 +179,6 @@ img.back-img, img.next-img {
   opacity: 0;
 
 }
-<<<<<<< HEAD
-
-
-
-/* ul {
-    padding-left: 0;
-    display: flex;
-    flex-flow: row wrap;
-  }
-  
-  div {
-    list-style-type: none;
-    padding: 10px 10px;
-    transition: all 0.3s ease;
-  }
-
-   .card {
-    display: block;
-    width: 150px;
-    height: 175px;
-    padding: 80px 50px;
-    background-color: #51aae5;
-    border-radius: 7px;
-    margin: 5px;
-    text-align: center;
-    line-height: 27px;
-    cursor: pointer;
-    position: relative;
-    color: #fff;
-    font-weight: 600;
-    font-size: 20px;
-    -webkit-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
-    -moz-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
-    box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
-    will-change: transform;
-  }
-  
-  div:hover{
-    transform: scale(1.1);
-  }
-
-  
- */
-=======
 span#end, div.cancel:hover {
   transform: scale(1.1);
 }
@@ -234,6 +190,5 @@ span#end, div.cancel{
   justify-content: center;
   cursor: pointer;
 }
->>>>>>> a7c0123ccb7e75864c5a98547affc45493ccf6fb
 
 </style>
