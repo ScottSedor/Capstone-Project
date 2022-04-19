@@ -36,6 +36,10 @@ div.deck-info-card {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #274e13ff;
+}
+div.deck-info-card > h1 {
+    color: #274e13ff;
 }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="create-deck-form">
-      <h1>Deck Library</h1>
+      <h1 id="title">Deck Library</h1>
       <div class="create-deck-button">
         <button class="create" data-toggle="popover" title="Create Deck" v-on:click="isCreatingDeck = !isCreatingDeck" v-show="!isCreatingDeck">
             <img class="create-img" src="..\assets\create-deck-icon.png" alt="create deck icon">
@@ -56,8 +56,9 @@ export default {
 </script>
 
 <style>
-h1 {
+h1#title {
     text-decoration-color: white;
+    color: #274e13ff;
 }
 div.button, div.create-deck-button {
     margin-top: 10px;
@@ -68,6 +69,10 @@ div.button, div.create-deck-button {
 button.create {
     background: none;
     border: none;
+    cursor: pointer;
+}
+button.create:hover {
+    transform: scale(1.1);
 }
 img.create-img {
     height: 120px;

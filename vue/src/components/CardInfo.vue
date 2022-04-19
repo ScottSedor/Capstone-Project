@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import deckService from '@/services/DeckService'
 
 export default {
     name: "card-info",
@@ -35,6 +36,16 @@ export default {
             return c.cardId == this.$route.params.cardId;
         });
       }
+    },
+    created() {
+      const deckId = this.$route.params.deckId;
+      // const cardId = this.$route.params.cardId;
+      this.$store.commit('SET_ACTIVE_DECK', deckId);
+      deckService.getCardsInDeck(deckId).then( response => {
+          if (response.status == 200) {
+            this.$store.commit('SET_CARDS', response.data);
+          }
+      });
     }
     
 }
@@ -43,6 +54,10 @@ export default {
 <style>
 div {
   color: white;
+}
+
+div#card-title {
+  color: #274e13ff;
 }
 
 div.single-card {
@@ -70,16 +85,22 @@ div.card-back {
 div.card-info {
    background-color: rgba(106, 168, 79, 0.596);
    border: 3px #274e13ff solid;
-   width: 20rem;
-   height: 10rem;
+   width: 25rem;
+   height: 12rem;
    margin: 5px;
    margin-bottom: 20px;
    border-radius: 4px;
+   padding: 5px;
    display: flex;
    flex-direction: column;
+   align-content: center;
    text-align: center;
-   justify-content: center;
-  
+   justify-content: flex-start;
+   overflow-y: auto;
+}
+
+div.card-info > h2 {
+  padding: 5px;
 }
 
 div.card-front > p {
@@ -94,10 +115,15 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+a:hover {
+  transform: scale(1.1);
 }
 
 a > img.back-arrow-icon {
-  width: 60px;
-  height: 60px; 
+  width: 70px;
+  height: 70px; 
 }
 </style>

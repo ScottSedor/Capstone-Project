@@ -73,10 +73,11 @@ div.edit-button {
 button.edit, button.remove {
   background: none;
   border: none;
+  cursor: pointer;
 }
 img.edit-img, img.remove-img {
-  height: 90px;
-  width: 90px;
+  height: 100px;
+  width: 100px;
   border-radius: 50px;
 }
 button.edit:hover, button.remove:hover {

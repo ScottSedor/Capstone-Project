@@ -6,13 +6,13 @@
             <img class="back-img" src="..\assets\back-arrow-icon.png" alt="back arrow icon">
           </button>
         </div>
-        <div class="current-card" v-on:click="toggleFlip()">
-          <transition name="flip" >
-              <p v-if="cards.length === 0">No Cards Found in Deck. Please Select Another Deck to Study.</p>
-              <h2 v-else class="card">
-                {{ isFlipped ? currentCard.cardBack : currentCard.cardFront }}
-              </h2>
-          </transition>
+        <div class="body">
+          <div class="flip-card-container current-card">
+              <div class="flip-card">
+                  <div class="flip-card-front">{{currentCard.cardFront}}</div>
+                  <div class="flip-card-back">{{currentCard.cardBack}}</div>
+              </div>
+          </div>
         </div>
 
         <div class="next-button">
@@ -20,12 +20,11 @@
             <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
           </button>
         </div>
+
         <div class="end-button">
-          <span id="end" v-on:click="cancelStudySession" v-show="currentIndex != (cards.length - 1)">End Study Session</span>
+          <span id="end" v-on:click="cancelStudySession" >End Study Session</span>
         </div>
-    </div>
-    <div class="cancel">
-          <button id="cancel" v-on:click="cancelStudySession" v-show="currentIndex != (cards.length - 1)">End Study Session</button>
+
     </div>
   </div>   
 </template>
@@ -96,20 +95,54 @@ div.prev-button {
   display: flex;
   align-items: center;
 }
-div.current-card {
-  grid-area: card;
-  transition: all 0.3s ease;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(106, 168, 79, 0.596);
-  padding: 10px;
-  height: 30vw;
-  width: 48vw;
-  cursor: pointer;
-  will-change: transform;
-  
+.body {
+    grid-area: card;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 42vw;
+    height: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flip-card-container {
+    width: 42vw;
+    height: 25vw;
+    perspective: 1000px;
+}
+.flip-card {
+    border: 3px solid black;
+    position: relative;
+    width: 42vw;
+    height: 25vw;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+.flip-card-container:hover .flip-card {
+    transform: rotateY(180deg);
+}
+.flip-card-container:hover .flip-card {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    text-align: center;
+    position: absolute;
+    width: 42vw;
+    height: 25vw;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+.flip-card-front {
+    background-color: rgb(94, 148, 71);
+    color: #fff;
+}
+.flip-card-back {
+    background-color: rgb(94, 148, 71);
+    color: #fff;
+    transform: rotateY(180deg);
 }
 div.next-button {
   grid-area: next;
@@ -142,6 +175,7 @@ img.back-img, img.next-img {
   opacity: 0;
 
 }
+<<<<<<< HEAD
 
 
 
@@ -184,5 +218,18 @@ img.back-img, img.next-img {
 
   
  */
+=======
+span#end, div.cancel:hover {
+  transform: scale(1.1);
+}
+span#end, div.cancel{
+  border: solid 2px black;
+  margin-top: 20px;
+  color: #274e13ff;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+>>>>>>> a7c0123ccb7e75864c5a98547affc45493ccf6fb
 
 </style>

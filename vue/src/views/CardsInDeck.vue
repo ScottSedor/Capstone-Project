@@ -28,7 +28,9 @@
       </div>
       <div class="start-study-button" v-show="isAdding == false && isSearching == false">
         <router-link :to="{name: 'study-session', params: {id: deckId}}">
-          <button id="start-study-button" v-show="isSearching == false">Start Study Session</button>
+          <button id="start-study-button" v-show="isSearching == false">
+            <img class="start-study-img" data-toggle="popover" title="Start Study Session" src="..\assets\play-button-icon.png" alt="play button icon">
+          </button>
         </router-link>
       </div>
     </div>
@@ -162,6 +164,10 @@ export default {
   div.cards-in-deck p {
       font-size: 1.5rem;
   }
+  div.back {
+    margin-top: 20px;
+    margin-right: 10px;
+  }
   div.buttons {
     display: flex;
     margin-bottom: 20px;
@@ -171,6 +177,7 @@ export default {
     margin-right: 3vw;
     background: none;
     border: none;
+    cursor: pointer;
   }
   button#add-button:hover {
     transform: scale(1.1);
@@ -185,6 +192,7 @@ export default {
     margin-right: 3vw;
     background: none;
     border: none;
+    cursor: pointer;
   }
   button#search-button:hover {
     transform: scale(1.1);
@@ -196,6 +204,18 @@ export default {
   }
   button#start-study-button {
     margin-left: 3vw;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  button#start-study-button {
+    transform: scale(1.1);
+  }
+  img.start-study-img {
+    height: 80px;
+    width: 110px;
+    border-radius: 50px;
+    margin-top: 20px;
   }
   div.search-card {
     display: flex;
