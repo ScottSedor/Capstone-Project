@@ -2,7 +2,9 @@
   <div class="cards-in-deck">
     <div class="deck-info">
       <div class="back">
-        <a @click="$router.go(-1)">Back</a>
+        <a @click="$router.go(-1)">
+          <img class="back-arrow-icon" data-toggle="popover" title="Back to Decks" src="..\assets\back-arrow-icon.png" alt="back arrow icon">
+        </a>
       </div>
       <div class="deck-info-detail">
         <deck-info />
@@ -13,11 +15,15 @@
     </div>
     <div class="buttons">
       <div class="add-button" v-show="isSearching == false">
-        <button id="add-button" v-on:click="isAdding = !isAdding" v-show="isAdding == false">Create Card</button>
+        <button id="add-button" v-on:click="isAdding = !isAdding" v-show="isAdding == false">
+          <img class="create-img" data-toggle="popover" title="Create New Card" src="..\assets\create-deck-icon.png" alt="create card icon">
+        </button>
         <button v-on:click="isAdding = !isAdding" v-show="isAdding == true">Cancel</button>
       </div>
       <div class="search-button" v-show="isAdding == false">
-        <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">Search for New Cards</button>
+        <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">
+          <img class="search-img" data-toggle="popover" title="Search for New Cards" src="..\assets\search-deck-icon.png" alt="search deck icon">
+        </button>
         <button v-on:click="cancelSearch" v-show="isSearching == true">Cancel Search</button>
       </div>
       <div class="start-study-button" v-show="isAdding == false && isSearching == false">
@@ -163,10 +169,30 @@ export default {
   }
   button#add-button {
     margin-right: 3vw;
+    background: none;
+    border: none;
+  }
+  button#add-button:hover {
+    transform: scale(1.1);
+  }
+  img.create-img {
+    height: 110px;
+    width: 110px;
+    border-radius: 50px;
   }
   button#search-button {
     margin-left: 3vw;
     margin-right: 3vw;
+    background: none;
+    border: none;
+  }
+  button#search-button:hover {
+    transform: scale(1.1);
+  }
+  img.search-img {
+    height: 110px;
+    width: 110px;
+    border-radius: 50px;
   }
   button#start-study-button {
     margin-left: 3vw;
@@ -210,6 +236,10 @@ export default {
     display: flex;
     align-content: flex-end;
     justify-content: center;
+  }
+  a > img.back-arrow-icon {
+  width: 70px;
+  height: 70px; 
   }
 
 </style>

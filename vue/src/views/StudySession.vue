@@ -2,7 +2,9 @@
   <div class="container">
     <div class="study-session">
         <div class="prev-button">
-          <button id="previous" v-on:click="previousCard" v-show="currentIndex != 0 && cards.length > 0">Previous Card</button>
+          <button id="previous" data-toggle="popover" title="Back to Previous Card" v-on:click="previousCard" v-show="currentIndex != 0 && cards.length > 0">
+            <img class="back-img" src="..\assets\back-arrow-icon.png" alt="back arrow icon">
+          </button>
         </div>
         <div class="current-card" v-on:click="toggleFlip()">
           <transition name="flip" >
@@ -13,10 +15,12 @@
           </transition>
         </div>
         <div class="next-button">
-          <button id="next" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">Next Card</button>
+          <button id="next" data-toggle="popover" title="Next Card" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">
+            <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
+          </button>
         </div>
         <div class="end-button">
-          <button id="end" v-on:click="cancelStudySession" v-show="currentIndex === (cards.length - 1)">End Study Session</button>
+          <span id="end" v-on:click="cancelStudySession" v-show="currentIndex === (cards.length - 1)">End Study Session</span>
         </div>
     </div>
     <div class="cancel">
@@ -87,6 +91,8 @@ div.study-session {
 }
 div.prev-button {
   grid-area: prev;
+  display: flex;
+  align-items: center;
 }
 div.current-card {
   grid-area: card;
@@ -104,6 +110,20 @@ div.current-card {
 }
 div.next-button {
   grid-area: next;
+  display: flex;
+  align-items: center;
+}
+button#previous, button#next {
+  background: none;
+  border: none;
+}
+button#previous:hover, button#next:hover {
+  transform: scale(1.1);
+}
+img.back-img, img.next-img {
+  height: 175px;
+  width: 175px;
+  border-radius: 50px;
 }
 .flip-enter-active {
   transition: all 0.4s ease;

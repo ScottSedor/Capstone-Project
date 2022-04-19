@@ -2,7 +2,7 @@
   <div>
     <div class="single-card">
       <a @click="$router.go(-1)">
-         <img class="back-arrow" src="..\assets\back-arrow.png" alt="back arrow icon"> 
+         <img class="back-arrow-icon" data-toggle="popover" title="Back to Cards" src="..\assets\back-arrow-icon.png" alt="back arrow icon"> 
       </a>
       <div class="card-front">
         <div id="card-title">
@@ -46,11 +46,22 @@ div {
 }
 
 div.single-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  grid-template-areas: 
+    "btn front back .";
   justify-content: center; 
 }
 
-div.card-front, div.card-back {
+div.card-front {
+  grid-area: front;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.card-back {
+  grid-area: back;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,8 +89,15 @@ div.card-front > p {
   font-size: small;
 }
 
-a > img.back-arrow {
-  width: 45px;
-  height: 45px; 
+a {
+  grid-area: btn;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a > img.back-arrow-icon {
+  width: 60px;
+  height: 60px; 
 }
 </style>
