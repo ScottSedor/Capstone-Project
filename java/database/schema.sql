@@ -56,17 +56,17 @@ CONSTRAINT FK_deck_id FOREIGN KEY (deck_id) REFERENCES decks(deck_id),
 CONSTRAINT PK_users_decks PRIMARY KEY (user_id, deck_id)
 );
 
-INSERT INTO decks (deck_title) VALUES ('Deck One');
-INSERT INTO decks (deck_title) VALUES ('Deck Two');
+INSERT INTO decks (deck_title) VALUES ('Java terminology');
+INSERT INTO decks (deck_title) VALUES ('Java technical interview questions');
 INSERT INTO decks (deck_title) VALUES ('Deck Three');
 
 INSERT INTO cards (user_id, card_front, card_back, keywords) 
-VALUES (1, 'Front Card One', 'Back Card One', 'Test'),
-	   (1, 'Front Card Two', 'Back Card Two', 'Test'),
-	   (1, 'Front Card Three', 'Back Card Three', 'Test'),
-	   (1, 'Front Card Four', 'Back Card Four', 'Test'),
-	   (1, 'Front Card Five', 'Back Card Five', 'Test'),
-	   (1, 'Front Card Six', 'Back Card Six', 'Test');
+VALUES (1, 'class', 'A blueprint or template for objects that defines variables and methods.', 'class'),
+	   (1, 'object', 'An instance of class, contains state and behavior.', 'object'),
+	   (1, 'method', 'Contains the executable body that can can be applied to the specific object of the class.', 'method'),
+	   (1, 'null', 'When a reference variable does not point to any value it is assigned null.', 'null'),
+	   (1, 'package', 'A mechanism to group related classes, interfaces and enums into a single module.', 'package'),
+	   (1, 'bytecode', 'Is a machine independent language and contains a set of instructinos which are to be executed only by JVM.', 'bytecode');
 	   
 INSERT INTO decks_cards (deck_id, card_id) 
 VALUES (1, 1), (1, 2), (2, 3), (2, 4), (3, 5), (3, 6);  
@@ -85,6 +85,7 @@ VALUES (1, 'authorization', 'The process of giving a user permission to access a
 		(1, 'parse', 'Converting a value of one data type to an unlike data type', 'parse'),
 		(1, 'reference data type', 'A data type that holds a reference to the location of a value rather than the value itself.', 'reference data type'),
 		(1, 'serialization', 'The conversion of the state of an object into a byte stream.', 'serialization'),
+		(1, 'access modifiers', 'Public, private, protected and default determines access control of a class, method or variable.', 'access modifiers'),
 		(2, 'constructor vs method', 'A constructor is used to initialize an object. A method is used to exhibit functionality of an object.', 'constructor, method'),
 		(2, 'HTTP GET vs HTTP POST', 'GET is less secure than POST because data sent is part of the URL', 'HTTP GET, HTTP POST'),
 		(2, 'Rules of REST', 'Uniform interface, client-server separation, stateless, cacheable, layered system and code on demand.', 'REST'),
@@ -94,11 +95,15 @@ VALUES (1, 'authorization', 'The process of giving a user permission to access a
 		(2, 'What problem does the MVC pattern solve?', 'The MVC keeps the user interface separate from the rest of the program.', 'MVC pattern'),
 		(2, 'stack vs heap', 'The stack is a limited linear area of memory that holds primitive data types. The heap is a free floating area of memory that holds objects.', 'stack, heap'),
   		(2, 'What happens when a web browser requests a web page?', 'The browser looks up an IP address of the requested domain name using a DNS server.  The browser sends an HTTP GET request to the IP address.  The web server retrieves the resource requested and returns it as an HTTP response with the status code 200 if found. The web browser parses the HTTP response as HTML and renders the page on the screen.', 'web browser request'),
-		(2, 'stack vs queue', 'In the stack elements are added/retrieved last-in-first-out(LIFO), in the queue elements are added/retrieved first-in-first-out (FIFO).', 'stack, queue);
+		(2, 'stack vs queue', 'In the stack elements are added/retrieved last-in-first-out(LIFO), in the queue elements are added/retrieved first-in-first-out (FIFO).', 'stack, queue'),
+		(2, 'length vs length()', 'The length() method is used to return the number of characters in a string.  The length instance variable in arrays which will return the number of values or objects in the array.', 'length'),
+		(2, 'State some situations where exceptions may arise?', 'Accessing an element that does not exist in array, invalid conversion of a number to a string, invalid casting of a class, trying to create an object for an interface or abstract class.', 'exceptions'),
+		(2, 'How do we handle exceptions?', 'By specifying try catch block where we can catch the exception or declaring a method with a throws clause.', 'exception handling'),
+		(2, 'List the benefits of object oriented programming.', 'Easy maintenance, code reusability, code extendability and reliable.', 'object oriented programming, OOP'); 
 
 
 INSERT INTO decks_cards (deck_id, card_id)
-VALUES (1, 7), (1, 8), (1, 9), (1, 10), (1, 11), (1, 12), (1, 13), (1, 14), (1, 15), (1, 16), (1, 17);
+VALUES (1, 7), (1, 8), (1, 9), (1, 10), (1, 11), (1, 12), (1, 13), (1, 14), (1, 15), (1, 16), (1, 17), (1, 18), (2, 19), (2, 20), (2, 21), (2, 22), (2, 23), (2, 24), (2, 25), (2, 26), (2, 27), (2, 28), (2, 29), (2, 30), (2, 31), (2, 32);
 
 COMMIT TRANSACTION;
 

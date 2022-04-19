@@ -101,6 +101,7 @@ div.current-card {
   width: 48vw;
   cursor: pointer;
   will-change: transform;
+  
 }
 div.next-button {
   grid-area: next;
@@ -154,18 +155,7 @@ div.next-button {
     transform: scale(1.1);
   }
 
-  .flip-enter-active {
-    transition: all 0.4s ease;
-  }
   
-  .flip-leave-active {
-    display: none;
-  }
-  
-  .flip-enter, .flip-leave {
-    transform: rotateY(180deg);
-    opacity: 0;
-  
-  } */
+ */
 
 </style>
