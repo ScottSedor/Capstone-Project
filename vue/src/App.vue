@@ -49,6 +49,7 @@
     -webkit-box-shadow: 0px 10px 6px -6px #777;
     background-color: #b6d7a8ff;
     width: 100vw;
+    border-radius: 30px;
   }
 
   div.router-view{

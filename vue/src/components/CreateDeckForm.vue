@@ -59,6 +59,7 @@ export default {
 h1#title {
     text-decoration-color: white;
     color: #274e13ff;
+    text-shadow: rgba(0, 0, 0, 0.651);
 }
 div.button, div.create-deck-button {
     margin-top: 10px;
