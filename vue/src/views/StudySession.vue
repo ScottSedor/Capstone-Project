@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="study-session">
+    <div class="study-session" v-if="currentCard">
         <div class="prev-button">
           <button id="previous" data-toggle="popover" title="Back to Previous Card" v-on:click="previousCard" v-show="currentIndex != 0 && cards.length > 0">
             <img class="back-img" src="..\assets\back-arrow-icon.png" alt="back arrow icon">
@@ -9,7 +9,7 @@
         <div class="body-container">
           <div class="body">
             <div class="flip-card-container current-card">
-                <div class="flip-card">
+                <div class="flip-card" v-bind:class="{'is-flipped': isFlipped}" v-on:click="toggleFlip">
                     <div class="flip-card-front">{{currentCard.cardFront}}</div>
                     <div class="flip-card-back">{{currentCard.cardBack}}</div>
                 </div>
@@ -17,11 +17,11 @@
           </div>
         </div>
         <div class="right-wrong-buttons">
-          <div class="wrong-button">
-            <span id="wrong" v-on:click="markedWrong">WRONG</span>
+          <div class="wrong-button" v-on:click="markedWrong">
+            <span id="wrong" >WRONG</span>
           </div>
-          <div class="right-button">
-            <span id="right" v-on:click="markedRight">RIGHT</span>
+          <div class="right-button" v-on:click="markedRight">
+            <span id="right">RIGHT</span>
           </div>
         </div>
         <div class="next-button">
@@ -46,9 +46,11 @@ export default {
     return {
         currentIndex: 0,
         isFlipped: false,
-        card: document.querySelector('.card'),
+        // card: document.querySelector('.card'),
+        markedCorrect: false,
+        rightAnswers: 0,
         wrongAnswers: 0,
-        rightAnswers: 0
+        previousAnswerCorrect: false
     }
   },
   computed: {
@@ -66,21 +68,39 @@ export default {
     },
     nextCard() {
         this.currentIndex = this.currentIndex + 1;
-        
-        const card = document.querySelector('.flip-card');
-        if (card.classList.contains('is-flipped')) {
-          card.classList.toggle('is-flipped');
+        if (this.markedCorrect === true) {
+          this.rightAnswers++;
+          this.$store.commit('SET_CURRENT_RIGHT_ANSWERS', this.rightAnswers);
+          this.previousAnswerCorrect = true;
+        } else {
+          this.wrongAnswers++;
+          this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
+          this.previousAnswerCorrect = false;
         }
+        this.markedCorrect = false;
+
+        // const card = document.querySelector('.flip-card');
+        // if (card.classList.contains('is-flipped')) {
+        //   card.classList.toggle('is-flipped');
+        // }
 
         this.$store.commit('SET_CURRENT_INDEX', this.currentIndex);
       },
     previousCard() {
         this.currentIndex = this.currentIndex -1;
 
-        const card = document.querySelector('.flip-card');
-        if (card.classList.contains('is-flipped')) {
-          card.classList.toggle('is-flipped');
+        if (this.previousAnswerCorrect === true) {
+          this.rightAnswers--;
+          this.$store.commit('SET_CURRENT_RIGHT_ANSWERS', this.rightAnswers);
+        } else {
+          this.wrongAnswers--;
+          this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
         }
+
+        // const card = document.querySelector('.flip-card');
+        // if (card.classList.contains('is-flipped')) {
+        //   card.classList.toggle('is-flipped');
+        // }
     },
     cancelStudySession() {
         if (confirm('End this study session?')) {
@@ -88,12 +108,10 @@ export default {
         }
     },
     markedRight() {
-      this.rightAnswers = this.rightAnswers +1;
-      this.$store.commit('SET_CURRENT_RIGHT_ANSWERS', this.rightAnswers);
+      this.markedCorrect = true;
     },
     markedWrong() {
-      this.wrongAnswers = this.wrongAnswers +1;
-      this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
+      this.markedCorrect = false;
     }
   },
   created() {
@@ -107,12 +125,12 @@ export default {
       }
     });
   },
-  mounted() {
-    var card = document.querySelector('.flip-card');
-    card.addEventListener( 'click', function() {
-      card.classList.toggle('is-flipped');
-    });
-  }
+  // mounted() {
+  //   var card = document.querySelector('.flip-card');
+  //   card.addEventListener( 'click', function() {
+  //     card.classList.toggle('is-flipped');
+  //   });
+  // }
 }
 </script>
 
