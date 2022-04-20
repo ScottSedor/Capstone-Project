@@ -63,7 +63,7 @@ const router = new Router({
       name: "decks",
       component: Decks,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -71,7 +71,7 @@ const router = new Router({
       name: "cards-in-deck",
       component: CardsInDeck,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -79,7 +79,7 @@ const router = new Router({
       name: "card-info",
       component: CardInfo,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -87,7 +87,7 @@ const router = new Router({
       name: "study-session-home",
       component: StudySessionHome,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -95,7 +95,7 @@ const router = new Router({
       name: "study-session",
       component: StudySession,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
 
