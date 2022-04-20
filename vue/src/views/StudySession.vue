@@ -167,6 +167,7 @@ div.body-container {
     font-family: 'Roboto Mono', monospace;;
     width: 42vw;
     height: 25vw;
+    padding: 10px;
 }
 .flip-card-container {
     width: 42vw;
@@ -174,9 +175,9 @@ div.body-container {
     perspective: 1000px;
 }
 .flip-card {
-    border: 3px solid black;
-    border-radius: 8px;
-    position: relative;
+    /* border: 3px solid black;
+    border-radius: 8px; */
+    /* position: relative; */
     width: 42vw;
     height: 25vw;
     transition: transform 0.4s;
@@ -198,12 +199,58 @@ div.body-container {
     
 }
 .flip-card-front {
-    background-color: rgb(94, 148, 71);
-    color: #fff;
+    /* background-color: rgb(94, 148, 71);
+    color: #fff; */
+ background-color: rgba(106, 168, 79, 0.596);
+   border: 3px #274e13ff solid;
+   width: 32rem;
+   height: 18rem;
+   margin: 5px;
+   margin-bottom: 20px;
+   border-radius: 4px;
+   padding: 5px;
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   text-align: center;
+   justify-content: flex-start;
+   overflow-y: auto;
+ 
+   box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
 }
+
 .flip-card-back {
-    background-color: rgb(94, 148, 71);
-    color: #fff;
+    /* background-color: rgb(94, 148, 71);
+    color: #fff; */
+   background-color: rgba(106, 168, 79, 0.596);
+   border: 3px #274e13ff solid;
+   width: 32rem;
+   height: 18rem;
+   margin: 5px;
+   margin-bottom: 20px;
+   border-radius: 4px;
+   padding: 5px;
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   text-align: center;
+   justify-content: flex-start;
+   overflow-y: auto;
+ 
+   box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+
     transform: rotateY(180deg);
     
 }
@@ -234,24 +281,24 @@ button#right, button#wrong {
   width: 100%;
 }
 button#right {
-  background-color: cornflowerblue;
+  background-color: #00B300;
   color: white;
 }
 button#right:hover {
-  background-color: rgb(0, 95, 190);
+  background-color: #007D00;
 }
 button#right.is-clicked-right {
-   background-color: rgb(0, 95, 190);
+   background-color: #007D00;
 }
 button#wrong {
-  background-color: tomato;
+  background-color:#B30000;
   color: white;
 }
 button#wrong:hover {
-  background-color: rgb(255, 0, 0);
+  background-color: #7D0000;
 }
 button#wrong.is-clicked-wrong {
-  background-color: rgb(255, 0, 0); 
+  background-color: #7D0000; 
 }
 div.end-button {
   grid-area: end;
