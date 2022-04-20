@@ -46,10 +46,11 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 4px solid #274e13ff;
-    -webkit-box-shadow: 0px 10px 6px -6px #777;
+    -webkit-box-shadow: 0px 15px 6px -6px rgba(119, 119, 119, 0.534);
     background-color: #b6d7a8ff;
     width: 100vw;
     border-radius: 30px;
+    margin-bottom: 50px;
   }
 
   div.router-view{
