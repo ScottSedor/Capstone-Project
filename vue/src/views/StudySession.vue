@@ -32,13 +32,14 @@
 </template>
 
 <script>
-import deckService from '@/services/DeckService'
+import deckService from '@/services/DeckService';
 
 export default {
   data() {
     return {
         currentIndex: 0,
-        isFlipped: false
+        isFlipped: false,
+        card: document.querySelector('.card')
     }
   },
   computed: {
@@ -67,7 +68,7 @@ export default {
         if (confirm('End this study session?')) {
           this.$router.push({name: 'study-session-home'});
         }
-    }
+    },
   },
   created() {
     this.currentIndex = 0;
@@ -78,6 +79,12 @@ export default {
       if (response.status == 200) {
         this.$store.commit('SET_CARDS', response.data);
       }
+    });
+  },
+  mounted() {
+    var card = document.querySelector('.flip-card');
+    card.addEventListener( 'click', function() {
+      card.classList.toggle('is-flipped');
     });
   }
 }
@@ -122,11 +129,8 @@ div.body-container {
     transition: transform 1s;
     transform-style: preserve-3d;
 }
-.flip-card-container:hover .flip-card {
-    transform: rotateY(180deg);
-}
-.flip-card-container:hover .flip-card {
-    transform: rotateY(180deg);
+.flip-card.is-flipped {
+  transform: rotateY(180deg);
 }
 .flip-card-front, .flip-card-back {
     text-align: center;
