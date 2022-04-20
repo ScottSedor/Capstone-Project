@@ -18,10 +18,10 @@
         </div>
         <div class="right-wrong-buttons">
           <div class="wrong-button" >
-            <span id="wrong" v-on:click="markedWrong">WRONG</span>
+            <button id="wrong" v-on:click="markedWrong">WRONG</button>
           </div>
           <div class="right-button" >
-            <span id="right" v-on:click="markedRight">RIGHT</span>
+            <button id="right" v-on:click="markedRight">RIGHT</button>
           </div>
         </div>
         <div class="next-button">
@@ -79,11 +79,6 @@ export default {
         }
         this.markedCorrect = false;
         this.isFlipped = false;
-
-        // const card = document.querySelector('.flip-card');
-        // if (card.classList.contains('is-flipped')) {
-        //   card.classList.toggle('is-flipped');
-        // }
 
         this.$store.commit('SET_CURRENT_INDEX', this.currentIndex);
       },
@@ -225,6 +220,9 @@ div.right-button, div.wrong-button {
   max-width: 21vw;
   flex-grow: 1;
   height: 30px;
+}
+span#right, span#wrong {
+  pointer-events: none;
 }
 div.end-button {
   grid-area: end;
