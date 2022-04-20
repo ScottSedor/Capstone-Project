@@ -26,7 +26,9 @@ export default new Vuex.Store({
     activeCard: 0,
     activeDeckId: 0,
     activeDeck: {},
-    currentStudyIndex: 0
+    currentStudyIndex: 0,
+    currentRightAnswers: 0,
+    currentWrongAnswers: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -74,6 +76,12 @@ export default new Vuex.Store({
     },
     SET_CURRENT_INDEX(state, index) {
       state.currentStudyIndex = index;
+    },
+    SET_CURRENT_RIGHT_ANSWERS(state, rightAnswers) {
+      state.currentRightAnswers = rightAnswers;
+    },
+    SET_CURRENT_WRONG_ANSWERS(state, wrongAnswers) {
+      state.currentWrongAnswers = wrongAnswers;
     }
   }
 })

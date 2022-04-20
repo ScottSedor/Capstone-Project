@@ -18,10 +18,10 @@
         </div>
         <div class="right-wrong-buttons">
           <div class="wrong-button">
-            <span id="wrong">WRONG</span>
+            <span id="wrong" v-on:click="markedWrong">WRONG</span>
           </div>
           <div class="right-button">
-            <span id="right">RIGHT</span>
+            <span id="right" v-on:click="markedRight">RIGHT</span>
           </div>
         </div>
         <div class="next-button">
@@ -46,7 +46,9 @@ export default {
     return {
         currentIndex: 0,
         isFlipped: false,
-        card: document.querySelector('.card')
+        card: document.querySelector('.card'),
+        wrongAnswers: 0,
+        rightAnswers: 0
     }
   },
   computed: {
@@ -85,6 +87,14 @@ export default {
           this.$router.push({name: 'study-session-home'});
         }
     },
+    markedRight() {
+      this.rightAnswers = this.rightAnswers +1;
+      this.$store.commit('SET_CURRENT_RIGHT_ANSWERS', this.rightAnswers);
+    },
+    markedWrong() {
+      this.wrongAnswers = this.wrongAnswers +1;
+      this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
+    }
   },
   created() {
     this.currentIndex = 0;
