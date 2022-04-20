@@ -56,6 +56,12 @@ export default {
 </script>
 
 <style>
+
+button > img.create-img {
+    height: 300px;
+    width: 300px;
+    border-radius: 50px;
+}
 h1#title {
     text-decoration-color: white;
     color: #274e13ff;
@@ -75,9 +81,5 @@ button.create {
 button.create:hover {
     transform: scale(1.1);
 }
-img.create-img {
-    height: 120px;
-    width: 120px;
-    border-radius: 50px;
-}
+
 </style>

@@ -35,8 +35,8 @@ export default {
     height: 300px;
     width: 400px;  
     border-radius: 40px;
-    border-left: solid 15px rgba(0, 0, 0, 0.452); 
-    border-bottom: solid 13px rgba(0, 0, 0, 0.452);
+    border-left: solid 15px #274e13ff; 
+    border-bottom: solid 13px #274e13ff;
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
