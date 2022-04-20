@@ -80,7 +80,8 @@ export default {
         }
         this.markedCorrect = false;
         this.isFlipped = false;
-
+        this.isClickedRight = false;
+        this.isClickedWrong = false;
         this.$store.commit('SET_CURRENT_INDEX', this.currentIndex);
       },
     previousCard() {
@@ -93,8 +94,12 @@ export default {
           this.wrongAnswers--;
           this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
         }
+        this.isClickedRight = false;
+        this.isClickedWrong = false;
+        this.isFlipped = false;
     },
     cancelStudySession() {
+      
         if (confirm('End this study session?')) {
           this.$router.push({name: 'study-session-home'});
         }
@@ -151,7 +156,7 @@ div.body-container {
 }
 .body {
     margin-top: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono', monospace;;
     width: 42vw;
     height: 25vw;
 }
