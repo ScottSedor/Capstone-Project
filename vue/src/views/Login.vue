@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      
       <div
         class="alert alert-danger"
         role="alert"
@@ -11,7 +11,11 @@
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
+      >Thank you for registering, please sign in.
+      </div>
+
+      <div class="login-fields">
+      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -31,8 +35,12 @@
         v-model="user.password"
         required
       />
+      <button class="submit" type="submit">Sign in</button>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      </div>
+      <img class="angry-img" src="..\assets\angry-learner.png" alt="frustrated child studying">
+      <img class="happy-img" src="..\assets\happy-learner.png" alt="happy woman learning">
+      
     </form>
   </div>
 </template>
@@ -76,7 +84,44 @@ export default {
 </script>
 
 <style>
+div.login-fields {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+img.angry-img {
+  margin-top: 20px;
+  margin-left: 10px;
+  height: 300px;
+  width: 300px;
+}
+img.happy-img {
+  margin-top: 20px;
+  margin-left: 10px;
+  height: 300px;
+  width: 450px
+}
 
+form.form-signin {
+  display: flex;
+  height: 350px;
+  background: rgb(240, 240, 240);
+  margin-top: 30px;
+   box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 6.5px 5px rgba(0, 0, 0, 0.06),
+  0 12.3px 7.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 23.4px rgba(0, 0, 0, 0.086),
+  0 50px 80px rgba(0, 0, 0, 0.12);
+}
+form.form-register {
+  background: rgb(240, 240, 240);
+}
+button.submit {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 
 </style>
