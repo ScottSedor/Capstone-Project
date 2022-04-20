@@ -78,6 +78,7 @@ export default {
           this.previousAnswerCorrect = false;
         }
         this.markedCorrect = false;
+        this.isFlipped = false;
 
         // const card = document.querySelector('.flip-card');
         // if (card.classList.contains('is-flipped')) {
