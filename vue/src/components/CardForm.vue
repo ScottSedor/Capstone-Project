@@ -110,6 +110,7 @@ div.boxes {
 }
 div.form-field {
   margin: 1px;
+  color: #274e13ff;
 }
 div.save-button {
   display: flex;
