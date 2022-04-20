@@ -46,6 +46,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 4px solid #274e13ff;
+    -webkit-box-shadow: 0px 10px 6px -6px #777;
     background-color: #b6d7a8ff;
     width: 100vw;
   }
