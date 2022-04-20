@@ -185,6 +185,7 @@ div.body-container {
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+    
 }
 .flip-card-front {
     background-color: rgb(94, 148, 71);
@@ -194,6 +195,7 @@ div.body-container {
     background-color: rgb(94, 148, 71);
     color: #fff;
     transform: rotateY(180deg);
+    
 }
 div.next-button {
   grid-area: next;
