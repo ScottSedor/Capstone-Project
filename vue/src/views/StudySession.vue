@@ -17,11 +17,11 @@
           </div>
         </div>
         <div class="right-wrong-buttons">
-          <div class="wrong-button" v-on:click="markedWrong">
-            <span id="wrong" >WRONG</span>
+          <div class="wrong-button" >
+            <span id="wrong" v-on:click="markedWrong">WRONG</span>
           </div>
-          <div class="right-button" v-on:click="markedRight">
-            <span id="right">RIGHT</span>
+          <div class="right-button" >
+            <span id="right" v-on:click="markedRight">RIGHT</span>
           </div>
         </div>
         <div class="next-button">
