@@ -87,10 +87,10 @@ export default {
     previousCard() {
         this.currentIndex = this.currentIndex -1;
 
-        if (this.previousAnswerCorrect === true) {
+        if (this.previousAnswerCorrect === true && this.rightAnswers > 0) {
           this.rightAnswers--;
           this.$store.commit('SET_CURRENT_RIGHT_ANSWERS', this.rightAnswers);
-        } else {
+        } else if (this.previousAnswerCorrect === false && this.wrongAnswers > 0) {
           this.wrongAnswers--;
           this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
         }

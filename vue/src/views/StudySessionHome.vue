@@ -1,11 +1,11 @@
 <template>
     <div class="study-session-home">
         <div class="end-study-session" v-show="currentIndex != 0">
-            <h1 id ="previous-stats">Previous Session Results: </h1>
-            <h1 id="flashcards">Flashcards Completed: {{ currentIndex + 1 }}</h1>
-            <h1 id="percentage">Percent Of Deck Complete: {{percentComplete}}%</h1>
-            <h1>Number of Right Answers: {{ rightAnswers }} </h1>
-            <h1>Number of Wrong Answers: {{ wrongAnswers }} </h1>
+            <h1 id ="previous">Previous Session Results: </h1>
+            <h1 id="cards">Flashcards Completed: {{ currentIndex + 1 }}</h1>
+            <h1 id="percent">Percent Of Deck Complete: {{percentComplete}}%</h1>
+            <h1 id="right">Number of Right Answers: {{ rightAnswers }} </h1>
+            <h1 id="wrong">Number of Wrong Answers: {{ wrongAnswers }} </h1>
             <a id="restart" @click="$router.go(-1)">
                 <img class="restart-icon" data-toggle="popover" title="Restart Study Session" src="..\assets\restart-icon.png" alt="restart icon">
             </a>
@@ -87,16 +87,32 @@ export default {
     div.end-study-session {
         display: grid;
         grid-template-columns: 3fr 1fr;
-        grid-template-areas: 
+        grid-template-areas:
+            "previous restart" 
             "cards restart"
-            "percent restart";
+            "percent restart"
+            "right restart"
+            "wrong restart";
     }
-    h1#flashcards {
+    h1#previous {
+       grid-area: previous; 
+    }
+    h1#right {
+        grid-area: right;
+    }
+    h1#wrong {
+        grid-area: wrong;
+    }
+    h1 {
+        font-size: 18px;
+        text-align: left;
+    }
+    h1#cards {
         color: #274e13ff;
         grid-area: cards;
         text-align: center;
     }
-    h1#percentage {
+    h1#percent {
         color: #274e13ff;
         grid-area: percent;
         text-align: center;
