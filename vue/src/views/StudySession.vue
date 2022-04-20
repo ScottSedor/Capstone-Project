@@ -99,7 +99,15 @@ export default {
         this.isFlipped = false;
     },
     cancelStudySession() {
-      
+        if (this.markedCorrect === true) {
+          this.rightAnswers++;
+          this.$store.commit('SET_CURRENT_RIGHT_ANSWERS', this.rightAnswers);
+          this.previousAnswerCorrect = true;
+        } else {
+          this.wrongAnswers++;
+          this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
+          this.previousAnswerCorrect = false;
+        }
         if (confirm('End this study session?')) {
           this.$router.push({name: 'study-session-home'});
         }
