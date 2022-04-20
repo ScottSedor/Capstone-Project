@@ -16,7 +16,14 @@
             </div>
           </div>
         </div>
-
+        <div class="right-wrong-buttons">
+          <div class="wrong-button">
+            <span id="wrong">WRONG</span>
+          </div>
+          <div class="right-button">
+            <span id="right">RIGHT</span>
+          </div>
+        </div>
         <div class="next-button">
           <button id="next" data-toggle="popover" title="Next Card" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">
             <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
@@ -57,12 +64,21 @@ export default {
     },
     nextCard() {
         this.currentIndex = this.currentIndex + 1;
-        this.isFlipped = false;
+        
+        const card = document.querySelector('.flip-card');
+        if (card.classList.contains('is-flipped')) {
+          card.classList.toggle('is-flipped');
+        }
+
         this.$store.commit('SET_CURRENT_INDEX', this.currentIndex);
       },
     previousCard() {
         this.currentIndex = this.currentIndex -1;
-        this.isFlipped = false;
+
+        const card = document.querySelector('.flip-card');
+        if (card.classList.contains('is-flipped')) {
+          card.classList.toggle('is-flipped');
+        }
     },
     cancelStudySession() {
         if (confirm('End this study session?')) {
@@ -93,9 +109,10 @@ export default {
 <style>
 div.study-session {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: 
     "prev card next"
+    ". answer ."
     ". end .";
   background-size: cover;
 }
@@ -107,8 +124,9 @@ div.prev-button {
 div.body-container {
   grid-area: card;
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
 }
 .body {
     margin-top: 10px;
@@ -123,10 +141,11 @@ div.body-container {
 }
 .flip-card {
     border: 3px solid black;
+    border-radius: 8px;
     position: relative;
     width: 42vw;
     height: 25vw;
-    transition: transform 1s;
+    transition: transform 0.4s;
     transform-style: preserve-3d;
 }
 .flip-card.is-flipped {
@@ -157,8 +176,37 @@ div.next-button {
   display: flex;
   align-items: center;
 }
+div.right-wrong-buttons {
+  grid-area: answer;
+  display:flex;
+  justify-content: center;
+}
+div.wrong-button {
+  background-color: tomato;
+}
+div.right-button {
+  background-color: dodgerblue;
+}
+div.right-button, div.wrong-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 2px;
+  max-width: 21vw;
+  flex-grow: 1;
+  height: 30px;
+}
 div.end-button {
   grid-area: end;
+  max-width: 42vw;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: center;
+}
+span#end {
+  min-width: 20vw;
 }
 button#previous, button#next {
   background: none;
