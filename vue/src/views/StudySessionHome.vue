@@ -1,8 +1,11 @@
 <template>
     <div class="study-session-home">
         <div class="end-study-session" v-show="currentIndex != 0">
+            <h1 id ="previous-stats">Previous Session Results: </h1>
             <h1 id="flashcards">Flashcards Completed: {{ currentIndex + 1 }}</h1>
-            <h1 id="percentage">Percent Complete: {{percentComplete}}%</h1>
+            <h1 id="percentage">Percent Of Deck Complete: {{percentComplete}}%</h1>
+            <h1>Number of Right Answers: {{ rightAnswers }} </h1>
+            <h1>Number of Wrong Answers: {{ wrongAnswers }} </h1>
             <a id="restart" @click="$router.go(-1)">
                 <img class="restart-icon" data-toggle="popover" title="Restart Study Session" src="..\assets\restart-icon.png" alt="restart icon">
             </a>
@@ -42,6 +45,14 @@ export default {
             let cards = this.$store.state.cardsInDeck;
             const percentage = (this.currentIndex / (cards.length - 1)) * 100;
             return percentage.toFixed();    
+        },
+        rightAnswers() {
+            const rightAnswers = (this.$store.state.currentRightAnswers);
+            return rightAnswers;
+        },
+        wrongAnswers() {
+            const wrongAnswers = (this.$store.state.currentWrongAnswers);
+            return wrongAnswers;
         }
     },
      created() {
