@@ -32,7 +32,7 @@ export default {
 
 <style>
     div.decks {
-        margin-top: 60px;
+        /* padding-top: 60px; */
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -42,7 +42,7 @@ export default {
     div.deck-form {
         display: flex;
         justify-content: center;
-        margin-top: 20px;
+        padding-top: 20px;
     }
     div.decks p {
         font-size: 1.5rem;
