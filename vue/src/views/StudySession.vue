@@ -18,10 +18,10 @@
         </div>
         <div class="right-wrong-buttons">
           <div class="wrong-button" >
-            <button id="wrong" v-on:click="markedWrong">WRONG</button>
+            <button id="wrong" v-bind:class="{'is-clicked-wrong': isClickedWrong}" v-on:click="markedWrong">NEEDS REVIEW</button>
           </div>
           <div class="right-button" >
-            <button id="right" v-on:click="markedRight">RIGHT</button>
+            <button id="right" v-bind:class="{'is-clicked-right': isClickedRight}" v-on:click="markedRight">CORRECT</button>
           </div>
         </div>
         <div class="next-button">
@@ -46,7 +46,8 @@ export default {
     return {
         currentIndex: 0,
         isFlipped: false,
-        // card: document.querySelector('.card'),
+        isClickedRight: false,
+        isClickedWrong: false,
         markedCorrect: false,
         rightAnswers: 0,
         wrongAnswers: 0,
@@ -92,11 +93,6 @@ export default {
           this.wrongAnswers--;
           this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
         }
-
-        // const card = document.querySelector('.flip-card');
-        // if (card.classList.contains('is-flipped')) {
-        //   card.classList.toggle('is-flipped');
-        // }
     },
     cancelStudySession() {
         if (confirm('End this study session?')) {
@@ -105,10 +101,17 @@ export default {
     },
     markedRight() {
       this.markedCorrect = true;
+      this.isClickedRight = true;
+      this.isClickedWrong = false;
     },
     markedWrong() {
       this.markedCorrect = false;
-    }
+      this.isClickedRight = false;
+      this.isClickedWrong = true;
+    },
+    // clicked() {
+    //   this.isClicked = !this.isClicked;
+    // }
   },
   created() {
     this.currentIndex = 0;
@@ -120,13 +123,7 @@ export default {
         this.$store.commit('SET_CARDS', response.data);
       }
     });
-  },
-  // mounted() {
-  //   var card = document.querySelector('.flip-card');
-  //   card.addEventListener( 'click', function() {
-  //     card.classList.toggle('is-flipped');
-  //   });
-  // }
+  }
 }
 </script>
 
@@ -205,12 +202,6 @@ div.right-wrong-buttons {
   display:flex;
   justify-content: center;
 }
-div.wrong-button {
-  background-color: tomato;
-}
-div.right-button {
-  background-color: dodgerblue;
-}
 div.right-button, div.wrong-button {
   display: flex;
   align-items: center;
@@ -221,8 +212,31 @@ div.right-button, div.wrong-button {
   flex-grow: 1;
   height: 30px;
 }
-span#right, span#wrong {
-  pointer-events: none;
+button#right, button#wrong {
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+button#right {
+  background-color: cornflowerblue;
+  color: white;
+}
+button#right:hover {
+  background-color: rgb(0, 95, 190);
+}
+button#right.is-clicked-right {
+   background-color: rgb(0, 95, 190);
+}
+button#wrong {
+  background-color: tomato;
+  color: white;
+}
+button#wrong:hover {
+  background-color: rgb(255, 0, 0);
+}
+button#wrong.is-clicked-wrong {
+  background-color: rgb(255, 0, 0); 
 }
 div.end-button {
   grid-area: end;
