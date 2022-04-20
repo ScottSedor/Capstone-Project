@@ -1,19 +1,24 @@
 <template>
   <div class="card-detail">
     <card-info />
+
     <div class="edit-button">
       <button class="edit" data-toggle="popover" title="Edit Card" v-on:click="isEditing = !isEditing" v-show="!isEditing">
         <img class="edit-img" src="..\assets\edit-deck-icon.png" alt="edit icon">
       </button>
+
       <button v-on:click="isEditing = !isEditing"  v-show="isEditing">Cancel</button>
       <button class="remove" data-toggle="popover" title="Remove Card" v-on:click="removeCard">
         <img class="remove-img" src="..\assets\remove-deck-icon.png" alt="remove icon">
       </button>
     </div>
+
     <div class="card-edit-form" v-show="isEditing == true">
       <card-form />
     </div>
+
   </div>
+
 </template>
 
 <script>
@@ -61,6 +66,7 @@ export default {
 </script>
 
 <style>
+
 div.card-detail {
   font-family: 'Roboto Mono', monospace;
   margin-top: 60px;
@@ -69,12 +75,14 @@ div.edit-button {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 10px;
+  
 }
 button.edit, button.remove {
   background: none;
   border: none;
   cursor: pointer;
 }
+
 img.edit-img, img.remove-img {
   height: 100px;
   width: 100px;

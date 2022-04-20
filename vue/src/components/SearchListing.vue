@@ -30,12 +30,16 @@ export default {
    width: 16rem;
    height: 10rem;
    margin: 20px;
-   border-radius: 4px;
+   border-radius: 20px;
    display: flex;
    flex-direction: column;
    text-align: center;
    justify-content: center;
-   
+   flex-direction: column;
+   text-align: center;
+   justify-content: center;
+   border-left: solid 5px rgba(0, 0, 0, 0.548); 
+   border-bottom: solid 5px rgba(0, 0, 0, 0.548);
 }
 
 div.card-listing > h2 {

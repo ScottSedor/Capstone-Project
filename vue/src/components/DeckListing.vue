@@ -29,7 +29,9 @@ export default {
    align-content: center;
    
 }
-
+h2 {
+  text-shadow: 1px 1px #b400a8
+}
 div.deck-listing:hover {
   background: #93c47dff;
 }
