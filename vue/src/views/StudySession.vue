@@ -209,13 +209,13 @@ div.body-container {
    height: 18rem;
    margin: 5px;
    margin-bottom: 20px;
-   border-radius: 4px;
+   border-radius: 5px;
    padding: 5px;
    display: flex;
    flex-direction: column;
    align-content: center;
    text-align: center;
-   justify-content: flex-start;
+   justify-content: center;
    overflow-y: auto;
  
    box-shadow:
@@ -236,13 +236,13 @@ div.body-container {
    height: 18rem;
    margin: 5px;
    margin-bottom: 20px;
-   border-radius: 4px;
+   border-radius: 5px;
    padding: 5px;
    display: flex;
    flex-direction: column;
    align-content: center;
    text-align: center;
-   justify-content: flex-start;
+   justify-content: center;
    overflow-y: auto;
  
    box-shadow:
@@ -271,7 +271,7 @@ div.right-button, div.wrong-button {
   align-items: center;
   justify-content: center;
   border: 2px solid black;
-  border-radius: 2px;
+  border-radius: 5px;
   max-width: 21vw;
   flex-grow: 1;
   height: 30px;
@@ -285,6 +285,7 @@ button#right, button#wrong {
 button#right {
   background-color: #00B300;
   color: white;
+  border-radius: 5px;
 }
 button#right:hover {
   background-color: #007D00;
@@ -295,6 +296,7 @@ button#right.is-clicked-right {
 button#wrong {
   background-color:#B30000;
   color: white;
+  border-radius: 5px;
 }
 button#wrong:hover {
   background-color: #7D0000;
@@ -312,6 +314,7 @@ div.end-button {
 }
 span#end {
   min-width: 20vw;
+  border-radius: 5px;
 }
 button#previous, button#next, button#next-end {
   background: none;
