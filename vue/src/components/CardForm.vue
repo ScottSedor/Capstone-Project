@@ -1,6 +1,6 @@
 <template>
   <div class='card-form' >
-    <form v-on:submit.prevent="saveCard" ref="cardCreate" >
+    <form class="card" v-on:submit.prevent="saveCard" ref="cardCreate" >
       <!-- <h1>New Card/Edit Card:</h1> -->
       <div class='boxes'>
         <div class="form-field">
@@ -98,6 +98,10 @@ export default {
 </script>
 
 <style>
+form.card {
+  background: rgb(240, 240, 240);
+  height: 290px;
+}
 input, select, textarea {
   background-color: #d9ead3ff;
 }
