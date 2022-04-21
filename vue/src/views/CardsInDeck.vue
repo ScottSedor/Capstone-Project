@@ -24,7 +24,7 @@
         <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">
           <img class="search-img" data-toggle="popover" title="Search for New Cards" src="..\assets\search-deck-icon.png" alt="search deck icon">
         </button>
-        <button v-on:click="cancelSearch" v-show="isSearching == true">Cancel Search</button>
+        <button class="cancel-search" v-on:click="cancelSearch" v-show="isSearching == true">Cancel Search</button>
       </div>
       <div class="start-study-button" v-show="isAdding == false && isSearching == false">
         <router-link :to="{name: 'study-session', params: {id: deckId}}">
@@ -152,6 +152,24 @@ export default {
 </script>
 
 <style>
+h3 {
+  color: #274e13ff; 
+}
+button.cancel-search {
+  background: rgb(221, 221, 221);
+  border: solid 1px black;
+  border-radius: 5px;
+  
+}
+button.cancel-search:hover {
+  background: rgb(238, 238, 238);
+  border: solid 1px black;
+  border-radius: 5px;
+}
+div.search-form {
+  color: #274e13ff;
+  padding-top: 20px;
+}
   div.cards-in-deck {
       margin-top: 40px;
       display: flex;
@@ -170,8 +188,8 @@ export default {
   }
   div.buttons {
     display: flex;
-    margin-bottom: 20px;
     justify-content: center;
+    background: rgb(240, 240, 240);
   }
   button#add-button {
     margin-right: 3vw;
@@ -222,6 +240,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: rgb(240, 240, 240);
   }
   div.search-results {
         display: flex;
@@ -241,6 +260,7 @@ export default {
         0 50px 80px rgba(0, 0, 0, 0.12);
         border-radius: 15px;
         margin-bottom: 75px;
+        margin-top: 40px;
     }
   div.search-results-title {
     display: flex;
@@ -258,6 +278,7 @@ export default {
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas: ". info form";
     height: 225px;
+    background: rgb(240, 240, 240);
   }
   div.deck-info-detail {
     grid-area: info;

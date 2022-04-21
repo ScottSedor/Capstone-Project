@@ -2,7 +2,7 @@
   <div class="search-card">
       <div class="search-form">
         <form v-on:submit.prevent="search" ref="searchForm">
-            <label id="label" for="search-field" >Search Keyword: </label>
+            <label id="label" class="search" for="search-field" >Search Keyword: </label>
             <input id="search-field" type="text" placeholder="Keyword" v-model.trim="keyword">
             <input type="submit" value="Search" >
         </form>
@@ -67,13 +67,19 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-content: center;
+        background: gray;
+        
     }
     div.search-results {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         border-bottom: 3px solid white;
+    }
+    label.search {
+        color: #274e13ff;
+        
     }
     #label {
         color: #274e13ff;
