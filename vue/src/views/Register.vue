@@ -131,8 +131,10 @@ div.register-fields {
 img.angry-img {
   height: 280px;
   width: 280px;
+  border-radius: 5px;
 }
 img.happy-img {
+  border-radius: 5px;
   height: 280px;
   width: 420px
 }
