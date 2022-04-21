@@ -46,25 +46,12 @@ export default {
         background: rgb(240, 240, 240);
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
-        box-shadow:
-        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-        0 6.5px 5px rgba(0, 0, 0, 0.06),
-        0 12.3px 7.9px rgba(0, 0, 0, 0.072),
-        0 41.8px 23.4px rgba(0, 0, 0, 0.086),
-        0 50px 80px rgba(0, 0, 0, 0.12); 
-    }
+        }
     div.deck-list {
         background: rgb(240, 240, 240);
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        /* box-shadow:
-        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-        0 6.5px 5px rgba(0, 0, 0, 0.06),
-        0 12.3px 7.9px rgba(0, 0, 0, 0.072),
-        0 41.8px 23.4px rgba(0, 0, 0, 0.086),
-        0 50px 80px rgba(0, 0, 0, 0.12); */
+         
     }
     div.decks p {
         font-size: 1.5rem;

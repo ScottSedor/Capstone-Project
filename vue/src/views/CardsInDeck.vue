@@ -198,8 +198,8 @@ export default {
     transform: scale(1.1);
   }
   img.search-img {
-    height: 110px;
-    width: 110px;
+    height: 300px;
+    width: 300px;
     border-radius: 50px;
   }
   button#start-study-button {
@@ -228,6 +228,19 @@ export default {
         flex-wrap: wrap;
         justify-content: center;
         border-bottom: 3px solid white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: rgb(240, 240, 240);
+        box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 6.5px 5px rgba(0, 0, 0, 0.06),
+        0 12.3px 7.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 23.4px rgba(0, 0, 0, 0.086),
+        0 50px 80px rgba(0, 0, 0, 0.12);
+        border-radius: 15px;
+        margin-bottom: 75px;
     }
   div.search-results-title {
     display: flex;
@@ -238,6 +251,7 @@ export default {
   div.card-list-title {
     display: flex;
     justify-content: center;
+    color: #274e13ff
   }
   div.deck-info {
     display: grid;

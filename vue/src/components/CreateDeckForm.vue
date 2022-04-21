@@ -5,7 +5,7 @@
         <button class="create" data-toggle="popover" title="Create Deck" v-on:click="isCreatingDeck = !isCreatingDeck" v-show="!isCreatingDeck">
             <img class="create-img" src="..\assets\create-deck-icon.png" alt="create deck icon">
         </button>
-        <button v-on:click="isCreatingDeck = !isCreatingDeck"  v-show="isCreatingDeck">Cancel</button>
+        <button class="cancel-button" v-on:click="isCreatingDeck = !isCreatingDeck"  v-show="isCreatingDeck">Cancel</button>
       </div>
       <form v-show="isCreatingDeck" v-on:submit.prevent="createDeck" ref="deckCreate" >
           <div class="form-field">
@@ -17,7 +17,7 @@
               <input type="text" id="title" placeholder="Description of Deck" v-model.trim="deckRequest.deckDescription">
           </div>
           <div class="button">
-              <input type="submit" value="Save Deck">
+              <input class="save-deck" type="submit" value="Save Deck">
           </div>
       </form>
   </div>
@@ -80,5 +80,25 @@ button.create {
 button.create:hover {
     transform: scale(1.1);
 }
+button.cancel-button {
+    background: rgb(202, 202, 202);
+    border: solid 1px rgb(0, 0, 0);
+    border-radius: 5px;
+   
+}
+button.cancel-button:hover {
+    background: rgb(238, 238, 238);
+    border: solid 1px rgb(0, 0, 0);
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 8px 6px -6px rgba(119, 119, 119, 0.534); 
+}
+button.save-deck:hover {
+    background: rgb(238, 238, 238);
+    border: solid 1px rgb(0, 0, 0);
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 8px 6px -6px rgba(119, 119, 119, 0.534); 
+}
+
+
 
 </style>
