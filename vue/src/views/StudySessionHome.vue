@@ -88,7 +88,7 @@ export default {
     }
     div.end-study-session {
        display: flex;
-       justify-content: space-between;
+       justify-content: space-evenly;
     }
     p {
         color: #274e13ff;
@@ -98,6 +98,7 @@ export default {
     div.p {
         display: flex;
         flex-direction: column;
+        margin-top: 20px;
     }
     div > p {
         text-align: left;
@@ -108,6 +109,10 @@ export default {
     }
     div.deck-title {
         color: #274e13ff;
+    }
+    p#previous {
+        font-size: x-large;
+        font-weight: bold;
     }
 
 </style>
