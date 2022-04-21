@@ -18,7 +18,7 @@
         <button id="add-button" v-on:click="isAdding = !isAdding" v-show="isAdding == false">
           <img class="create-img" data-toggle="popover" title="Create New Card" src="..\assets\create-deck-icon.png" alt="create card icon">
         </button>
-        <button v-on:click="isAdding = !isAdding" v-show="isAdding == true">Cancel</button>
+        <button class="cancel-button" v-on:click="isAdding = !isAdding" v-show="isAdding == true">Cancel</button>
       </div>
       <div class="search-button" v-show="isAdding == false">
         <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">
@@ -154,6 +154,11 @@ export default {
 <style>
 h3 {
   color: #274e13ff; 
+}
+button.cancel-button {
+  background: rgb(221, 221, 221);
+  border: solid 1px black;
+  border-radius: 5px;
 }
 button.cancel-search {
   background: rgb(221, 221, 221);

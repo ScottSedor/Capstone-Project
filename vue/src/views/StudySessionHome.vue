@@ -69,11 +69,14 @@ export default {
 </script>
 
 <style>
-
+    h2 {
+        margin-left: 30px;
+    }
     div.deck-list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        
     }
     div.study-deck-listing:hover {
         transform: scale(1.02);
@@ -85,10 +88,28 @@ export default {
         justify-content: center;
         flex-direction: column;
         font-family: 'Roboto Mono', monospace;
+        background: rgb(240, 240, 240);
+        box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 6.5px 5px rgba(0, 0, 0, 0.06),
+            0 12.3px 7.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 23.4px rgba(0, 0, 0, 0.086),
+            0 50px 80px rgba(0, 0, 0, 0.12);
+         border-radius: 5px;
     }
     div.end-study-session {
        display: flex;
        justify-content: space-evenly;
+       background: rgb(240, 240, 240);
+        box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 6.5px 5px rgba(0, 0, 0, 0.06),
+            0 12.3px 7.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 23.4px rgba(0, 0, 0, 0.086),
+            0 50px 80px rgba(0, 0, 0, 0.12);
+         border-radius: 5px;
     }
     p {
         color: #274e13ff;

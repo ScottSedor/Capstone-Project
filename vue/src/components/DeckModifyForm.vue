@@ -96,4 +96,14 @@ export default {
     button.modify:hover {
         transform: scale(1.1);
     }
+    button#cancel-btn {
+        background: rgb(221, 221, 221);
+        border: solid 1px black;
+        border-radius: 5px;
+    }
+    button#cancel-btn:hover {
+        background: rgb(240, 240, 240);
+        border: solid 1px black;
+        border-radius: 5px;
+    }
 </style>
