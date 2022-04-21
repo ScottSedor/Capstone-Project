@@ -43,8 +43,18 @@ export default {
         display: flex;
         justify-content: center;
         padding-top: 20px;
+        background: rgb(240, 240, 240);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        }
+    div.deck-list {
+        background: rgb(240, 240, 240);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+         
     }
     div.decks p {
         font-size: 1.5rem;
     }
+    
 </style>

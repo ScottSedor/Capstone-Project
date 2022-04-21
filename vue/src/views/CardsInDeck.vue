@@ -24,7 +24,7 @@
         <button id="search-button" v-on:click="isSearching = !isSearching" v-show="isSearching == false">
           <img class="search-img" data-toggle="popover" title="Search for New Cards" src="..\assets\search-deck-icon.png" alt="search deck icon">
         </button>
-        <button v-on:click="cancelSearch" v-show="isSearching == true">Cancel Search</button>
+        <button class="cancel-search" v-on:click="cancelSearch" v-show="isSearching == true">Cancel Search</button>
       </div>
       <div class="start-study-button" v-show="isAdding == false && isSearching == false">
         <router-link :to="{name: 'study-session', params: {id: deckId}}">
@@ -152,6 +152,24 @@ export default {
 </script>
 
 <style>
+h3 {
+  color: #274e13ff; 
+}
+button.cancel-search {
+  background: rgb(221, 221, 221);
+  border: solid 1px black;
+  border-radius: 5px;
+  
+}
+button.cancel-search:hover {
+  background: rgb(238, 238, 238);
+  border: solid 1px black;
+  border-radius: 5px;
+}
+div.search-form {
+  color: #274e13ff;
+  padding-top: 20px;
+}
   div.cards-in-deck {
       margin-top: 40px;
       display: flex;
@@ -170,8 +188,8 @@ export default {
   }
   div.buttons {
     display: flex;
-    margin-bottom: 20px;
     justify-content: center;
+    background: rgb(240, 240, 240);
   }
   button#add-button {
     margin-right: 3vw;
@@ -198,8 +216,8 @@ export default {
     transform: scale(1.1);
   }
   img.search-img {
-    height: 110px;
-    width: 110px;
+    height: 300px;
+    width: 300px;
     border-radius: 50px;
   }
   button#start-study-button {
@@ -222,12 +240,27 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: rgb(240, 240, 240);
   }
   div.search-results {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         border-bottom: 3px solid white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: rgb(240, 240, 240);
+        box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 6.5px 5px rgba(0, 0, 0, 0.06),
+        0 12.3px 7.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 23.4px rgba(0, 0, 0, 0.086),
+        0 50px 80px rgba(0, 0, 0, 0.12);
+        border-radius: 15px;
+        margin-bottom: 75px;
+        margin-top: 40px;
     }
   div.search-results-title {
     display: flex;
@@ -238,12 +271,14 @@ export default {
   div.card-list-title {
     display: flex;
     justify-content: center;
+    color: #274e13ff
   }
   div.deck-info {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas: ". info form";
     height: 225px;
+    background: rgb(240, 240, 240);
   }
   div.deck-info-detail {
     grid-area: info;

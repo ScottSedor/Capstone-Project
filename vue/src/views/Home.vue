@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Welcome To Stud.io!</h1>
-    <p>Choose an Option to Begin Studying</p>
+    <p class="subtitle">Choose an Option to Begin Studying</p>
 
     <div class="home-buttons">
     <router-link :to="{name: 'decks'}">
@@ -67,7 +67,7 @@ export default {
   div > h1 {
     color: #274e13ff;
   }
-  div > p {
+  div > p.subtitle {
     text-align: center;
     color: #274e13ff;
   }
@@ -80,5 +80,6 @@ export default {
   button {
     border: none;
     background: none;
+    cursor: pointer;
   }
 </style>

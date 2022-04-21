@@ -30,7 +30,7 @@ export default {
    
 }
 h2 {
-  text-shadow: 1px 1px #b400a8
+  text-shadow: 1px 1px gray
 }
 div.deck-listing:hover {
   background: #93c47dff;

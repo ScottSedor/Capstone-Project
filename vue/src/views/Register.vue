@@ -131,8 +131,10 @@ div.register-fields {
 img.angry-img {
   height: 280px;
   width: 280px;
+  border-radius: 5px;
 }
 img.happy-img {
+  border-radius: 5px;
   height: 280px;
   width: 420px
 }
@@ -153,8 +155,19 @@ form.form-register {
 form.form-register {
   background: rgb(240, 240, 240);
 }
-button.submit {
+button.btn {
   margin-top: 10px;
   margin-bottom: 10px;
+  background: rgb(221, 221, 221);
+  border: solid 1px black;
+  border-radius: 5px;
+}
+button.btn:hover {
+  background: rgb(238, 238, 238);
+  border: solid 1px black;
+  border-radius: 5px;
+}
+label.sr-only {
+  color: #274e13ff;
 }
 </style>
