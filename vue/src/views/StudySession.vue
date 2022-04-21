@@ -164,7 +164,7 @@ div.body-container {
 }
 .body {
     margin-top: 10px;
-    font-family: 'Roboto Mono', monospace;;
+    font-family: 'Roboto Mono', monospace;
     width: 42vw;
     height: 25vw;
     padding: 10px;
