@@ -60,7 +60,6 @@ export default {
 button > img.create-img {
     height: 300px;
     width: 300px;
-    border-radius: 50px;
 }
 h1#title {
     text-decoration-color: white;
