@@ -2,7 +2,7 @@
   <div class="container">
     <div class="study-session" v-if="currentCard">
         <div class="prev-button">
-          <button id="previous" data-toggle="popover" title="Back to Previous Card" v-on:click="previousCard" v-show="currentIndex != 0 && cards.length > 0">
+          <button id="previous" data-toggle="popover" title="Back to Previous Card" v-on:click="previousCard" v-on:keydown.left.prevent="previousCard" v-show="currentIndex != 0 && cards.length > 0">
             <img class="back-img" src="..\assets\back-arrow-icon.png" alt="back arrow icon">
           </button>
         </div>
@@ -18,14 +18,14 @@
         </div>
         <div class="right-wrong-buttons">
           <div class="wrong-button" >
-            <button id="wrong" v-on:click="markedWrong">WRONG</button>
+            <button id="wrong" v-bind:class="{'is-clicked-wrong': isClickedWrong}" v-on:click="markedWrong">NEEDS REVIEW</button>
           </div>
           <div class="right-button" >
-            <button id="right" v-on:click="markedRight">RIGHT</button>
+            <button id="right" v-bind:class="{'is-clicked-right': isClickedRight}" v-on:click="markedRight">CORRECT</button>
           </div>
         </div>
         <div class="next-button">
-          <button id="next" data-toggle="popover" title="Next Card" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">
+          <button id="next" data-toggle="popover" title="Next Card" v-on:click="nextCard" v-on:keydown.right.prevent="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">
             <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
           </button>
         </div>
@@ -46,7 +46,8 @@ export default {
     return {
         currentIndex: 0,
         isFlipped: false,
-        // card: document.querySelector('.card'),
+        isClickedRight: false,
+        isClickedWrong: false,
         markedCorrect: false,
         rightAnswers: 0,
         wrongAnswers: 0,
@@ -79,36 +80,51 @@ export default {
         }
         this.markedCorrect = false;
         this.isFlipped = false;
-
+        this.isClickedRight = false;
+        this.isClickedWrong = false;
         this.$store.commit('SET_CURRENT_INDEX', this.currentIndex);
       },
     previousCard() {
         this.currentIndex = this.currentIndex -1;
 
-        if (this.previousAnswerCorrect === true) {
+        if (this.previousAnswerCorrect === true && this.rightAnswers > 0) {
           this.rightAnswers--;
           this.$store.commit('SET_CURRENT_RIGHT_ANSWERS', this.rightAnswers);
-        } else {
+        } else if (this.previousAnswerCorrect === false && this.wrongAnswers > 0) {
           this.wrongAnswers--;
           this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
         }
-
-        // const card = document.querySelector('.flip-card');
-        // if (card.classList.contains('is-flipped')) {
-        //   card.classList.toggle('is-flipped');
-        // }
+        this.isClickedRight = false;
+        this.isClickedWrong = false;
+        this.isFlipped = false;
     },
     cancelStudySession() {
+        if (this.markedCorrect === true) {
+          this.rightAnswers++;
+          this.$store.commit('SET_CURRENT_RIGHT_ANSWERS', this.rightAnswers);
+          this.previousAnswerCorrect = true;
+        } else {
+          this.wrongAnswers++;
+          this.$store.commit('SET_CURRENT_WRONG_ANSWERS', this.wrongAnswers);
+          this.previousAnswerCorrect = false;
+        }
         if (confirm('End this study session?')) {
           this.$router.push({name: 'study-session-home'});
         }
     },
     markedRight() {
       this.markedCorrect = true;
+      this.isClickedRight = true;
+      this.isClickedWrong = false;
     },
     markedWrong() {
       this.markedCorrect = false;
-    }
+      this.isClickedRight = false;
+      this.isClickedWrong = true;
+    },
+    // clicked() {
+    //   this.isClicked = !this.isClicked;
+    // }
   },
   created() {
     this.currentIndex = 0;
@@ -120,13 +136,7 @@ export default {
         this.$store.commit('SET_CARDS', response.data);
       }
     });
-  },
-  // mounted() {
-  //   var card = document.querySelector('.flip-card');
-  //   card.addEventListener( 'click', function() {
-  //     card.classList.toggle('is-flipped');
-  //   });
-  // }
+  }
 }
 </script>
 
@@ -154,9 +164,10 @@ div.body-container {
 }
 .body {
     margin-top: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono', monospace;
     width: 42vw;
     height: 25vw;
+    padding: 10px;
 }
 .flip-card-container {
     width: 42vw;
@@ -164,9 +175,9 @@ div.body-container {
     perspective: 1000px;
 }
 .flip-card {
-    border: 3px solid black;
-    border-radius: 8px;
-    position: relative;
+    /* border: 3px solid black;
+    border-radius: 8px; */
+    /* position: relative; */
     width: 42vw;
     height: 25vw;
     transition: transform 0.4s;
@@ -185,15 +196,63 @@ div.body-container {
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+    
 }
 .flip-card-front {
-    background-color: rgb(94, 148, 71);
-    color: #fff;
+    /* background-color: rgb(94, 148, 71);
+    color: #fff; */
+ background-color: rgba(106, 168, 79, 0.596);
+   border: 3px #274e13ff solid;
+   width: 32rem;
+   height: 18rem;
+   margin: 5px;
+   margin-bottom: 20px;
+   border-radius: 4px;
+   padding: 5px;
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   text-align: center;
+   justify-content: flex-start;
+   overflow-y: auto;
+ 
+   box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
 }
+
 .flip-card-back {
-    background-color: rgb(94, 148, 71);
-    color: #fff;
+    /* background-color: rgb(94, 148, 71);
+    color: #fff; */
+   background-color: rgba(106, 168, 79, 0.596);
+   border: 3px #274e13ff solid;
+   width: 32rem;
+   height: 18rem;
+   margin: 5px;
+   margin-bottom: 20px;
+   border-radius: 4px;
+   padding: 5px;
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   text-align: center;
+   justify-content: flex-start;
+   overflow-y: auto;
+ 
+   box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+
     transform: rotateY(180deg);
+    
 }
 div.next-button {
   grid-area: next;
@@ -205,12 +264,6 @@ div.right-wrong-buttons {
   display:flex;
   justify-content: center;
 }
-div.wrong-button {
-  background-color: tomato;
-}
-div.right-button {
-  background-color: dodgerblue;
-}
 div.right-button, div.wrong-button {
   display: flex;
   align-items: center;
@@ -221,8 +274,31 @@ div.right-button, div.wrong-button {
   flex-grow: 1;
   height: 30px;
 }
-span#right, span#wrong {
-  pointer-events: none;
+button#right, button#wrong {
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+button#right {
+  background-color: #00B300;
+  color: white;
+}
+button#right:hover {
+  background-color: #007D00;
+}
+button#right.is-clicked-right {
+   background-color: #007D00;
+}
+button#wrong {
+  background-color:#B30000;
+  color: white;
+}
+button#wrong:hover {
+  background-color: #7D0000;
+}
+button#wrong.is-clicked-wrong {
+  background-color: #7D0000; 
 }
 div.end-button {
   grid-area: end;
