@@ -28,8 +28,10 @@
           <button id="next" data-toggle="popover" title="Next Card" v-on:click="nextCard" v-on:keydown.right.prevent="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">
             <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
           </button>
+          <button id="next-end" data-toggle="popover" title="End Study Session" v-on:click="cancelStudySession" v-on:keydown.right.prevent="cancelStudySession" v-show="currentIndex == (cards.length - 1)">
+            <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
+          </button>
         </div>
-
         <div class="end-button">
           <button id="end" v-on:click="cancelStudySession" >End Study Session</button>
         </div>
@@ -217,13 +219,13 @@ div.body-container {
    height: 18rem;
    margin: 5px;
    margin-bottom: 20px;
-   border-radius: 4px;
+   border-radius: 5px;
    padding: 5px;
    display: flex;
    flex-direction: column;
    align-content: center;
    text-align: center;
-   justify-content: flex-start;
+   justify-content: center;
    overflow-y: auto;
  
    box-shadow:
@@ -244,13 +246,13 @@ div.body-container {
    height: 18rem;
    margin: 5px;
    margin-bottom: 20px;
-   border-radius: 4px;
+   border-radius: 5px;
    padding: 5px;
    display: flex;
    flex-direction: column;
    align-content: center;
    text-align: center;
-   justify-content: flex-start;
+   justify-content: center;
    overflow-y: auto;
  
    box-shadow:
@@ -279,7 +281,7 @@ div.right-button, div.wrong-button {
   align-items: center;
   justify-content: center;
   border: 2px solid black;
-  border-radius: 2px;
+  border-radius: 5px;
   max-width: 21vw;
   flex-grow: 1;
   height: 30px;
@@ -293,6 +295,7 @@ button#right, button#wrong {
 button#right {
   background-color: #4fa74f;
   color: white;
+  border-radius: 5px;
 }
 button#right:hover {
   background-color: #007D00;
@@ -303,6 +306,7 @@ button#right.is-clicked-right {
 button#wrong {
   background-color:#992f2f;
   color: white;
+  border-radius: 5px;
 }
 button#wrong:hover {
   background-color: #7D0000;
@@ -337,11 +341,11 @@ button#end:hover {
   border: solid 1px black;
   border-radius: 5px;
 }
-button#previous, button#next {
+button#previous, button#next, button#next-end {
   background: none;
   border: none;
 }
-button#previous:hover, button#next:hover {
+button#previous:hover, button#next:hover, button#next-end:hover {
   transform: scale(1.1);
 }
 img.back-img, img.next-img {
@@ -358,7 +362,6 @@ img.back-img, img.next-img {
 .flip-enter, .flip-leave {
   transform: rotateY(180deg);
   opacity: 0;
-
 }
 span#end, div.cancel:hover {
   transform: scale(1.1);
