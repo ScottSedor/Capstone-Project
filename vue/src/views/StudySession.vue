@@ -31,7 +31,7 @@
         </div>
 
         <div class="end-button">
-          <span id="end" v-on:click="cancelStudySession" >End Study Session</span>
+          <button id="end" v-on:click="cancelStudySession" >End Study Session</button>
         </div>
 
     </div>
@@ -141,6 +141,14 @@ export default {
 </script>
 
 <style>
+div.flip-card-front {
+  text-shadow: gray;
+  text-shadow: 1px 1px gray
+}
+div.flip-card-back {
+  text-shadow: gray;
+  text-shadow: 1px 1px gray
+}
 div.study-session {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
@@ -149,6 +157,7 @@ div.study-session {
     ". answer ."
     ". end .";
   background-size: cover;
+  background: rgb(238, 238, 238);
 }
 div.prev-button {
   grid-area: prev;
@@ -161,7 +170,7 @@ div.body-container {
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
-}
+  background: rgb(190, 190, 190);}
 .body {
     margin-top: 10px;
     font-family: 'Roboto Mono', monospace;
@@ -182,6 +191,7 @@ div.body-container {
     height: 25vw;
     transition: transform 0.4s;
     transform-style: preserve-3d;
+    
 }
 .flip-card.is-flipped {
   transform: rotateY(180deg);
@@ -281,7 +291,7 @@ button#right, button#wrong {
   width: 100%;
 }
 button#right {
-  background-color: #00B300;
+  background-color: #4fa74f;
   color: white;
 }
 button#right:hover {
@@ -291,7 +301,7 @@ button#right.is-clicked-right {
    background-color: #007D00;
 }
 button#wrong {
-  background-color:#B30000;
+  background-color:#992f2f;
   color: white;
 }
 button#wrong:hover {
@@ -301,15 +311,31 @@ button#wrong.is-clicked-wrong {
   background-color: #7D0000; 
 }
 div.end-button {
-  grid-area: end;
-  max-width: 42vw;
   display: flex;
   justify-content: center;
-  flex-grow: 1;
+  grid-area: end;
   align-items: center;
+  background: rgb(238, 238, 238);
+  height: 165px;
 }
-span#end {
-  min-width: 20vw;
+button#end {
+  background: rgb(221, 221, 221);
+  border: solid 1px black;
+  border-radius: 5px;
+  height: 40px;
+  width: 100px;
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+button#end:hover {
+  background: rgb(240, 240, 240);
+  border: solid 1px black;
+  border-radius: 5px;
 }
 button#previous, button#next {
   background: none;

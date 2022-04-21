@@ -98,7 +98,7 @@ export default {
 </script>
 
 <style>
-form.card {
+form {
   background: rgb(240, 240, 240);
   height: 290px;
 }
