@@ -2,7 +2,7 @@
   <div class="container">
     <div class="study-session" v-if="currentCard">
         <div class="prev-button">
-          <button id="previous" data-toggle="popover" title="Back to Previous Card" v-on:click="previousCard" v-show="currentIndex != 0 && cards.length > 0">
+          <button id="previous" data-toggle="popover" title="Back to Previous Card" v-on:click="previousCard" v-on:keydown.left.prevent="previousCard" v-show="currentIndex != 0 && cards.length > 0">
             <img class="back-img" src="..\assets\back-arrow-icon.png" alt="back arrow icon">
           </button>
         </div>
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="next-button">
-          <button id="next" data-toggle="popover" title="Next Card" v-on:click="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">
+          <button id="next" data-toggle="popover" title="Next Card" v-on:click="nextCard" v-on:keydown.right.prevent="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">
             <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
           </button>
         </div>
