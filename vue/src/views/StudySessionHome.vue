@@ -2,10 +2,10 @@
     <div class="study-session-home">
         <div class="end-study-session" v-show="currentIndex != 0">
             <h1 id ="previous">Previous Session Results: </h1>
-            <h1 id="cards">Flashcards Completed: {{ currentIndex + 1 }}</h1>
-            <h1 id="percent">Percent Of Deck Complete: {{percentComplete}}%</h1>
-            <h1 id="right">Number of Right Answers: {{ rightAnswers }} </h1>
-            <h1 id="wrong">Number of Wrong Answers: {{ wrongAnswers }} </h1>
+            <h1 id="cards">Flashcards Studied: {{ currentIndex + 1 }}</h1>
+            <h1 id="percent">Deck Completion: {{percentComplete}}%</h1>
+            <h1 id="right">Correct Answers: {{ rightAnswers }} </h1>
+            <h1 id="wrong">Incorrect Answers: {{ wrongAnswers }} </h1>
             <a id="restart" @click="$router.go(-1)">
                 <img class="restart-icon" data-toggle="popover" title="Restart Study Session" src="..\assets\restart-icon.png" alt="restart icon">
             </a>
