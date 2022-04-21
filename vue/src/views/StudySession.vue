@@ -28,8 +28,10 @@
           <button id="next" data-toggle="popover" title="Next Card" v-on:click="nextCard" v-on:keydown.right.prevent="nextCard" v-show="currentIndex != (cards.length - 1) && cards.length > 0">
             <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
           </button>
+          <button id="next-end" data-toggle="popover" title="End Study Session" v-on:click="cancelStudySession" v-on:keydown.right.prevent="cancelStudySession" v-show="currentIndex == (cards.length - 1)">
+            <img class="next-img" src="..\assets\next-arrow-icon.png" alt="next arrow icon">
+          </button>
         </div>
-
         <div class="end-button">
           <span id="end" v-on:click="cancelStudySession" >End Study Session</span>
         </div>
@@ -311,11 +313,11 @@ div.end-button {
 span#end {
   min-width: 20vw;
 }
-button#previous, button#next {
+button#previous, button#next, button#next-end {
   background: none;
   border: none;
 }
-button#previous:hover, button#next:hover {
+button#previous:hover, button#next:hover, button#next-end:hover {
   transform: scale(1.1);
 }
 img.back-img, img.next-img {
