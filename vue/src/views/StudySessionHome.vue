@@ -1,11 +1,13 @@
 <template>
     <div class="study-session-home">
         <div class="end-study-session" v-show="currentIndex != 0">
-            <h1 id ="previous">Previous Session Results: </h1>
-            <h1 id="cards">Flashcards Studied: {{ currentIndex + 1 }}</h1>
-            <h1 id="percent">Deck Completion: {{percentComplete}}%</h1>
-            <h1 id="right">Correct Answers: {{ rightAnswers }} </h1>
-            <h1 id="wrong">Incorrect Answers: {{ wrongAnswers }} </h1>
+                <div class="p">
+                    <p id ="previous">Previous Session Results: </p>
+                    <p id="cards">Flashcards Studied: {{ currentIndex + 1 }}</p>
+                    <p id="percent">Deck Completion: {{percentComplete}}%</p>
+                    <p id="right">Correct Answers: {{ rightAnswers }} </p>
+                    <p id="wrong">Incorrect Answers: {{ wrongAnswers }} </p>
+                </div>
             <a id="restart" @click="$router.go(-1)">
                 <img class="restart-icon" data-toggle="popover" title="Restart Study Session" src="..\assets\restart-icon.png" alt="restart icon">
             </a>
@@ -85,44 +87,24 @@ export default {
         font-family: 'Roboto Mono', monospace;
     }
     div.end-study-session {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        grid-template-areas:
-            "previous restart" 
-            "cards restart"
-            "percent restart"
-            "right restart"
-            "wrong restart";
+       display: flex;
+       justify-content: space-between;
     }
-    h1#previous {
-       grid-area: previous; 
-    }
-    h1#right {
-        grid-area: right;
-    }
-    h1#wrong {
-        grid-area: wrong;
-    }
-    h1 {
+    p {
+        color: #274e13ff;
         font-size: 18px;
         text-align: left;
     }
-    h1#cards {
-        color: #274e13ff;
-        grid-area: cards;
-        text-align: center;
+    div.p {
+        display: flex;
+        flex-direction: column;
     }
-    h1#percent {
-        color: #274e13ff;
-        grid-area: percent;
-        text-align: center;
-    }
-    a#restart {
-        grid-area: restart;
+    div > p {
+        text-align: left;
     }
     img.restart-icon {
-        height: 120px;
-        width: 120px;
+        height: 20vw;
+        width: 20vw;
     }
     div.deck-title {
         color: #274e13ff;
