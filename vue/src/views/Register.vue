@@ -46,7 +46,7 @@
 
       <div id="after">
       <p>One Week Of Stud.io</p>
-      <img class="happy-img" src="..\assets\happy-learner.png" alt="happy woman learning">
+      <img class="happy-img" src="..\assets\happy-learner2.png" alt="happy woman learning">
       </div>
 
     </form>
@@ -136,11 +136,11 @@ img.angry-img {
 img.happy-img {
   border-radius: 5px;
   height: 280px;
-  width: 420px
+  width: 280px
 }
 form.form-register {
   display: flex;
-  height: 350px;
+  height: 400px;
   background: rgb(240, 240, 240);
   margin-top: 30px;
   box-shadow:

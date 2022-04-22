@@ -46,7 +46,7 @@
 
       <div id="after">
       <p>One Week Of Stud.io</p>
-      <img class="happy-img" src="..\assets\happy-learner.png" alt="happy woman learning">
+      <img class="happy-img" src="..\assets\happy-learner2.png" alt="happy woman learning">
       </div>
 
     </form>
@@ -119,11 +119,11 @@ img.angry-img {
 }
 img.happy-img {
   height: 280px;
-  width: 420px
+  width: 280px
 }
 form.form-signin {
   display: flex;
-  height: 350px;
+  height: 400px;
   background: rgb(240, 240, 240);
   margin-top: 30px;
   box-shadow:
@@ -153,5 +153,8 @@ button.submit:hover {
 label.sr-only {
   color: #274e13ff;
 }
+/* div#alert.alert-danger {
+  color: #274e13ff;
+} */
 
 </style>
